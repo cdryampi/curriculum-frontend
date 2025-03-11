@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { HelmetProvider } from "react-helmet-async";
 import { FaHome } from "react-icons/fa";
 import { BottomBar2 } from "../../components/BottomBar";
 import { Header } from "../../components/Header";
@@ -10,15 +10,20 @@ import { PushSpinner } from "react-spinners-kit";
 
 const StaticPage = () => {
   const { slug } = useParams();
-  const { data, loading, error } = useFetchStaticPage(slug, GLOBAL_DELAY_CALLBACK);
+  const { data, loading, error } = useFetchStaticPage(
+    slug,
+    GLOBAL_DELAY_CALLBACK
+  );
 
   return (
     <React.Fragment>
-      <Helmet>
+      <HelmetProvider>
         <title>
-          {data ? `${data.title} - Curriculum de Yampi` : "Loading... - Curriculum de Yampi"}
+          {data
+            ? `${data.title} - Curriculum de Yampi`
+            : "Loading... - Curriculum de Yampi"}
         </title>
-      </Helmet>
+      </HelmetProvider>
       {loading ? (
         <div className="pageLoader fixed justify-center items-center inset-0 flex">
           <PushSpinner size={60} color="#284be5" loading={true} />
@@ -41,9 +46,18 @@ const StaticPage = () => {
                   <div className="servDetailImage relative rounded-[10px] sm:rounded-[1.25rem] md:rounded-[3.125rem] overflow-hidden w-full">
                     {data?.image && (
                       <picture>
-                        <source media="(max-width: 640px)" srcSet={data.image.image_for_mobile_url} />
-                        <source media="(max-width: 1024px)" srcSet={data.image.image_for_tablet_url} />
-                        <source media="(min-width: 1025px)" srcSet={data.image.image_for_pc_url} />
+                        <source
+                          media="(max-width: 640px)"
+                          srcSet={data.image.image_for_mobile_url}
+                        />
+                        <source
+                          media="(max-width: 1024px)"
+                          srcSet={data.image.image_for_tablet_url}
+                        />
+                        <source
+                          media="(min-width: 1025px)"
+                          srcSet={data.image.image_for_pc_url}
+                        />
                         <img
                           className="inline-block mb-5 w-full"
                           src={data.image.image_for_pc_url}

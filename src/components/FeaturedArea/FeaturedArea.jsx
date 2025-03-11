@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FiChevronRight } from "react-icons/fi";
 import FeatImg from "../../assets/images/resources/featMockup.jpg";
 import Shape1 from "../../assets/images/shape-1.png";
 import Shape2 from "../../assets/images/shape-2.png";
@@ -8,16 +7,39 @@ import Shape3 from "../../assets/images/shape-3.png";
 import Shape4 from "../../assets/images/shape-4.png";
 
 const FeaturedArea = ({ userData }) => {
-
-  return userData ?(
+  return userData ? (
     <section className="featuredAreaWrap md:text-left text-center bg-dark z-[1] flex items-center bgGrident1 bg-blend-hard-light relative min-h-screen xl:rounded-br-[20rem] lg:rounded-br-[18rem] md:rounded-br-[15rem] sm:rounded-br-[10rem] rounded-br-0 w-screen md:py-[6.25rem] py-20">
       <div className="shaps absolute inset-0">
-        <img className="absolute floatAnim left-[10%] top-[10%] animDelay1" src={Shape1} alt="Shape"></img>
-        <img className="absolute floatAnim right-[10%] bottom-[20%] animDelay2" src={Shape2} alt="Shape"></img>
-        <img className="absolute floatAnim right-[50%] bottom-[50%] animDelay3" src={Shape2} alt="Shape"></img>
-        <img className="absolute floatAnim right-[15%] bottom-[40%] animDelay4" src={Shape3} alt="Shape"></img>
-        <img className="absolute floatAnim right-[10%] top-[10%] animDelay5" src={Shape3} alt="Shape"></img>
-        <img className="absolute floatAnim right-[45%] top-[10%] animDelay6" src={Shape4} alt="Shape"></img>
+        <img
+          className="absolute floatAnim left-[10%] top-[10%] animDelay1"
+          src={Shape1}
+          alt="Shape"
+        ></img>
+        <img
+          className="absolute floatAnim right-[10%] bottom-[20%] animDelay2"
+          src={Shape2}
+          alt="Shape"
+        ></img>
+        <img
+          className="absolute floatAnim right-[50%] bottom-[50%] animDelay3"
+          src={Shape2}
+          alt="Shape"
+        ></img>
+        <img
+          className="absolute floatAnim right-[15%] bottom-[40%] animDelay4"
+          src={Shape3}
+          alt="Shape"
+        ></img>
+        <img
+          className="absolute floatAnim right-[10%] top-[10%] animDelay5"
+          src={Shape3}
+          alt="Shape"
+        ></img>
+        <img
+          className="absolute floatAnim right-[45%] top-[10%] animDelay6"
+          src={Shape4}
+          alt="Shape"
+        ></img>
         {/* Shaps */}
       </div>
       <span className="bg-accent absolute left-0 bottom-[-.75rem] h-6 w-1/2"></span>
@@ -49,20 +71,23 @@ const FeaturedArea = ({ userData }) => {
                   Hello, I Am
                 </h3>
                 <h2 className="font-bold text-[2.3rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5rem] font-Poppins text-white uppercase">
-                    {userData.nombre}
+                  {userData.nombre}
                   <span className="font-normal text-[2.3rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5rem] text-accent font-Poppins uppercase">
-                    {userData.apellido} 
+                    {userData.apellido}
                   </span>
                 </h2>
                 <h5 className="md:justify-start justify-center font-bold text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] font-Poppins text-white uppercase flex items-center gap-2.5 tracking-[1px]">
                   <span className="w-[2.5rem] sm:w-[3rem] md:w-[4.375rem] bg-accent h-[1px]"></span>
                   {userData.profesion}
                 </h5>
-                <p className="text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] lg:text-[1.25rem] xl:text-[1.375rem] text-desc md:leading-9 sm:leading-7 leading-6 w-full md:w-full lg:w-full xl:w-3/4 mt-6" dangerouslySetInnerHTML={{ __html: userData.resumen_habilidades }}>
-
-                </p>
+                <p
+                  className="text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] lg:text-[1.25rem] xl:text-[1.375rem] text-desc md:leading-9 sm:leading-7 leading-6 w-full md:w-full lg:w-full xl:w-3/4 mt-6"
+                  dangerouslySetInnerHTML={{
+                    __html: userData.resumen_habilidades,
+                  }}
+                ></p>
                 <div className="flex items-center md:justify-start justify-center sm:gap-8 md:gap-10 lg:gap-15 xl:gap-20 gap-8 md:mt-[3.125rem] mt-[1.875rem]">
-                {/* <Link
+                  {/* <Link
                     className="text-accent uppercase md:text-[1.125rem] text-[1rem] flex gap-5 items-center hover:text-white"
                     to="/"
                     title="Hire Me"
@@ -89,11 +114,10 @@ const FeaturedArea = ({ userData }) => {
       </div>
       {/* Featured Area Wrap */}
     </section>
-  ):
-  (
+  ) : (
     // Si los datos aún no están disponibles, muestra un mensaje de carga
     <div>Loading...</div>
-  )
+  );
 };
 
 export default FeaturedArea;

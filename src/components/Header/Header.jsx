@@ -33,14 +33,14 @@ const Header = () => {
           <div className="container mx-auto sm:container md:container lg:container xl:container 2xl:container">
             <div className="flex items-center justify-between w-full topbarInner">
               <div className="logo inline-block max-w-[50%]">
-                {/* <Link to="/" title="Fastone">
-                  
-                </Link> */}
-                <img src={Logo} alt="Logo"></img>
+                <Link to="/" title="ir a la página de inicio">
+                  <img src={Logo} alt="Logo"></img>
+                </Link>
+
                 {/* Logo */}
               </div>
               <div className="hidden menuWrapper">
-                {/* <MenuLinks></MenuLinks> */}
+                <MenuLinks></MenuLinks>
               </div>
             </div>
             {/* Topbar Inner */}
@@ -72,7 +72,10 @@ const Header = () => {
         </div>
         <div
           className="sideMenu bg-[#000] fixed transition-all ease-in-out duration-300 z-[9999] top-0 h-screen w-screen flex justify-center items-center px-8 py-16 overflow-y-scroll"
-          style={{ opacity: sideMenu ? "1" : "0", visibility: sideMenu ? "visible" : "hidden" }}
+          style={{
+            opacity: sideMenu ? "1" : "0",
+            visibility: sideMenu ? "visible" : "hidden",
+          }}
         >
           <span
             className="mirror absolute right-10 top-4"

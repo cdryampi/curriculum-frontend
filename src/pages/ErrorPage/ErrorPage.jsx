@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { HelmetProvider } from "react-helmet-async";
 import { FaHome } from "react-icons/fa";
 import { BottomBar2 } from "../../components/BottomBar";
 import { Header } from "../../components/Header";
@@ -10,11 +10,9 @@ import { Link } from "react-router-dom";
 const ErrorPage = () => {
   return (
     <React.Fragment>
-      <Helmet>
-        <title>
-          Error Page - Curriculum de Yampi
-        </title>
-      </Helmet>
+      <HelmetProvider>
+        <title>Error Page - Curriculum de Yampi</title>
+      </HelmetProvider>
       <Header></Header>
       <section className="pageWrap pt-[4rem] md:pt-[4.375rem] relative w-full">
         <div className="container sm:container md:container lg:container xl:max-w-[73.125rem] mx-auto">
@@ -23,7 +21,11 @@ const ErrorPage = () => {
               <h2 className="text-[10rem] sm:text-[13rem] md:text-[15rem] lg:text-[18.75rem] text-stroke-10 text-stroke-accent text-fill-transparent font-Poppins font-bold leading-none -mb-6">
                 404
               </h2>
-              <img className="inline-block mb-5" src={ErrorMockup} alt="Error Page"></img>
+              <img
+                className="inline-block mb-5"
+                src={ErrorMockup}
+                alt="Error Page"
+              ></img>
               <h3 className="text-[#647c9f] font-Poppins font-medium text-[1.875rem] md:text-[2.5rem]">
                 oops page not found
               </h3>
@@ -40,7 +42,13 @@ const ErrorPage = () => {
                   <FiSearch size={20}></FiSearch>
                 </button>
               </form>
-              <Link className="text-accent hover:text-accent2 font-Poppins text-[1rem] md:text-[1.0625rem] font-bold uppercase inline-flex gap-2 items-center underline underline-offset-7 mt-[1.875rem] md:mt-[2.8125rem]" to="/" title="Back to Home"><FaHome></FaHome>Back to Home</Link>
+              <Link
+                className="text-accent hover:text-accent2 font-Poppins text-[1rem] md:text-[1.0625rem] font-bold uppercase inline-flex gap-2 items-center underline underline-offset-7 mt-[1.875rem] md:mt-[2.8125rem]"
+                to="/"
+                title="Back to Home"
+              >
+                <FaHome></FaHome>Back to Home
+              </Link>
             </div>
             {/* Error Page */}
           </div>

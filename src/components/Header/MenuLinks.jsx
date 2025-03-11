@@ -83,13 +83,13 @@ const MenuLinks = () => {
             style={{ backgroundImage: `url(${PatternImg2})` }}
           >
             <li className="relative text-[.9375rem] font-Poppins font-semibold capitalize">
-              {/* <Link
+              <a
                 className="hover:text-accent text-accent2 pr-5 relative block"
-                to="/portfolio"
-                title="Portfolio Style 1"
+                href="#aboutMe"
+                title="sobre mí"
               >
-                Portfolio Style 1
-              </Link> */}
+                Sobre mí
+              </a>
             </li>
             <li className="relative text-[.9375rem] font-Poppins font-semibold capitalize pt-2">
               {/* <Link
