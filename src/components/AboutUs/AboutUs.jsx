@@ -3,13 +3,15 @@ import PatternImg from "../../assets/images/patternImg.jpg";
 import PatternImg2 from "../../assets/images/patternImg2.jpg";
 import AboutUsBg from "../../assets/images/about-bg-cover-back.jpg";
 import { SectionTitle } from "../SectionTitles";
-import { ReactComponent as Signature } from "../../lib/icons/Signature.svg";
+import Signature from "../../lib/icons/Signature.svg?react";
 import { GoDotFill } from "react-icons/go";
 
 const AboutUs = ({ userData }) => {
-
-  return userData ?(
-    <section className="aboutUsWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem] relative w-full">
+  return userData ? (
+    <section
+      className="aboutUsWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem] relative w-full"
+      id="about"
+    >
       <div
         className="fixedBg bg-left-top bg-no-repeat opacity-20"
         style={{ backgroundImage: `url(${PatternImg})` }}
@@ -49,7 +51,7 @@ const AboutUs = ({ userData }) => {
                   <h4 className="text-accent2 font-light text-[1.325rem] md:text-[1.5rem] leading-normal font-Poppins">
                     My name is {""}
                     <span className="text-accent font-bold uppercase text-[1.5rem] md:text-[1.875rem]">
-                    {userData.nombre} {userData.apellido} 
+                      {userData.nombre} {userData.apellido}
                     </span>
                   </h4>
                   <ul className="grid grid-cols-1 gap-5 mt-6">
@@ -58,7 +60,7 @@ const AboutUs = ({ userData }) => {
                         Age:
                       </strong>
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-2">
-                      {userData.edad}
+                        {userData.edad}
                       </span>
                     </li>
                     <li className="grid grid-cols-3 gap-4 text-[1rem] md:text-[1.125rem]">
@@ -68,7 +70,7 @@ const AboutUs = ({ userData }) => {
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-2">
                         <a
                           className="text-desc2 font-semibold font-NunitoSans hover:text-accent"
-                          href={`tel:+34 ${userData.telefono}`} 
+                          href={`tel:+34 ${userData.telefono}`}
                           title="telefono"
                         >
                           +34 {userData.telefono}
@@ -122,8 +124,7 @@ const AboutUs = ({ userData }) => {
       </div>
       {/* About Us Wrap */}
     </section>
-  ):
-  (
+  ) : (
     // Si los datos aún no están disponibles, muestra un mensaje de carga
     <div>Loading...</div>
   );

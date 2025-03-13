@@ -1,13 +1,12 @@
 // HomePage.js
 import React, { Fragment } from "react";
-import { HelmetProvider } from "react-helmet-async";
 import { Header } from "../../components/Header";
 import { FeaturedArea } from "../../components/FeaturedArea";
 import { AboutUs } from "../../components/AboutUs";
 import { BottomBar2 } from "../../components/BottomBar";
 import { EducationAndSkills } from "../../components/EducationAndSkills";
 import { MyWorkExperience } from "../../components/MyWorkExperience";
-import { PushSpinner } from "react-spinners-kit";
+import { SyncLoader } from "react-spinners";
 import useUserProfile from "../../hooks/UseProfileUserHook";
 import { GLOBAL_DELAY_CALLBACK } from "../../config";
 
@@ -28,12 +27,17 @@ const HomePage = () => {
   }
   return (
     <Fragment>
-      <HelmetProvider>
-        <title>Home - Curriculum Yampi</title>
-      </HelmetProvider>
+      <title>Home - Curriculum Yampi</title>
       {loading ? (
         <div className="pageLoader fixed justify-center items-center inset-0 flex">
-          <PushSpinner size={60} color="#284be5" loading={true} />
+          <SyncLoader
+            color="#284be5"
+            cssOverride={{}}
+            loading
+            margin={10}
+            size={60}
+            speedMultiplier={1}
+          />
         </div>
       ) : (
         <>

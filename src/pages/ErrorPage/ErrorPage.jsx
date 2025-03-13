@@ -1,5 +1,4 @@
 import React from "react";
-import { HelmetProvider } from "react-helmet-async";
 import { FaHome } from "react-icons/fa";
 import { BottomBar2 } from "../../components/BottomBar";
 import { Header } from "../../components/Header";
@@ -10,9 +9,8 @@ import { Link } from "react-router-dom";
 const ErrorPage = () => {
   return (
     <React.Fragment>
-      <HelmetProvider>
-        <title>Error Page - Curriculum de Yampi</title>
-      </HelmetProvider>
+      <title>Error Page - Curriculum de Yampi</title>
+
       <Header></Header>
       <section className="pageWrap pt-[4rem] md:pt-[4.375rem] relative w-full">
         <div className="container sm:container md:container lg:container xl:max-w-[73.125rem] mx-auto">

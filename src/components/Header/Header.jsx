@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { CgClose, CgMenuRight } from "react-icons/cg";
-import Logo from "../../assets/images/logo.png";
 import { SocialLinks } from "../SocialLinks";
 import MenuLinks from "./MenuLinks";
 import { MenuData } from "./SideMenu/MenuData";
@@ -33,11 +32,13 @@ const Header = () => {
           <div className="container mx-auto sm:container md:container lg:container xl:container 2xl:container">
             <div className="flex items-center justify-between w-full topbarInner">
               <div className="logo inline-block max-w-[50%]">
-                <Link to="/" title="ir a la página de inicio">
-                  <img src={Logo} alt="Logo"></img>
+                <Link
+                  to="/"
+                  title="ir a la página de inicio"
+                  className="flex items-center text-white font-Poppins font-bold text-[1.5rem]"
+                >
+                  YAMPI <span className="text-accent ml-3">DEV</span>
                 </Link>
-
-                {/* Logo */}
               </div>
               <div className="hidden menuWrapper">
                 <MenuLinks></MenuLinks>

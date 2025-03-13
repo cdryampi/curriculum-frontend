@@ -2,20 +2,11 @@ import * as FiIcons from "react-icons/fi";
 
 export const MenuData = [
   {
-    title: "Home",
+    title: "Sobre mi",
     path: "#",
     iconClosed: <FiIcons.FiChevronDown className="text-white" />,
     iconOpened: <FiIcons.FiChevronUp className="text-white" />,
-    subNav: [
-      {
-        title: "Homepage 1",
-        path: "/",
-      },
-      {
-        title: "Homepage 2",
-        path: "/home2",
-      },
-    ],
+    subNav: [],
   },
   {
     title: "Blog",
@@ -83,7 +74,7 @@ export const MenuData = [
         title: "Error Page",
         path: "/404",
         cName: "sub-nav",
-      }
+      },
     ],
   },
   {
@@ -101,7 +92,7 @@ export const MenuData = [
         title: "Service Detail",
         path: "/service/:Id",
         cName: "sub-nav",
-      }
+      },
     ],
   },
   {

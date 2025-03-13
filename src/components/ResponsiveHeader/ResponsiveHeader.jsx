@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CgClose } from "react-icons/cg";
 import { FiMenu } from "react-icons/fi";
-import Logo from "../../assets/images/logo2.png";
 import { ResponsiveMenuData } from "./ResponsiveSideMenu/ResponsiveMenuData";
 import ResponsiveSubMenu from "./ResponsiveSideMenu/ResponsiveSubMenu";
 
@@ -11,18 +10,22 @@ const ResponsiveHeader = () => {
   const showResponsiveSideMenu = () => setResponsiveMenu(!responsiveMenu);
 
   return (
-    <div className="z-[9999] block lg:hidden w-full py-4">
+    <div className="z-[9999] block lg:hidden w-full py-4 bg-dark3">
       <div className="topbar w-full z-[9999]">
         <div className="container mx-auto sm:container md:container lg:container xl:container 2xl:container">
           <div className="flex items-center justify-between w-full topbarInner">
             <div className="logo inline-block max-w-[50%]">
-              {/* <Link to="/" title="Fastone">
-                <img src={Logo} alt="Logo"></img>
-              </Link> */}
+              <Link
+                to="/"
+                title="ir a la página de inicio"
+                className="flex items-center text-white font-Poppins font-bold text-[2rem]"
+              >
+                YAMPI <span className="text-accent">DEV</span>
+              </Link>
               {/* Logo */}
             </div>
             <span
-              className="flex items-center justify-center w-10 h-10 bg-accent2 rounded cursor-pointer resMenuBtn hover:bg-accent text-white"
+              className="flex items-center justify-center w-10 h-10 bg-accent rounded cursor-pointer resMenuBtn hover:bg-shapBgDark text-white"
               onClick={showResponsiveSideMenu}
             >
               <FiMenu size="20"></FiMenu>

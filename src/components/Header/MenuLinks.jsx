@@ -1,40 +1,22 @@
 import { FiChevronDown } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 import PatternImg2 from "../../assets/images/patternImg2.jpg";
 
 const MenuLinks = () => {
   return (
     <nav className="relative hidden lg:block">
       <ul className="flex flex-col lg:flex-row gap-4 lg:gap-10">
-        <li className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase">
-          <span className="group-hover:text-accent text-accent2 pr-5 relative block cursor-pointer">
-            Home
-            <FiChevronDown className="absolute right-0 top-[4px]"></FiChevronDown>
+        <Link
+          to="about"
+          smooth={true}
+          duration={500}
+          offset={-100}
+          className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+        >
+          <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+            Sobre mí
           </span>
-          <ul
-            className="children relative lg:absolute opacity-0 top-full left-0 group-hover:opacity-100 lg:invisible lg:group-hover:visible before:absolute before:inset-0 before:bg-gray before:rounded-0 before:lg:rounded-[1.25rem] before:opacity-70 before:z-[-1] bg-blend-multiply rounded-0 lg:rounded-[1.25rem] bg-no-repeat bg-center bg-cover z-[1] bg-gray p-6 flex flex-col gap-3 divide-y divide-[rgba(0,0,0,.15)]"
-            style={{ backgroundImage: `url(${PatternImg2})` }}
-          >
-            <li className="relative text-[.9375rem] font-Poppins font-semibold capitalize">
-              <Link
-                className="hover:text-accent text-accent2 pr-5 relative block"
-                to="/"
-                title="Homepage 1"
-              >
-                Homepage 1
-              </Link>
-            </li>
-            <li className="relative text-[.9375rem] font-Poppins font-semibold capitalize pt-2">
-              {/* <Link
-                className="hover:text-accent text-accent2 pr-5 relative block"
-                to="/home2"
-                title="Homepage 2"
-              >
-                Homepage 2
-              </Link> */}
-            </li>
-          </ul>
-        </li>
+        </Link>
         <li className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase">
           <span className="group-hover:text-accent text-accent2 pr-5 relative block cursor-pointer">
             Blog

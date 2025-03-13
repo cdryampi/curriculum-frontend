@@ -1,12 +1,11 @@
 import React from "react";
-import { HelmetProvider } from "react-helmet-async";
 import { FaHome } from "react-icons/fa";
 import { BottomBar2 } from "../../components/BottomBar";
 import { Header } from "../../components/Header";
 import { Link, useParams } from "react-router-dom";
 import useFetchStaticPage from "../../hooks/useFetchStaticPage";
 import { GLOBAL_DELAY_CALLBACK } from "../../config";
-import { PushSpinner } from "react-spinners-kit";
+import { SyncLoader } from "react-spinners";
 
 const StaticPage = () => {
   const { slug } = useParams();
@@ -17,16 +16,21 @@ const StaticPage = () => {
 
   return (
     <React.Fragment>
-      <HelmetProvider>
-        <title>
-          {data
-            ? `${data.title} - Curriculum de Yampi`
-            : "Loading... - Curriculum de Yampi"}
-        </title>
-      </HelmetProvider>
+      <title>
+        {data
+          ? `${data.title} - Curriculum de Yampi`
+          : "Loading... - Curriculum de Yampi"}
+      </title>
       {loading ? (
         <div className="pageLoader fixed justify-center items-center inset-0 flex">
-          <PushSpinner size={60} color="#284be5" loading={true} />
+          <SyncLoader
+            color="#284be5"
+            cssOverride={{}}
+            loading
+            margin={10}
+            size={60}
+            speedMultiplier={1}
+          />
         </div>
       ) : (
         <>

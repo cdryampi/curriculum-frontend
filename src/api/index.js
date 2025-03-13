@@ -28,7 +28,7 @@ apiClient.interceptors.request.use(
 export const fetchStaticPages = () => apiClient.get(`/static_pages/`);
 // export const fetchUserProfile = (userId) => apiClient.get(`/user_profiles/${userId}/`);
 export const fetchFooterLinks = () => apiClient.get("/footer_links/");
-export const fetchSocialLinks = () => apiClient.get("/social/social_links/");
+export const fetchSocialLinks = () => apiClient.get("/social/social/");
 export const fetchUserProfile = () =>
   apiClient.get("/base/userprofile/private/");
 export const fetchStaticPage = (slug) =>

@@ -1,12 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import FeatImg from "../../assets/images/resources/featMockup.jpg";
 import Shape1 from "../../assets/images/shape-1.png";
 import Shape2 from "../../assets/images/shape-2.png";
 import Shape3 from "../../assets/images/shape-3.png";
 import Shape4 from "../../assets/images/shape-4.png";
+import { FiChevronRight } from "react-icons/fi";
+import { GIT_HUB_URL } from "../../config";
 
 const FeaturedArea = ({ userData }) => {
+  const getGitHub = () => {
+    // Devuelve el enlace de GitHub o el por defecto
+    let github = userData?.socials_media.find(
+      (social) => social.social_media.toLowerCase() === "github"
+    );
+    return github ? github.profile_link : GIT_HUB_URL;
+  };
+
   return userData ? (
     <section className="featuredAreaWrap md:text-left text-center bg-dark z-[1] flex items-center bgGrident1 bg-blend-hard-light relative min-h-screen xl:rounded-br-[20rem] lg:rounded-br-[18rem] md:rounded-br-[15rem] sm:rounded-br-[10rem] rounded-br-0 w-screen md:py-[6.25rem] py-20">
       <div className="shaps absolute inset-0">
@@ -52,11 +61,21 @@ const FeaturedArea = ({ userData }) => {
                   <span className="h-[8rem] w-[8rem] sm:h-[14rem] sm:w-[14rem] md:h-[10rem] md:w-[10rem] lg:h-[14rem] lg:w-[14rem] xl:h-[18.75rem] xl:w-[18.75rem] absolute bg-white rounded-full right-[-2.5rem] top-[-2.5rem] md:right-[-3.5rem] md:top-[-3.5rem] lg:right-[-4rem] lg:top-[-4rem] xl:right-[-6.25rem] xl:top-[-6.25rem] z-[1]"></span>
                   <span className="h-[8rem] w-[8rem] sm:h-[14rem] sm:w-[14rem] md:h-[10rem] md:w-[10rem] lg:h-[14rem] lg:w-[14rem] xl:h-[18.75rem] xl:w-[18.75rem] absolute bg-dark2 rounded-full left-[-2.5rem] bottom-[-2.5rem] md:right-[-3.5rem] md:bottom-[-3.5rem] lg:left-[-4rem] lg:bottom-[-4rem] xl:left-[-6.25rem] xl:bottom-[-6.25rem] z-[1]"></span>
                   <div className="featuredImg relative rounded-full">
-                    <img
-                      className="rounded-full relative z-[1] max-w-full"
-                      src={userData?.foto?.image_for_pc_url}
-                      alt={userData?.foto?.title}
-                    ></img>
+                    <picture className="max-w-full">
+                      <source
+                        srcSet={userData?.foto?.image_for_pc_url}
+                        media="(min-width: 1024px)"
+                      ></source>
+                      <source
+                        srcSet={userData?.foto?.image_for_tablet_url}
+                        media="(min-width: 768px)"
+                      ></source>
+                      <img
+                        className="rounded-full relative z-[1] max-w-full"
+                        src={userData?.foto?.image_for_mobile_url}
+                        alt={userData?.foto?.title}
+                      ></img>
+                    </picture>
                     {/* Featured Image */}
                   </div>
                   {/* Featured Image Inner */}
@@ -67,8 +86,11 @@ const FeaturedArea = ({ userData }) => {
             <div>
               <div className="featuredCap relative w-full mt-10 md:mt-0">
                 <span className="bg-accent opacity-[.07] w-[6.25rem] h-[6.25rem] md:w-[12.5rem] md:h-[12.5rem] absolute rounded-full z-[-1] top-[-2.5rem] md:top-[-5rem]"></span>
-                <h3 className="font-normal text-[1.5rem] sm:text-[1.5rem] md:text-[1.875rem] lg:text-[2rem] xl:text-[2.5rem] font-Caveat text-white uppercase leading-none">
-                  Hello, I Am
+                <h3
+                  className="font-normal text-[1.5rem] sm:text-[1.5rem] md:text-[1.875rem] lg:text-[2rem] xl:text-[2.5rem] font-Caveat text-white uppercase leading-none"
+                  title="Hola, yo soy"
+                >
+                  Allillanchu, Ñuqaqa kani
                 </h3>
                 <h2 className="font-bold text-[2.3rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5rem] font-Poppins text-white uppercase">
                   {userData.nombre}
@@ -87,23 +109,25 @@ const FeaturedArea = ({ userData }) => {
                   }}
                 ></p>
                 <div className="flex items-center md:justify-start justify-center sm:gap-8 md:gap-10 lg:gap-15 xl:gap-20 gap-8 md:mt-[3.125rem] mt-[1.875rem]">
-                  {/* <Link
+                  <Link
                     className="text-accent uppercase md:text-[1.125rem] text-[1rem] flex gap-5 items-center hover:text-white"
-                    to="/"
-                    title="Hire Me"
+                    to={`${getGitHub()}`}
+                    target="_blank"
+                    title="contáctame"
                   >
                     <FiChevronRight className="bg-accent text-white rounded-[5px] md:rounded-[10px] w-9 h-[3.5rem] md:w-11 md:h-[4.375rem] p-2"></FiChevronRight>
                     <span className="font-bold font-Poppins underline underline-offset-8">
-                      Hire Me
+                      Wañuchiyqa
                     </span>
                   </Link>
                   <Link
                     className="bg-white text-accent text-[1rem] font-Poppins font-bold uppercase rounded-[5px] md:rounded-[10px] md:px-6 lg:px-10 xl:px-11 px-7 md:py-[1.125rem] py-[14px] hover:bg-accent hover:text-white text-center inline-block"
-                    to="/"
-                    title="Download CV"
+                    to={`${userData.resume_file.pdf_url}`}
+                    target="_blank"
+                    title="descargar CV"
                   >
-                    Download CV
-                  </Link> */}
+                    Qillqay CV
+                  </Link>
                 </div>
                 {/* Featured Cap */}
               </div>
