@@ -12,7 +12,10 @@ const MyWorkExperience = () => {
   const { data: workExp, loading, error } = UseLaboralExperienceList();
 
   return (
-    <section className="workExpWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem relative w-full">
+    <section
+      className="workExpWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem relative w-full"
+      id="workExperience"
+    >
       <span className="bg-accent absolute right-0 bottom-[-.75rem] h-6 w-1/2"></span>
       <div
         className="fixedBg bg-center bg-cover bg-no-repeat before:absolute before:z-[1] before:inset-0 before:opacity-90 before:bg-dark bg-dark gradBg1 bg-blend-color-dodge xl:rounded-tl-[20rem] lg:rounded-tl-[18rem] md:rounded-tl-[15rem] sm:rounded-tl-[10rem] rounded-tl-0 overflow-hidden"

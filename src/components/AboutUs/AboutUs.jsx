@@ -7,6 +7,24 @@ import Signature from "../../lib/icons/Signature.svg?react";
 import { GoDotFill } from "react-icons/go";
 
 const AboutUs = ({ userData }) => {
+  const isAvailable = () => {
+    if (userData?.disponibilidad) {
+      return (
+        <>
+          <GoDotFill size="1.5rem" className="fill-accent" />
+          <span className="mt-1.5">Disponible</span>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <GoDotFill size="1.5rem" className="text-pinterest" />
+          <span className="mt-1.5">No disponible</span>
+        </>
+      );
+    }
+  };
+
   return userData ? (
     <section
       className="aboutUsWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem] relative w-full"
@@ -18,8 +36,8 @@ const AboutUs = ({ userData }) => {
       ></div>
       <div className="container sm:container md:container lg:container xl:container 2xl:container mx-auto">
         <SectionTitle
-          title="About"
-          titleInner="Me"
+          title="Sobre"
+          titleInner="mí"
           desc={userData.description}
         ></SectionTitle>
         <div className="aboutUs relative w-full p-[1.25rem] lg:p-[1.875rem] mt-[5.9375rem]">
@@ -46,10 +64,10 @@ const AboutUs = ({ userData }) => {
                     style={{ backgroundImage: `url(${PatternImg2})` }}
                   ></div>
                   <h3 className="text-accent2 font-light text-[1.5rem] md:text-[1.875rem] leading-tight font-Poppins">
-                    Hi,
+                    Hola,
                   </h3>
                   <h4 className="text-accent2 font-light text-[1.325rem] md:text-[1.5rem] leading-normal font-Poppins">
-                    My name is {""}
+                    yo soy {""}
                     <span className="text-accent font-bold uppercase text-[1.5rem] md:text-[1.875rem]">
                       {userData.nombre} {userData.apellido}
                     </span>
@@ -57,7 +75,7 @@ const AboutUs = ({ userData }) => {
                   <ul className="grid grid-cols-1 gap-5 mt-6">
                     <li className="grid grid-cols-3 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">
-                        Age:
+                        Edad:
                       </strong>
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-2">
                         {userData.edad}
@@ -65,7 +83,7 @@ const AboutUs = ({ userData }) => {
                     </li>
                     <li className="grid grid-cols-3 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">
-                        Phone:
+                        Teléfono:
                       </strong>
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-2">
                         <a
@@ -93,7 +111,7 @@ const AboutUs = ({ userData }) => {
                     </li>
                     <li className="grid grid-cols-3 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">
-                        Address:
+                        Dirección:
                       </strong>
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-2">
                         {userData.direccion}
@@ -101,18 +119,14 @@ const AboutUs = ({ userData }) => {
                     </li>
                     <li className="grid grid-cols-3 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">
-                        Freelancer:
+                        Estado:
                       </strong>
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-2 uppercase flex items-center">
-                        <GoDotFill
-                          size="1.5rem"
-                          className="fill-accent"
-                        ></GoDotFill>
-                        Available
+                        {isAvailable()}
                       </span>
                     </li>
                   </ul>
-                  <Signature className="fill-accent h-[4.5rem] mt-[2.375rem]"></Signature>
+                  <Signature className="fill-accent h-[235px] w-[175px] mt-[-115px]"></Signature>
                   {/* About Cap */}
                 </div>
                 {/* About Cap Wrap */}

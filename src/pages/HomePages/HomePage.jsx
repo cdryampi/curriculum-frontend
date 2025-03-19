@@ -6,6 +6,7 @@ import { AboutUs } from "../../components/AboutUs";
 import { BottomBar2 } from "../../components/BottomBar";
 import { EducationAndSkills } from "../../components/EducationAndSkills";
 import { MyWorkExperience } from "../../components/MyWorkExperience";
+import { Portfolio } from "../../components/Portfolio";
 import { SyncLoader } from "react-spinners";
 import useUserProfile from "../../hooks/UseProfileUserHook";
 import { GLOBAL_DELAY_CALLBACK } from "../../config";
@@ -44,6 +45,7 @@ const HomePage = () => {
           <Header />
           <FeaturedArea userData={userData} />
           <AboutUs userData={userData} />
+          <Portfolio />
           <MyWorkExperience />
           <EducationAndSkills />
           <BottomBar2 />

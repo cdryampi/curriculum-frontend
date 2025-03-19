@@ -43,3 +43,4 @@ export const fetchLaboralExperience = () =>
 export const fetchSkillFilter = (slug) =>
   apiClient.get(`/education_and_skills/skill_list_category/${slug}/`);
 export const fetchSkillFilterNextPrev = (url) => apiClient.get(url);
+export const fetchPortfolioList = () => apiClient.get("/portfolio/private/");
