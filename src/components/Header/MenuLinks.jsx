@@ -39,73 +39,29 @@ const MenuLinks = () => {
             Portfolio
           </span>
         </Link>
-        <li className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase">
-          <span className="group-hover:text-accent text-accent2 pr-5 relative block cursor-pointer">
-            Pages
-            <FiChevronDown className="absolute right-0 top-[4px]"></FiChevronDown>
+        <Link
+          className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+          to="services"
+          smooth={true}
+          duration={500}
+          offset={-100}
+        >
+          <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+            Servicios
           </span>
-          <ul
-            className="children relative lg:absolute opacity-0 top-full left-0 group-hover:opacity-100 lg:invisible lg:group-hover:visible before:absolute before:inset-0 before:bg-gray before:rounded-0 before:lg:rounded-[1.25rem] before:opacity-70 before:z-[-1] bg-blend-multiply rounded-0 lg:rounded-[1.25rem] bg-no-repeat bg-center bg-cover z-[1] bg-gray p-6 flex flex-col gap-3 divide-y divide-[rgba(0,0,0,.15)]"
-            style={{ backgroundImage: `url(${PatternImg2})` }}
-          >
-            <li className="relative text-[.9375rem] font-Poppins font-semibold capitalize">
-              {/* <Link
-                className="hover:text-accent text-accent2 pr-5 relative block"
-                to="/plans"
-                title="Plans"
-              >
-                Plans
-              </Link> */}
-            </li>
-            <li className="relative text-[.9375rem] font-Poppins font-semibold capitalize pt-2">
-              {/* <Link
-                className="hover:text-accent text-accent2 pr-5 relative block"
-                to="/404"
-                title="Error Page"
-              >
-                Error Page
-              </Link> */}
-            </li>
-          </ul>
-        </li>
-        <li className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase">
-          <span className="group-hover:text-accent text-accent2 pr-5 relative block cursor-pointer">
-            Service
-            <FiChevronDown className="absolute right-0 top-[4px]"></FiChevronDown>
+        </Link>
+
+        <Link
+          className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+          to="contact"
+          smooth={true}
+          duration={500}
+          offset={-100}
+        >
+          <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+            Contacto
           </span>
-          <ul
-            className="children relative lg:absolute opacity-0 top-full left-0 group-hover:opacity-100 lg:invisible lg:group-hover:visible before:absolute before:inset-0 before:bg-gray before:rounded-0 before:lg:rounded-[1.25rem] before:opacity-70 before:z-[-1] bg-blend-multiply rounded-0 lg:rounded-[1.25rem] bg-no-repeat bg-center bg-cover z-[1] bg-gray p-6 flex flex-col gap-3 divide-y divide-[rgba(0,0,0,.15)]"
-            style={{ backgroundImage: `url(${PatternImg2})` }}
-          >
-            <li className="relative text-[.9375rem] font-Poppins font-semibold capitalize">
-              {/* <Link
-                className="hover:text-accent text-accent2 pr-5 relative block"
-                to="/service"
-                title="Service"
-              >
-                Service
-              </Link> */}
-            </li>
-            <li className="relative text-[.9375rem] font-Poppins font-semibold capitalize pt-2">
-              {/* <Link
-                className="hover:text-accent text-accent2 pr-5 relative block"
-                to="/service/:Id"
-                title="Service Detail"
-              >
-                Service Detail
-              </Link> */}
-            </li>
-          </ul>
-        </li>
-        <li className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase">
-          {/* <Link
-            className="group-hover:text-accent text-accent2 pr-5 relative block"
-            to="/contact"
-            title="Contact"
-          >
-            Contact
-          </Link> */}
-        </li>
+        </Link>
       </ul>
     </nav>
   );

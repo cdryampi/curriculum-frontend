@@ -11,7 +11,9 @@ const Header = () => {
   const refHeader = useRef();
   const [sideMenu, setSideMenu] = useState(false);
   const showSideMenu = () => setSideMenu(!sideMenu);
-
+  const toggleSideMenu = () => {
+    setSideMenu((prev) => !prev);
+  };
   useLayoutEffect(() => {
     const header = document.getElementById("header");
     let fixedTop = refHeader.current.offsetTop;
@@ -89,7 +91,13 @@ const Header = () => {
           </span>
           <ul className="flex flex-col gap-4 w-80">
             {MenuData.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
+              return (
+                <SubMenu
+                  item={item}
+                  key={index}
+                  toggleSideMenu={toggleSideMenu}
+                />
+              );
             })}
           </ul>
         </div>

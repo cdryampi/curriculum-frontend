@@ -3,100 +3,22 @@ import * as FiIcons from "react-icons/fi";
 export const MenuData = [
   {
     title: "Sobre mi",
-    path: "#",
-    iconClosed: <FiIcons.FiChevronDown className="text-white" />,
-    iconOpened: <FiIcons.FiChevronUp className="text-white" />,
-    subNav: [],
+    path: "about",
   },
   {
-    title: "Blog",
-    path: "#",
-    iconClosed: <FiIcons.FiChevronDown className="text-white" />,
-    iconOpened: <FiIcons.FiChevronUp className="text-white" />,
-    subNav: [
-      {
-        title: "Blog Style 1",
-        path: "/blog",
-        cName: "sub-nav",
-      },
-      {
-        title: "Blog Style 2",
-        path: "/blog2",
-        cName: "sub-nav",
-      },
-      {
-        title: "Blog Detail",
-        path: "/blog/:Id",
-        cName: "sub-nav",
-      },
-    ],
+    title: "Servicios",
+    path: "services",
   },
   {
     title: "Portfolio",
-    path: "#",
-    iconClosed: <FiIcons.FiChevronDown className="text-white" />,
-    iconOpened: <FiIcons.FiChevronUp className="text-white" />,
-    subNav: [
-      {
-        title: "Portfolio Style 1",
-        path: "/portfolio",
-        cName: "sub-nav",
-      },
-      {
-        title: "Portfolio Style 2",
-        path: "/portfolio2",
-        cName: "sub-nav",
-      },
-      {
-        title: "Portfolio Style 3",
-        path: "/portfolio3",
-        cName: "sub-nav",
-      },
-      {
-        title: "Portfolio Detail",
-        path: "/portfolio/:id",
-        cName: "sub-nav",
-      },
-    ],
+    path: "portfolio",
   },
   {
-    title: "Pages",
-    path: "#",
-    iconClosed: <FiIcons.FiChevronDown className="text-white" />,
-    iconOpened: <FiIcons.FiChevronUp className="text-white" />,
-    subNav: [
-      {
-        title: "Plans",
-        path: "/plans",
-        cName: "sub-nav",
-      },
-      {
-        title: "Error Page",
-        path: "/404",
-        cName: "sub-nav",
-      },
-    ],
-  },
-  {
-    title: "Service",
-    path: "#",
-    iconClosed: <FiIcons.FiChevronDown className="text-white" />,
-    iconOpened: <FiIcons.FiChevronUp className="text-white" />,
-    subNav: [
-      {
-        title: "Service",
-        path: "/service",
-        cName: "sub-nav",
-      },
-      {
-        title: "Service Detail",
-        path: "/service/:Id",
-        cName: "sub-nav",
-      },
-    ],
+    title: "Formación",
+    path: "education",
   },
   {
     title: "Contact",
-    path: "/contact",
+    path: "contact",
   },
 ];

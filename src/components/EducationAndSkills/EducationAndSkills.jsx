@@ -5,7 +5,10 @@ import { Education } from "../Education";
 
 const EducationAndSkills = () => {
   return (
-    <section className="eduAndWorkWrap py-[5rem] sm:py-[6rem] md:py-[7.5rem] relative w-full">
+    <section
+      className="eduAndWorkWrap py-[5rem] sm:py-[6rem] md:py-[7.5rem] relative w-full"
+      id="education"
+    >
       <span className="bg-accent absolute left-0 bottom-[-.75rem] h-6 w-1/2"></span>
       <div
         className="fixedBg bg-center bg-cover bg-no-repeat before:absolute before:z-[1] before:inset-0 before:opacity-95 before:bg-gray bg-gray bg-blend-multiply xl:rounded-br-[20rem] lg:rounded-br-[18rem] md:rounded-br-[15rem] sm:rounded-br-[10rem] rounded-br-0 overflow-hidden"

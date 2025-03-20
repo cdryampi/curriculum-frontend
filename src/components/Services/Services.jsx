@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 import PatternImg2 from "../../assets/images/patternImg2.jpg";
 import { SectionTitle } from "../SectionTitles";
 import { ClipLoader } from "react-spinners";
@@ -10,7 +10,10 @@ const Services = () => {
     return <div>Error al cargar.</div>;
   }
   return (
-    <section className="servicesWrap pb-[4.5rem] md:pb-[5.5rem] lg:pb-[6.5rem] xl:pb-[7.5rem] relative w-full">
+    <section
+      className="servicesWrap pb-[4.5rem] md:pb-[5.5rem] lg:pb-[6.5rem] xl:pb-[7.5rem] relative w-full"
+      id="services"
+    >
       <div className="container sm:container md:container lg:container xl:max-w-[98.125rem] mx-auto">
         <SectionTitle
           title="Mis servicios"
@@ -51,8 +54,14 @@ const Services = () => {
                   </span>
 
                   {/* Título con animación de color */}
-                  <h3 className="text-[1.3rem] lg:text-[1.325rem] xl:text-[1.5rem] font-semibold font-poppins text-white min-h-[3rem] flex items-center justify-center transition-colors duration-300 group-hover:text-black">
-                    <Link to="#contact" title={item.title}>
+                  <h3 className="text-[1.3rem] lg:text-[1.325rem] xl:text-[1.5rem] font-semibold font-poppins text-white min-h-[3rem] flex items-center justify-center transition-colors duration-300 group-hover:text-black cursor-pointer">
+                    <Link
+                      to="contact"
+                      smooth={true}
+                      duration={500}
+                      offset={-100}
+                      title={item.title}
+                    >
                       {item.title}
                     </Link>
                   </h3>
@@ -73,7 +82,10 @@ const Services = () => {
             Quieres ver todos mis servicos? .{" "}
             <Link
               className="text-accent font-Poppins font-medium hover:text-accent2 underline underline-offset-8"
-              to="#contact"
+              to="contact"
+              smooth={true}
+              duration={500}
+              offset={-100}
               title="Haz clic para contactarme"
             >
               Contáctame

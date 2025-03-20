@@ -1,42 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
-const SubMenu = ({ item }) => {
-  const [subnav, setSubnav] = useState(false);
-  const showSubnav = () => setSubnav(!subnav);
-
+import { Link } from "react-scroll";
+const SubMenu = ({ item, toggleSideMenu }) => {
   return (
     <>
       <li>
         <span className="flex justify-between items-center w-full relative">
-          {/* <Link
-            className="text-white block font-Poppins text-[2rem] font-medium uppercase hover:text-accent relative w-full pr-4 z-[1]"
+          <Link
+            className="text-white block font-Poppins text-[2rem] font-medium uppercase hover:text-accent relative w-full pr-4 z-[1] cursor-pointer"
             to={item.path}
-            onClick={item.subNav && showSubnav}
+            smooth={true}
+            duration={500}
+            offset={-100}
+            title={item.title}
+            onClick={toggleSideMenu}
           >
             {item.title}
-          </Link> */}
-          <i className="absolute right-0 top-1/2 -mt-3 cursor-pointer text-[1.5rem]">
-            {item.subNav && subnav
-              ? item.iconOpened
-              : item.subNav
-              ? item.iconClosed
-              : null}
-          </i>
+          </Link>
         </span>
-        {subnav && (
-          <ul className="pl-5 flex flex-col gap-2 my-5">
-            {item.subNav.map((item, index) => {
-              return (
-                <li key={index}>
-                  {/* <Link className="text-white text-[1.325rem]" to={item.path}>
-                    {item.title}
-                  </Link> */}
-                </li>
-              );
-            })}
-          </ul>
-        )}
       </li>
     </>
   );
