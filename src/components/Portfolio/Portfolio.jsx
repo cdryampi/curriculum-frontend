@@ -5,6 +5,8 @@ import UseListPortfolioHook from "../../hooks/UseListPortfolioHook";
 import { SectionTitle } from "../SectionTitles";
 import { ClipLoader } from "react-spinners";
 
+import { GIT_HUB_URL } from "../../config";
+
 const Portfolio = () => {
   const { data: portfolio, loading, error } = UseListPortfolioHook();
   if (error) {
@@ -48,7 +50,12 @@ const Portfolio = () => {
                   {/* Información del proyecto */}
                   <div className="projInfo absolute left-0 top-3/4 group-hover:top-1/2 -translate-y-1/2 p-5 w-full text-center opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 ease-in-out z-[2]">
                     <h3 className="text-white text-lg md:text-xl font-bold font-poppins">
-                      <Link to={item.link} title={item.title}>
+                      <Link
+                        to={item.link}
+                        title={item.title}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {item.title}
                       </Link>
                     </h3>
@@ -64,6 +71,8 @@ const Portfolio = () => {
                       className="inline-flex items-center justify-center border-2 sm:border-4 border-white/25 hover:border-white rounded-lg h-10 w-10 sm:h-14 sm:w-14 mt-5 transition-all duration-300 ease-in-out"
                       to={item.link}
                       title={item.title}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <RightDownIcon className="h-4 w-4 sm:h-5 sm:w-5 fill-white" />
                     </Link>
@@ -76,13 +85,15 @@ const Portfolio = () => {
         </div>
         <div className="viewAll text-center w-full mt-10 md:mt-[3.125rem] lg:mt-[4.0625rem]">
           <p className="text-desc2 font-NunitoSans text-[1rem] md:text-[1.125rem]">
-            Want to see my professional work.{" "}
+            Si quieres ver más sobre mis proyectos.{" "}
             <Link
               className="text-accent font-Poppins font-medium hover:text-accent2 underline underline-offset-8"
-              to="/"
-              title="Click here to View More"
+              to={GIT_HUB_URL}
+              title="Haz click aquí para ver más"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Click here to View More
+              Haz click aquí para ver más.
             </Link>
           </p>
           {/* View All */}

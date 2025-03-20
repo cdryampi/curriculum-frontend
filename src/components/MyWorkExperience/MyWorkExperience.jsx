@@ -23,9 +23,9 @@ const MyWorkExperience = () => {
       ></div>
       <div className="container sm:container md:container lg:container xl:max-w-[86.875rem] mx-auto">
         <SectionTitleLight
-          title="My Work"
-          titleInner="Experience"
-          desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+          title="Mi experiencia"
+          titleInner="laboral"
+          desc="Estos son algunos de los trabajos que he realizado a lo largo de mi carrera profesional."
         ></SectionTitleLight>
         {loading ? (
           <div className="flex justify-center items-center h-20">

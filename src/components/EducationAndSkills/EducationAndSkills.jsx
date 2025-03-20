@@ -1,5 +1,5 @@
 import { SectionTitle3 } from "../SectionTitles";
-import SectionBg from "../../assets/images/secBg3.jpg";
+import SectionBg from "../../assets/images/educationBG.jpg";
 import { Skills } from "../Skills";
 import { Education } from "../Education";
 
@@ -13,9 +13,9 @@ const EducationAndSkills = () => {
       ></div>
       <div className="container sm:container md:container lg:container xl:container mx-auto">
         <SectionTitle3
-          title="Education &"
-          titleInner="Skills"
-          desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+          title="Formación y"
+          titleInner="habilidades"
+          desc="aqui puedes ver mi formación académica y las habilidades que he adquirido"
         ></SectionTitle3>
         <div className="eduAndWorkInner relative w-full">
           <div className="grid lg:gap-[1.875rem] gap-[3.125rem] md:grid-cols-1 lg:grid-cols-2 grid-cols-1">

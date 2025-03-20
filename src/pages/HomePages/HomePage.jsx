@@ -7,8 +7,12 @@ import { BottomBar2 } from "../../components/BottomBar";
 import { EducationAndSkills } from "../../components/EducationAndSkills";
 import { MyWorkExperience } from "../../components/MyWorkExperience";
 import { Portfolio } from "../../components/Portfolio";
+import { Services } from "../../components/Services";
+import { ContactUs } from "../../components/ContactUs";
 import { SyncLoader } from "react-spinners";
 import useUserProfile from "../../hooks/UseProfileUserHook";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { GLOBAL_DELAY_CALLBACK } from "../../config";
 
 const HomePage = () => {
@@ -45,9 +49,12 @@ const HomePage = () => {
           <Header />
           <FeaturedArea userData={userData} />
           <AboutUs userData={userData} />
+          <Services />
           <Portfolio />
           <MyWorkExperience />
           <EducationAndSkills />
+          <ToastContainer />
+          <ContactUs />
           <BottomBar2 />
         </>
       )}

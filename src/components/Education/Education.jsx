@@ -13,7 +13,7 @@ const Education = () => {
 
   return (
     <div className="educationWrap relative w-full">
-      <SectionTitleIcon title="Education" />
+      <SectionTitleIcon title="Formación" />
       <div className="educationList grid grid-cols-1 md:grid-cols-1 gap-2 p-3">
         {loading ? (
           <div className="flex justify-center items-center h-20">

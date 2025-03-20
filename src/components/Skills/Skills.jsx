@@ -25,7 +25,7 @@ const Skills = () => {
 
   return (
     <div className="skillsWrap relative w-full">
-      <SectionTitleIcon title="Skills" />
+      <SectionTitleIcon title="Habilidades" />
       <div className="flex flex-wrap gap-2 mb-4">
         {Object.entries(CATEGORIES_LIST).map(([key, value]) => (
           <button
@@ -42,7 +42,9 @@ const Skills = () => {
           </button>
         ))}
       </div>
-      {error && <div className="text-red-500">Error loading data: {error}</div>}
+      {error && (
+        <div className="text-red-500">No hemos podido recuperar los datos.</div>
+      )}
       {loading ? (
         <div className="flex justify-center items-center">
           <ClipLoader size={60} color="#284be5" loading={true} />
