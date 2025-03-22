@@ -1,5 +1,6 @@
 // HomePage.js
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { FeaturedArea } from "../../components/FeaturedArea";
 import { AboutUs } from "../../components/AboutUs";
@@ -22,6 +23,19 @@ const HomePage = () => {
     loading,
     error,
   } = useUserProfile(GLOBAL_DELAY_CALLBACK);
+  const pdf_data = userData?.resume_file;
+  const location = useLocation();
+  useEffect(() => {
+    if (!loading && location.hash) {
+      const id = location.hash.replace("#", "");
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, GLOBAL_DELAY_CALLBACK + 50); // le das margen al render
+    }
+  }, [location, loading]);
 
   if (error) {
     return (
@@ -46,7 +60,7 @@ const HomePage = () => {
         </div>
       ) : (
         <>
-          <Header />
+          <Header pdf={pdf_data} />
           <FeaturedArea userData={userData} />
           <AboutUs userData={userData} />
           <Services />

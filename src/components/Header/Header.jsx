@@ -7,13 +7,15 @@ import { MenuData } from "./SideMenu/MenuData";
 import SubMenu from "./SideMenu/SubMenu";
 import { ResponsiveHeader } from "../ResponsiveHeader";
 
-const Header = () => {
+const Header = ({ pdf }) => {
   const refHeader = useRef();
   const [sideMenu, setSideMenu] = useState(false);
   const showSideMenu = () => setSideMenu(!sideMenu);
   const toggleSideMenu = () => {
     setSideMenu((prev) => !prev);
   };
+  const pdf_link = pdf;
+
   useLayoutEffect(() => {
     const header = document.getElementById("header");
     let fixedTop = refHeader.current.offsetTop;
@@ -43,7 +45,7 @@ const Header = () => {
                 </Link>
               </div>
               <div className="hidden menuWrapper">
-                <MenuLinks></MenuLinks>
+                <MenuLinks pdf_link={pdf_link}></MenuLinks>
               </div>
             </div>
             {/* Topbar Inner */}

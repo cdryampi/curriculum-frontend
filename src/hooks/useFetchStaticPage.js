@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { fetchStaticPage } from '../api';
+import { useState, useEffect } from "react";
+import { fetchStaticPage } from "../api";
 
 const useFetchStaticPage = (slug, delay) => {
   const [data, setData] = useState(null);
@@ -11,11 +11,10 @@ const useFetchStaticPage = (slug, delay) => {
       try {
         const response = await fetchStaticPage(slug);
         // Simula una demora adicional para mejorar la experiencia visual
-        setTimeout(()=>{
-            setData(response.data);
-            setLoading(false);
-        }, delay)
-
+        setTimeout(() => {
+          setData(response.data);
+          setLoading(false);
+        }, delay);
       } catch (err) {
         setError(err);
         setLoading(false);

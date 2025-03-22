@@ -46,3 +46,4 @@ export const fetchPortfolioList = () => apiClient.get("/portfolio/private/");
 export const fetchServicesList = () => apiClient.get("/services/private/");
 export const sendEmailService = (name, email, message) =>
   apiClient.post("/email_service/enviar-correo/", { name, email, message });
+export const fetchUserPDF = () => apiClient.get("/base/userprofile/pdf/");
