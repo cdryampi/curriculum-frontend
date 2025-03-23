@@ -8,11 +8,12 @@ const RouterLinks = () => {
   return (
     <>
       <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<HomePage/>}/>
-            <Route path="/404" element={<ErrorPage />}/>
-            <Route path="/static-page/:slug" element={<StaticPage/>}/>
-          </Routes>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/404" element={<ErrorPage />} />
+          <Route path="/static-page/:slug" element={<StaticPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
       </BrowserRouter>
     </>
   );

@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { CgClose, CgMenuRight } from "react-icons/cg";
 import { SocialLinks } from "../SocialLinks";
 import MenuLinks from "./MenuLinks";
@@ -36,13 +36,13 @@ const Header = ({ pdf }) => {
           <div className="container mx-auto sm:container md:container lg:container xl:container 2xl:container">
             <div className="flex items-center justify-between w-full topbarInner">
               <div className="logo inline-block max-w-[50%]">
-                <Link
+                <RouterLink
                   to="/"
                   title="ir a la página de inicio"
                   className="flex items-center text-white font-Poppins font-bold text-[1.5rem]"
                 >
                   YAMPI <span className="text-accent ml-3">DEV</span>
-                </Link>
+                </RouterLink>
               </div>
               <div className="hidden menuWrapper">
                 <MenuLinks pdf_link={pdf_link}></MenuLinks>
@@ -92,15 +92,60 @@ const Header = ({ pdf }) => {
             ></CgClose>
           </span>
           <ul className="flex flex-col gap-4 w-80">
-            {MenuData.map((item, index) => {
-              return (
-                <SubMenu
-                  item={item}
-                  key={index}
-                  toggleSideMenu={toggleSideMenu}
-                />
-              );
-            })}
+            <RouterLink
+              to="/#about"
+              className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+              title="Sobre mí"
+              onClick={toggleSideMenu}
+            >
+              <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+                Sobre mí
+              </span>
+            </RouterLink>
+            <RouterLink
+              className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+              to="/#workExperience"
+              title="Experiencia laboral"
+              onClick={toggleSideMenu}
+            >
+              <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+                Experiencia laboral
+              </span>
+            </RouterLink>
+            <RouterLink
+              className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+              to="/#portfolio"
+              smooth={true}
+              duration={500}
+              offset={-100}
+              title="portfolio"
+              onClick={toggleSideMenu}
+            >
+              <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+                Portfolio
+              </span>
+            </RouterLink>
+            <RouterLink
+              className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+              to="/#services"
+              title="Servicios"
+              onClick={toggleSideMenu}
+            >
+              <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+                Servicios
+              </span>
+            </RouterLink>
+
+            <RouterLink
+              className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+              to="/#contact"
+              title="Contacto"
+              onClick={toggleSideMenu}
+            >
+              <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+                Contacto
+              </span>
+            </RouterLink>
           </ul>
         </div>
         {/* Header */}

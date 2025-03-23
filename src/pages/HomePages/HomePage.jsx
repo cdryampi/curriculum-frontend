@@ -10,6 +10,7 @@ import { MyWorkExperience } from "../../components/MyWorkExperience";
 import { Portfolio } from "../../components/Portfolio";
 import { Services } from "../../components/Services";
 import { ContactUs } from "../../components/ContactUs";
+import { ScrollToTopButton } from "../../components/BackToTopComponent";
 import { SyncLoader } from "react-spinners";
 import useUserProfile from "../../hooks/UseProfileUserHook";
 import { ToastContainer } from "react-toastify";
@@ -32,8 +33,15 @@ const HomePage = () => {
         const element = document.getElementById(id);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
+
+          // Limpiar el hash de la URL sin recargar la página
+          window.history.replaceState(
+            null,
+            "",
+            window.location.pathname + window.location.search
+          );
         }
-      }, GLOBAL_DELAY_CALLBACK + 50); // le das margen al render
+      }, GLOBAL_DELAY_CALLBACK + 50);
     }
   }, [location, loading]);
 
@@ -45,7 +53,7 @@ const HomePage = () => {
     );
   }
   return (
-    <Fragment>
+    <Fragment id="home">
       <title>Home - Curriculum Yampi</title>
       {loading ? (
         <div className="pageLoader fixed justify-center items-center inset-0 flex">
@@ -70,6 +78,7 @@ const HomePage = () => {
           <ToastContainer />
           <ContactUs />
           <BottomBar2 />
+          <ScrollToTopButton />
         </>
       )}
     </Fragment>

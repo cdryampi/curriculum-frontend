@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CgClose } from "react-icons/cg";
 import { FiMenu } from "react-icons/fi";
-import { ResponsiveMenuData } from "./ResponsiveSideMenu/ResponsiveMenuData";
-import ResponsiveSubMenu from "./ResponsiveSideMenu/ResponsiveSubMenu";
+import { Link as RouterLink } from "react-router-dom";
 
 const ResponsiveHeader = () => {
   const [responsiveMenu, setResponsiveMenu] = useState(false);
@@ -60,9 +59,60 @@ const ResponsiveHeader = () => {
           className="w-full flex flex-col gap-4"
           // responsivemenu={responsiveMenu}
         >
-          {ResponsiveMenuData.map((item, index) => {
-            return <ResponsiveSubMenu item={item} key={index} />;
-          })}
+          <RouterLink
+            to="/#about"
+            className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+            title="Sobre mí"
+            onClick={showResponsiveSideMenu}
+          >
+            <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+              Sobre mí
+            </span>
+          </RouterLink>
+          <RouterLink
+            className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+            to="/#workExperience"
+            title="Experiencia laboral"
+            onClick={showResponsiveSideMenu}
+          >
+            <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+              Experiencia laboral
+            </span>
+          </RouterLink>
+          <RouterLink
+            className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+            to="/#portfolio"
+            smooth={true}
+            duration={500}
+            offset={-100}
+            title="portfolio"
+            onClick={showResponsiveSideMenu}
+          >
+            <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+              Portfolio
+            </span>
+          </RouterLink>
+          <RouterLink
+            className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+            to="/#services"
+            title="Servicios"
+            onClick={showResponsiveSideMenu}
+          >
+            <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+              Servicios
+            </span>
+          </RouterLink>
+
+          <RouterLink
+            className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+            to="/#contact"
+            title="Contacto"
+            onClick={showResponsiveSideMenu}
+          >
+            <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+              Contacto
+            </span>
+          </RouterLink>
         </ul>
       </div>
       {/* Responsive Header */}
