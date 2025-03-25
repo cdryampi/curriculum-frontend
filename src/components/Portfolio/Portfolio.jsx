@@ -43,20 +43,20 @@ const Portfolio = () => {
                   {/* Imagen */}
                   <img
                     className="w-full max-h-[550px] object-contain transition-all duration-500 ease-in-out"
-                    src={item.image.file}
-                    alt={item.title}
+                    src={item?.image?.file}
+                    alt={item?.title}
                   />
 
                   {/* Información del proyecto */}
                   <div className="projInfo absolute left-0 top-3/4 group-hover:top-1/2 -translate-y-1/2 p-5 w-full text-center opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 ease-in-out z-[2]">
                     <h3 className="text-white text-lg md:text-xl font-bold font-poppins">
                       <Link
-                        to={item.link}
-                        title={item.title}
+                        to={item?.link}
+                        title={item?.title}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {item.title}
+                        {item?.title}
                       </Link>
                     </h3>
                     <div
@@ -69,8 +69,8 @@ const Portfolio = () => {
                     {/* Botón de enlace */}
                     <Link
                       className="inline-flex items-center justify-center border-2 sm:border-4 border-white/25 hover:border-white rounded-lg h-10 w-10 sm:h-14 sm:w-14 mt-5 transition-all duration-300 ease-in-out"
-                      to={item.link}
-                      title={item.title}
+                      to={item?.link}
+                      title={item?.title}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

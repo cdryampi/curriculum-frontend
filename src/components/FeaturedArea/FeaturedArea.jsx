@@ -63,7 +63,7 @@ const FeaturedArea = ({ userData }) => {
                   <div className="featuredImg relative rounded-full">
                     <picture className="max-w-full">
                       <source
-                        srcSet={userData?.foto?.image_for_pc_url}
+                        srcSet={userData?.foto?.file}
                         media="(min-width: 1024px)"
                       ></source>
                       <source

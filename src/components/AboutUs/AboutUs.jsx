@@ -50,7 +50,7 @@ const AboutUs = ({ userData }) => {
               <div className="aboutImg relative mt-[-5.625rem] ml-0 lg:ml-[-1.875rem]">
                 <img
                   className="rounded-[10px] sm:rounded-[1.25rem] md:rounded-[3.125rem] relative z-[1] w-full"
-                  src={userData?.foto?.image_for_pc_url}
+                  src={userData?.foto?.file}
                   alt={userData?.foto?.title}
                 ></img>
                 {/* About Image */}
@@ -69,7 +69,7 @@ const AboutUs = ({ userData }) => {
                   <h4 className="text-accent2 font-light text-[1.325rem] md:text-[1.5rem] leading-normal font-Poppins">
                     yo soy {""}
                     <span className="text-accent font-bold uppercase text-[1.5rem] md:text-[1.875rem]">
-                      {userData.nombre} {userData.apellido}
+                      {userData?.nombre} {userData?.apellido}
                     </span>
                   </h4>
                   <ul className="grid grid-cols-1 gap-5 mt-6">
@@ -78,7 +78,7 @@ const AboutUs = ({ userData }) => {
                         Edad:
                       </strong>
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-2">
-                        {userData.edad}
+                        {userData?.edad}
                       </span>
                     </li>
                     <li className="grid grid-cols-3 gap-4 text-[1rem] md:text-[1.125rem]">
@@ -88,10 +88,10 @@ const AboutUs = ({ userData }) => {
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-2">
                         <a
                           className="text-desc2 font-semibold font-NunitoSans hover:text-accent"
-                          href={`tel:+34 ${userData.telefono}`}
+                          href={`tel:+34 ${userData?.telefono}`}
                           title="telefono"
                         >
-                          +34 {userData.telefono}
+                          +34 {userData?.telefono}
                         </a>
                       </span>
                     </li>
@@ -102,10 +102,10 @@ const AboutUs = ({ userData }) => {
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-2">
                         <a
                           className="text-desc2 font-semibold font-NunitoSans hover:text-accent"
-                          href={`mailto::+34 ${userData.correo_electronico}`}
+                          href={`mailto::+34 ${userData?.correo_electronico}`}
                           title=""
                         >
-                          {userData.correo_electronico}
+                          {userData?.correo_electronico}
                         </a>
                       </span>
                     </li>
@@ -114,7 +114,7 @@ const AboutUs = ({ userData }) => {
                         Dirección:
                       </strong>
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-2">
-                        {userData.direccion}
+                        {userData?.direccion}
                       </span>
                     </li>
                     <li className="grid grid-cols-3 gap-4 text-[1rem] md:text-[1.125rem]">
