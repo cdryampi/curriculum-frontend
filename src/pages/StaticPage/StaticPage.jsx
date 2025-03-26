@@ -25,7 +25,7 @@ const StaticPage = () => {
     <Fragment>
       <title>
         {data
-          ? `${data.title} - Curriculum de Yampi`
+          ? `${data?.title} - Curriculum de Yampi`
           : "Loading... - Curriculum de Yampi"}
       </title>
       {loading ? (
@@ -59,20 +59,20 @@ const StaticPage = () => {
                       <picture>
                         <source
                           media="(max-width: 640px)"
-                          srcSet={data.image.image_for_mobile_url}
+                          srcSet={data?.image?.image_for_mobile_url}
                         />
                         <source
                           media="(max-width: 1024px)"
-                          srcSet={data.image.image_for_tablet_url}
+                          srcSet={data?.image?.image_for_tablet_url}
                         />
                         <source
                           media="(min-width: 1025px)"
-                          srcSet={data.image.image_for_pc_url}
+                          srcSet={data?.image?.image_for_pc_url}
                         />
                         <img
                           className="inline-block mb-5 w-full"
-                          src={data.image.image_for_pc_url}
-                          alt={data.title}
+                          src={data?.image.image_for_pc_url}
+                          alt={data?.title}
                         />
                       </picture>
                     )}

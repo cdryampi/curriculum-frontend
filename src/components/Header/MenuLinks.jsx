@@ -1,6 +1,4 @@
-import { FiChevronDown } from "react-icons/fi";
 import { Link as RouterLink } from "react-router-dom";
-import PatternImg2 from "../../assets/images/patternImg2.jpg";
 
 const MenuLinks = ({ pdf_link }) => {
   const { title, file, url } = pdf_link || {};
@@ -29,7 +27,6 @@ const MenuLinks = ({ pdf_link }) => {
         <RouterLink
           className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
           to="/#portfolio"
-          smooth={true}
           duration={500}
           offset={-100}
           title="portfolio"

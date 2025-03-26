@@ -34,8 +34,11 @@ const Portfolio = () => {
             </div>
           ) : (
             portfolio &&
-            portfolio.map((item, index) => (
-              <div key={index} className="w-full md:w-[41.57%] px-2 mb-6">
+            portfolio.map((item) => (
+              <div
+                key={`${item?.title}-${item?.id}`}
+                className="w-full md:w-[41.57%] px-2 mb-6"
+              >
                 <div className="portBox group relative overflow-hidden rounded-lg sm:rounded-xl lg:rounded-2xl xl:rounded-3xl w-full">
                   {/* Fondo con efecto hover */}
                   <div className="absolute inset-[10%] group-hover:inset-0 bg-accent opacity-0 group-hover:opacity-90 transition-all duration-500 ease-in-out z-[1]" />

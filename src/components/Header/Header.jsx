@@ -3,8 +3,6 @@ import { Link as RouterLink } from "react-router-dom";
 import { CgClose, CgMenuRight } from "react-icons/cg";
 import { SocialLinks } from "../SocialLinks";
 import MenuLinks from "./MenuLinks";
-import { MenuData } from "./SideMenu/MenuData";
-import SubMenu from "./SideMenu/SubMenu";
 import { ResponsiveHeader } from "../ResponsiveHeader";
 
 const Header = ({ pdf }) => {
@@ -115,7 +113,6 @@ const Header = ({ pdf }) => {
             <RouterLink
               className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
               to="/#portfolio"
-              smooth={true}
               duration={500}
               offset={-100}
               title="portfolio"

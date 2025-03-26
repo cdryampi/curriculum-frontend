@@ -10,10 +10,10 @@ const AboutUs = ({ userData }) => {
   const isAvailable = () => {
     if (userData?.disponibilidad) {
       return (
-        <>
+        <span className="inline-flex items-center gap-2">
           <GoDotFill size="1.5rem" className="fill-accent" />
           <span className="mt-1.5">Disponible</span>
-        </>
+        </span>
       );
     } else {
       return (
@@ -38,7 +38,7 @@ const AboutUs = ({ userData }) => {
         <SectionTitle
           title="Sobre"
           titleInner="mí"
-          desc={userData.description}
+          desc={userData?.description}
         ></SectionTitle>
         <div className="aboutUs relative w-full p-[1.25rem] lg:p-[1.875rem] mt-[5.9375rem]">
           <div

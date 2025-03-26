@@ -53,7 +53,7 @@ const HomePage = () => {
     );
   }
   return (
-    <Fragment id="home">
+    <div id="home">
       <title>Home - Curriculum Yampi</title>
       {loading ? (
         <div className="pageLoader fixed justify-center items-center inset-0 flex">
@@ -81,7 +81,7 @@ const HomePage = () => {
           <ScrollToTopButton />
         </>
       )}
-    </Fragment>
+    </div>
   );
 };
 

@@ -31,7 +31,7 @@ const Services = () => {
               services &&
               services.map((item) => (
                 <div
-                  key={item?.id}
+                  key={`${item?.title}-${item?.id}`}
                   className="gridItem group relative w-full min-h-[20rem] md:min-h-[24.375rem] p-6 md:p-7 lg:p-10 xl:p-[3.125rem] rounded-[10px] sm:rounded-xl md:rounded-[3.125rem] overflow-hidden flex flex-col items-center justify-center gap-4 text-center z-[1] transition-all duration-500 hover:scale-105 hover:shadow-lg"
                 >
                   {/* Fondo con color dinámico y patrón */}
@@ -48,8 +48,8 @@ const Services = () => {
                   <span className="inline-block w-20 h-20 flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
                     <img
                       className="w-full h-full mx-auto"
-                      src={item.icon.file}
-                      alt={item.title}
+                      src={item?.icon?.file}
+                      alt={item?.title}
                     />
                   </span>
 
@@ -57,19 +57,18 @@ const Services = () => {
                   <h3 className="text-[1.3rem] lg:text-[1.325rem] xl:text-[1.5rem] font-semibold font-poppins text-white min-h-[3rem] flex items-center justify-center transition-colors duration-300 group-hover:text-black cursor-pointer">
                     <Link
                       to="contact"
-                      smooth={true}
                       duration={500}
                       offset={-100}
-                      title={item.title}
+                      title={item?.title}
                     >
-                      {item.title}
+                      {item?.title}
                     </Link>
                   </h3>
 
                   {/* Descripción con animación de opacidad */}
                   <div
                     className="text-base md:text-lg font-nunito text-white min-h-[4rem] flex-grow flex items-center justify-center transition-opacity duration-300 group-hover:opacity-90"
-                    dangerouslySetInnerHTML={{ __html: item.description }}
+                    dangerouslySetInnerHTML={{ __html: item?.description }}
                   ></div>
                 </div>
               ))
@@ -83,7 +82,6 @@ const Services = () => {
             <Link
               className="text-accent font-Poppins font-medium hover:text-accent2 underline underline-offset-8"
               to="contact"
-              smooth={true}
               duration={500}
               offset={-100}
               title="Haz clic para contactarme"

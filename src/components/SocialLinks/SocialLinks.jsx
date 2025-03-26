@@ -6,7 +6,6 @@ import { ClipLoader } from "react-spinners";
 
 const SocialLinks = () => {
   const { data: socialLinks, loading, error } = useSocialLinks();
-  console.log(socialLinks);
   if (error) {
     return <div>Error al cargar los enlaces sociales.</div>;
   }
@@ -28,7 +27,7 @@ const SocialLinks = () => {
                     href={item.profile_link}
                     title={item.social_media}
                     target="_blank"
-                    key={index}
+                    key={`${item.social_media}-${index}`}
                     rel="noreferrer"
                   >
                     {iconMappings[item.social_media] || item.social_media}

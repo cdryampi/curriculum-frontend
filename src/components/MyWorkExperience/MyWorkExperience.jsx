@@ -10,7 +10,9 @@ import "swiper/css/pagination";
 
 const MyWorkExperience = () => {
   const { data: workExp, loading, error } = UseLaboralExperienceList();
-
+  if (error) {
+    return <div>Error al cargar.</div>;
+  }
   return (
     <section
       className="workExpWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem relative w-full"
@@ -74,7 +76,7 @@ const MyWorkExperience = () => {
                   return (
                     <SwiperSlide
                       className="slideItem md:m-3 xl:m-4 lg:m-3 sm:m-2 w-full"
-                      key={i}
+                      key={`${item.title}-${i}`}
                     >
                       <div className="expBox lg:p-0 xl:px-[6.875rem] relative w-full">
                         <div
@@ -108,22 +110,22 @@ const MyWorkExperience = () => {
                                 {i + 1}
                               </i>
                               <span className="font-Poppins font-light text-desc text-[1rem] md:text-[1.125rem]">
-                                {item.fecha_inicio} - {item.fecha_fin}
+                                {item?.fecha_inicio} - {item?.fecha_fin}
                               </span>
                               <h2 className="font-Poppins font-bold text-white text-[1.75rem] lg:text-[1.875rem] xl:text-[2.25rem] mt-[5px]">
-                                {item.position}
+                                {item?.position}
                               </h2>
                               <h4 className="font-NunitoSans font-semibold text-accent text-[1.125rem] md:text-[1.25rem] lg:text-[1.375rem] mt-2">
-                                {item.empresa}
+                                {item?.empresa}
                               </h4>
                               <div className="font-NunitoSans font-normal text-desc text-[1rem] md:text-[1.125rem] max-w-full md:max-w-[95%] mt-4">
                                 <div
                                   dangerouslySetInnerHTML={{
-                                    __html: item.descripcion,
+                                    __html: item?.descripcion,
                                   }}
                                 ></div>
                               </div>
-                              <TagsDisplay tags={item.tags} />
+                              <TagsDisplay tags={item?.tags} />
                               {/* Work Experience Cap */}
                             </div>
                           </div>

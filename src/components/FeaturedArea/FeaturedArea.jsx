@@ -61,21 +61,11 @@ const FeaturedArea = ({ userData }) => {
                   <span className="h-[8rem] w-[8rem] sm:h-[14rem] sm:w-[14rem] md:h-[10rem] md:w-[10rem] lg:h-[14rem] lg:w-[14rem] xl:h-[18.75rem] xl:w-[18.75rem] absolute bg-white rounded-full right-[-2.5rem] top-[-2.5rem] md:right-[-3.5rem] md:top-[-3.5rem] lg:right-[-4rem] lg:top-[-4rem] xl:right-[-6.25rem] xl:top-[-6.25rem] z-[1]"></span>
                   <span className="h-[8rem] w-[8rem] sm:h-[14rem] sm:w-[14rem] md:h-[10rem] md:w-[10rem] lg:h-[14rem] lg:w-[14rem] xl:h-[18.75rem] xl:w-[18.75rem] absolute bg-dark2 rounded-full left-[-2.5rem] bottom-[-2.5rem] md:right-[-3.5rem] md:bottom-[-3.5rem] lg:left-[-4rem] lg:bottom-[-4rem] xl:left-[-6.25rem] xl:bottom-[-6.25rem] z-[1]"></span>
                   <div className="featuredImg relative rounded-full">
-                    <picture className="max-w-full">
-                      <source
-                        srcSet={userData?.foto?.file}
-                        media="(min-width: 1024px)"
-                      ></source>
-                      <source
-                        srcSet={userData?.foto?.image_for_tablet_url}
-                        media="(min-width: 768px)"
-                      ></source>
-                      <img
-                        className="rounded-full relative z-[1] max-w-full"
-                        src={userData?.foto?.image_for_mobile_url}
-                        alt={userData?.foto?.title}
-                      ></img>
-                    </picture>
+                    <img
+                      className="rounded-full relative z-[1] max-w-full"
+                      src={userData?.foto?.file}
+                      alt={userData?.foto?.title}
+                    />
                     {/* Featured Image */}
                   </div>
                   {/* Featured Image Inner */}
@@ -93,19 +83,19 @@ const FeaturedArea = ({ userData }) => {
                   Allillanchu, Ñuqaqa kani
                 </h3>
                 <h2 className="font-bold text-[2.3rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5rem] font-Poppins text-white uppercase">
-                  {userData.nombre}
+                  {userData?.nombre}
                   <span className="font-normal text-[2.3rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5rem] text-accent font-Poppins uppercase">
-                    {userData.apellido}
+                    {userData?.apellido}
                   </span>
                 </h2>
                 <h5 className="md:justify-start justify-center font-bold text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] font-Poppins text-white uppercase flex items-center gap-2.5 tracking-[1px]">
                   <span className="w-[2.5rem] sm:w-[3rem] md:w-[4.375rem] bg-accent h-[1px]"></span>
-                  {userData.profesion}
+                  {userData?.profesion}
                 </h5>
                 <p
                   className="text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] lg:text-[1.25rem] xl:text-[1.375rem] text-desc md:leading-9 sm:leading-7 leading-6 w-full md:w-full lg:w-full xl:w-3/4 mt-6"
                   dangerouslySetInnerHTML={{
-                    __html: userData.resumen_habilidades,
+                    __html: userData?.resumen_habilidades,
                   }}
                 ></p>
                 <div className="flex items-center md:justify-start justify-center sm:gap-8 md:gap-10 lg:gap-15 xl:gap-20 gap-8 md:mt-[3.125rem] mt-[1.875rem]">
@@ -122,7 +112,7 @@ const FeaturedArea = ({ userData }) => {
                   </Link>
                   <Link
                     className="bg-white text-accent text-[1rem] font-Poppins font-bold uppercase rounded-[5px] md:rounded-[10px] md:px-6 lg:px-10 xl:px-11 px-7 md:py-[1.125rem] py-[14px] hover:bg-accent hover:text-white text-center inline-block"
-                    to={`${userData.resume_file.pdf_url}`}
+                    to={`${userData?.resume_file?.pdf_url}`}
                     target="_blank"
                     title="descargar CV"
                   >

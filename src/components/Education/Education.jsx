@@ -22,7 +22,10 @@ const Education = () => {
         ) : (
           educationList &&
           educationList.map((education) => (
-            <EducationCard education={education} key={education.id} />
+            <EducationCard
+              education={education}
+              key={`${education.title}-${education.id}`}
+            />
           ))
         )}
       </div>
