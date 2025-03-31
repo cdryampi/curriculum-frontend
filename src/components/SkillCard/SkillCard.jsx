@@ -1,5 +1,5 @@
 import React from "react";
-import ProficiencyBar from "../ProficiencyBar/ProficiencyBar";
+// import ProficiencyBar from "../ProficiencyBar/ProficiencyBar"; Un dev Argentino dice que no vale la pena
 import PatternImg2 from "../../assets/images/patternImg2.jpg";
 
 const SkillCard = ({ skill }) => {
@@ -21,13 +21,10 @@ const SkillCard = ({ skill }) => {
         <h3 className="text-accent2 text-[1.375rem] font-Poppins font-bold">
           {skill?.title}
         </h3>
-        <p className="text-[1rem] md:text-[1.125rem] font-normal font-NunitoSans text-desc2">
-          {skill?.categoria}
-        </p>
       </div>
-      <div className="w-full bg-[#ede5f6] h-[7px] my-3 rounded-[2px]">
+      {/* <div className="w-full bg-[#ede5f6] h-[7px] my-3 rounded-[2px]">
         <ProficiencyBar proficiency={skill?.proficiency} />
-      </div>
+      </div> */}
     </div>
   );
 };

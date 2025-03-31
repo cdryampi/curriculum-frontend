@@ -73,7 +73,7 @@ const AboutUs = ({ userData }) => {
                     </span>
                   </h4>
                   <ul className="grid grid-cols-1 gap-5 mt-6">
-                    <li className="grid grid-cols-3 gap-4 text-[1rem] md:text-[1.125rem]">
+                    <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">
                         Edad:
                       </strong>
@@ -81,7 +81,7 @@ const AboutUs = ({ userData }) => {
                         {userData?.edad}
                       </span>
                     </li>
-                    <li className="grid grid-cols-3 gap-4 text-[1rem] md:text-[1.125rem]">
+                    <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">
                         Teléfono:
                       </strong>
@@ -95,7 +95,7 @@ const AboutUs = ({ userData }) => {
                         </a>
                       </span>
                     </li>
-                    <li className="grid grid-cols-3 gap-4 text-[1rem] md:text-[1.125rem]">
+                    <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">
                         Email:
                       </strong>
@@ -109,7 +109,7 @@ const AboutUs = ({ userData }) => {
                         </a>
                       </span>
                     </li>
-                    <li className="grid grid-cols-3 gap-4 text-[1rem] md:text-[1.125rem]">
+                    <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">
                         Dirección:
                       </strong>
@@ -117,7 +117,7 @@ const AboutUs = ({ userData }) => {
                         {userData?.direccion}
                       </span>
                     </li>
-                    <li className="grid grid-cols-3 gap-4 text-[1rem] md:text-[1.125rem]">
+                    <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">
                         Estado:
                       </strong>

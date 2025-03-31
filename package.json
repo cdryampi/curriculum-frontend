@@ -23,6 +23,7 @@
     "react-toastify": "^11.0.5",
     "swiper": "^11.2.5",
     "tailwindcss": "^4.0.13",
+    "vercel": "^41.4.1",
     "vite": "^6.2.1"
   },
   "devDependencies": {
