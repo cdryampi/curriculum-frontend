@@ -1,70 +1,145 @@
-# Getting Started with Create React App
+# Curriculum Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Un sitio web moderno y responsive para mostrar tu currículum vitae y portfolio personal, construido con React y Tailwind CSS.
 
-## Available Scripts
+![Portfolio Website](public/logo.png)
 
-In the project directory, you can run:
+## 🌟 Características
 
-### `npm start`
+- Diseño responsive que funciona en móvil, tablet y escritorio
+- Carga dinámica de contenido desde una API backend
+- Navegación con desplazamiento suave
+- Componentes interactivos
+- Tema oscuro con colores de acento
+- CV/Currículum descargable
+- Formulario de contacto con funcionalidad de email
+- Exhibición de portfolio
+- Línea de tiempo de experiencia laboral
+- Categorización de habilidades
+- Integración con redes sociales
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Tecnologías utilizadas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React 19**: Biblioteca moderna para UI
+- **Vite**: Herramienta de frontend de última generación
+- **Tailwind CSS**: Framework CSS basado en utilidades
+- **React Router**: Para navegación y enrutamiento
+- **Axios**: Cliente HTTP basado en promesas
+- **Swiper**: Slider táctil moderno para móvil
+- **React Icons**: Biblioteca de iconos populares
+- **React Toastify**: Para notificaciones toast
+- **React Spinners**: Animaciones de carga
 
-### `npm test`
+## 🏗️ Estructura del proyecto
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/
+  ├── api/              # Servicios de API y endpoints
+  ├── assets/           # Activos estáticos (imágenes, etc.)
+  ├── components/       # Componentes UI reutilizables
+  ├── data/             # Configuraciones de datos estáticos
+  ├── hooks/            # Hooks personalizados de React
+  ├── lib/              # Utilidades y helpers
+  ├── pages/            # Componentes de página
+  ├── router/           # Configuración de enrutamiento
+  ├── styles/           # Estilos CSS globales
+  ├── App.jsx           # Componente principal de la aplicación
+  ├── config.js         # Configuración de entorno y aplicación
+  └── main.jsx          # Punto de entrada de la aplicación
+```
 
-### `npm run build`
+## 🚀 Empezando
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerrequisitos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js (v16+)
+- npm o yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Instalación
 
-### `npm run eject`
+1. Clona el repositorio:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   git clone https://github.com/tuusuario/curriculum-frontend.git
+   cd curriculum-frontend
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Instala las dependencias:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   npm install
+   # o
+   yarn
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Crea un archivo `.env` en el directorio raíz con las siguientes variables:
 
-## Learn More
+   ```
+   VITE_API_BASE_URL=https://tu-backend-api.com
+   VITE_GLOBAL_DELAY_CALLBACK=1500
+   VITE_LOGIN_USER=tu_usuario
+   VITE_LOGIN_PASSWORD=tu_contraseña
+   VITE_GIT_HUB_URL=https://github.com/tuusuario/
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Inicia el servidor de desarrollo:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```bash
+   npm run dev
+   # o
+   yarn dev
+   ```
 
-### Code Splitting
+5. Abre tu navegador y navega a `http://localhost:5173`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📦 Construyendo para producción
 
-### Analyzing the Bundle Size
+Para crear una build de producción:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm run build
+# o
+yarn build
+```
 
-### Making a Progressive Web App
+La build se generará en el directorio `dist/`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🌐 Despliegue
 
-### Advanced Configuration
+Este proyecto está configurado para despliegue en Vercel. Incluye:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Builds automáticos al hacer push a la rama principal
+- Soporte para variables de entorno
+- Ruta de API para mantener vivo el backend
 
-### Deployment
+Para desplegar:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Sube tu código a GitHub
+2. Conecta el repositorio a Vercel
+3. Configura las variables de entorno en Vercel
+4. ¡Despliega!
 
-### `npm run build` fails to minify
+## 📋 Páginas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Inicio**: Página principal con información personal
+- **Sobre mí**: Información detallada sobre tu experiencia
+- **Experiencia laboral**: Línea de tiempo de experiencia profesional
+- **Portfolio**: Muestra de proyectos
+- **Servicios**: Servicios profesionales ofrecidos
+- **Educación y habilidades**: Formación académica y habilidades técnicas
+- **Contacto**: Formulario para enviar mensajes
+- **Páginas estáticas**: Páginas de contenido personalizado
+
+## 📝 Contribuir
+
+¡Las contribuciones son bienvenidas! Por favor, siéntete libre de enviar un Pull Request.
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
+
+## 🙏 Agradecimientos
+
+- Inspiración de diseño de varias plantillas de portfolio
+- Iconos de [React Icons](https://react-icons.github.io/react-icons/)
+- Animaciones con CSS y bibliotecas de React
