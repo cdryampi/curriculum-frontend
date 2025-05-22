@@ -6,5 +6,3 @@ export const GLOBAL_DELAY_CALLBACK = parseInt(
 export const LOGIN_USER = import.meta.env.VITE_LOGIN_USER;
 export const LOGIN_PASSWORD = import.meta.env.VITE_LOGIN_PASSWORD;
 export const GIT_HUB_URL = import.meta.env.VITE_GIT_HUB_URL;
-
-console.log("API BASE:", import.meta.env);
