@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Yampi web",
+  "name": "Yampi web application",
+  "description": "Yampi is a web application that allows you to manage your projects and tasks efficiently.",
   "icons": [
     {
       "src": "favicon.ico",
