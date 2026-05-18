@@ -23,7 +23,7 @@ const MenuLinks = ({ pdf_link }) => {
         {pdfUrl && (
           <li>
             <a
-              className="bg-white text-accent text-[1rem] font-Poppins font-bold uppercase rounded-[5px] md:rounded-[10px] md:px-5 lg:px-5 xl:px-5 px-7 md:py-[4px] py-[4px] hover:bg-accent hover:text-white text-center inline-flex items-center gap-1.5 transition-colors duration-300 cursor-pointer"
+              className="text-accent hover:text-white text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase inline-flex items-center gap-1.5 transition-colors duration-300 cursor-pointer"
               href={pdfUrl}
               target="_blank"
               rel="noopener noreferrer"
