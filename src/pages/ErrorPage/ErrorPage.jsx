@@ -22,9 +22,9 @@ const ErrorPage = () => {
         <div className="container mx-auto">
           <div className="errorPage text-center w-full">
             <div className="errorPageInner">
-              <h2 className="text-[10rem] md:text-[15rem] font-Poppins font-bold text-accent2 leading-none">404</h2>
-              <h3 className="text-[#647c9f] text-2xl font-Poppins mb-8">página no encontrada :(</h3>
-              <Link className="text-accent hover:text-accent2 font-Poppins text-lg font-bold inline-flex gap-2 items-center underline underline-offset-8" to="/" title="Back to Home">
+              <h2 className="text-[10rem] md:text-[15rem] font-Poppins font-bold text-accent leading-none">404</h2>
+              <h3 className="text-desc text-2xl font-Poppins mb-8">página no encontrada :(</h3>
+              <Link className="text-accent hover:text-white font-Poppins text-lg font-bold inline-flex gap-2 items-center underline underline-offset-8" to="/" title="Back to Home">
                 <FaHome /> Back to Home
               </Link>
             </div>

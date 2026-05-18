@@ -20,10 +20,10 @@ const AboutUs = ({ userData, loading }) => {
       )
     } else {
       return (
-        <>
+        <span className="inline-flex items-center gap-2">
           <GoDotFill size="1.5rem" className="text-pinterest" />
           <span className="mt-1.5">No disponible</span>
-        </>
+        </span>
       )
     }
   }
@@ -53,7 +53,7 @@ const AboutUs = ({ userData, loading }) => {
               <div className="aboutCapWrap w-full">
                 <div className="aboutCap relative rounded-[10px] sm:rounded-[1.25rem] md:rounded-[3.125rem] overflow-hidden z-[1] lg:py-12 xl:pt-[4.6875rem] xl:pb-[4.375rem] p-5 md:p-10 lg:px-[3.5rem] xl:px-20">
                   <div
-                    className="aboutCapBg bg-white opacity-90 opc8 absolute rounded-in sm:rounded-[1.25rem] md:rounded-[3.125rem] inset-0 bg-no-repeat bg-center bg-cover z-[-1]"
+                    className="aboutCapBg bg-white opacity-90 absolute rounded-[10px] sm:rounded-[1.25rem] md:rounded-[3.125rem] inset-0 bg-no-repeat bg-center bg-cover z-[-1]"
                     style={{ backgroundImage: `url(${PatternImg2})` }}
                   ></div>
                   <h3 className="text-accent2 font-light text-[1.5rem] md:text-[1.875rem] leading-tight font-Poppins">Hola,</h3>
@@ -66,27 +66,27 @@ const AboutUs = ({ userData, loading }) => {
                   <ul className="grid grid-cols-1 gap-5 mt-6">
                     <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">Edad:</strong>
-                      <span className="text-desc2 font-semibold font-NunitoSans col-span-2">{userData?.edad}</span>
+                      <span className="text-desc2 font-semibold font-NunitoSans col-span-1">{userData?.edad}</span>
                     </li>
                     <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">Teléfono:</strong>
-                      <span className="text-desc2 font-semibold font-NunitoSans col-span-2">
-                        <a className="text-desc2 font-semibold font-NunitoSans hover:text-accent" href={`tel:+34 ${userData?.telefono}`} title="telefono">+34 {userData?.telefono}</a>
+                      <span className="text-desc2 font-semibold font-NunitoSans col-span-1">
+                        <a className="text-desc2 font-semibold font-NunitoSans hover:text-accent" href={`tel:+34 ${userData?.telefono}`} title="teléfono">+34 {userData?.telefono}</a>
                       </span>
                     </li>
                     <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">Email:</strong>
-                      <span className="text-desc2 font-semibold font-NunitoSans col-span-2">
-                        <a className="text-desc2 font-semibold font-NunitoSans hover:text-accent" href={`mailto::+34 ${userData?.correo_electronico}`} title="">{userData?.correo_electronico}</a>
+                      <span className="text-desc2 font-semibold font-NunitoSans col-span-1">
+                        <a className="text-desc2 font-semibold font-NunitoSans hover:text-accent" href={`mailto:${userData?.correo_electronico}`} title="Enviar correo electrónico">{userData?.correo_electronico}</a>
                       </span>
                     </li>
                     <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">Dirección:</strong>
-                      <span className="text-desc2 font-semibold font-NunitoSans col-span-2">{userData?.direccion}</span>
+                      <span className="text-desc2 font-semibold font-NunitoSans col-span-1">{userData?.direccion}</span>
                     </li>
                     <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">Estado:</strong>
-                      <span className="text-desc2 font-semibold font-NunitoSans col-span-2 uppercase flex items-center">{isAvailable()}</span>
+                      <span className="text-desc2 font-semibold font-NunitoSans col-span-1 uppercase flex items-center">{isAvailable()}</span>
                     </li>
                   </ul>
                   <Signature className="fill-accent h-[235px] w-[175px] mt-[-115px]"></Signature>

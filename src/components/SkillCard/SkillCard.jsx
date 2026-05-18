@@ -14,7 +14,7 @@ const SkillCard = React.memo(({ skill }) => (
         loading="lazy"
       />
     </span>
-    <div className="skillInfo justify-content-center text-center flex flex-col w-full mt-3 gap-[8px] pb-6">
+    <div className="skillInfo justify-center text-center flex flex-col w-full mt-3 gap-[8px] pb-6">
       <h3 className="text-accent2 text-[1.375rem] font-Poppins font-bold">{skill?.title}</h3>
     </div>
   </div>

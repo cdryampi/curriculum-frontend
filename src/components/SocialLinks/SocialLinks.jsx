@@ -22,8 +22,8 @@ const SocialLinks = () => {
       {socialLinks && socialLinks.map(
         (item, index) =>
           index < 8 && (
-            <a className="inline-block" href={item.profile_link} title={item.social_media} target="_blank" key={`${item.social_media}-${index}`} rel="noreferrer">
-              {iconMappings[item.social_media] || item.social_media}
+            <a className="inline-block" href={item.profile_link} title={item.social_media} target="_blank" key={`${item.social_media}-${index}`} rel="noopener noreferrer">
+              {iconMappings[item.social_media?.toLowerCase()] || item.social_media}
             </a>
           )
       )}

@@ -84,13 +84,11 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-select:focus,
-button:focus,
-a:focus {
-  border-color: transparent;
-  outline: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+select:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accentColor);
+  outline-offset: 2px;
 }
 textarea {
   resize: none;
@@ -175,12 +173,8 @@ nav ul li,
 
 nav ul ul,
 .menuWrap {
-  -webkit-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1);
   -webkit-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
-  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .featuredImg:before {
@@ -323,15 +317,12 @@ nav ul ul,
 
 .text-fill-transparent {
   -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
 }
 .text-stroke-10 {
   -webkit-text-stroke-width: 10px;
-  text-stroke-width: 10px;
 }
 .text-stroke-accent {
   -webkit-text-stroke-color: var(--accentColor);
-  text-stroke-color: var(--accentColor);
 }
 
 .filterList > li.active {
@@ -364,16 +355,13 @@ nav ul ul,
 }
 @-webkit-keyframes floatAnim {
   0% {
-    -webkit-transform: translateY(0%);
-    transform: translateY(0%);
+    -webkit-transform: translateY(0%) rotate(-55deg);
   }
   50% {
-    -webkit-transform: translateY(150%);
-    transform: translateY(150%);
+    -webkit-transform: translateY(150%) rotate(55deg);
   }
   100% {
-    -webkit-transform: translateY(0%);
-    transform: translateY(0%);
+    -webkit-transform: translateY(0%) rotate(-55deg);
   }
 }
 .animDelay1 {

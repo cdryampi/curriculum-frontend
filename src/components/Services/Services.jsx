@@ -37,10 +37,10 @@ const Services = () => {
                 <span className="inline-block w-20 h-20 flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
                   <img className="w-full h-full mx-auto" src={item?.icon?.file} alt={item?.title} loading="lazy" />
                 </span>
-                <h3 className="text-[1.3rem] lg:text-[1.325rem] xl:text-[1.5rem] font-semibold font-poppins text-white min-h-[3rem] flex items-center justify-center transition-colors duration-300 group-hover:text-black cursor-pointer">
+                <h3 className="text-[1.3rem] lg:text-[1.325rem] xl:text-[1.5rem] font-semibold font-Poppins text-white min-h-[3rem] flex items-center justify-center transition-colors duration-300 group-hover:text-white cursor-pointer">
                   <Link to="contact" duration={500} offset={-100} title={item?.title}>{item?.title}</Link>
                 </h3>
-                <div className="text-base md:text-lg font-nunito text-white min-h-[4rem] flex-grow flex items-center justify-center transition-opacity duration-300 group-hover:opacity-90" dangerouslySetInnerHTML={{ __html: item?.description }}></div>
+                <div className="text-base md:text-lg font-NunitoSans text-white min-h-[4rem] flex-grow flex items-center justify-center transition-opacity duration-300 group-hover:opacity-90" dangerouslySetInnerHTML={{ __html: item?.description }}></div>
               </div>
             ))}
           </div>

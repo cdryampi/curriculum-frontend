@@ -18,6 +18,7 @@ const Skills = () => {
     prevPageURL,
     category,
     setCategory,
+    refetch,
   } = useSkillListCategoryHook("frontend")
 
   const [pageIndex, setPageIndex] = useState(0)
@@ -43,7 +44,7 @@ const Skills = () => {
         <SectionTitleIcon title="Habilidades" />
         <div className="flex flex-col items-center py-8">
           <p className="text-red-400 mb-3">No hemos podido recuperar los datos.</p>
-          <button className="bg-accent text-white px-4 py-2 rounded font-bold hover:bg-accent2 transition-colors" onClick={() => setCategory(category)}>Reintentar</button>
+          <button className="bg-accent text-white px-4 py-2 rounded font-bold hover:bg-accent2 transition-colors" onClick={refetch}>Reintentar</button>
         </div>
       </div>
     )
@@ -60,7 +61,7 @@ const Skills = () => {
             key={`${key}-${value}`}
             onClick={() => handleCategoryChange(value)}
             className={`border-2 border-cyan-900 p-3 rounded-t-lg text-white font-Poppins font-bold transition-all duration-200 ${
-              category === value ? "bg-accent text-white" : "bg-desc2 text-white hover:bg-desc3"
+              category === value ? "bg-accent text-white" : "bg-dark3 text-white hover:bg-accent2"
             }`}
           >
             {value}

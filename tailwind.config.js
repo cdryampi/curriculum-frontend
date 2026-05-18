@@ -24,7 +24,7 @@ module.exports = {
       shapBg: "#eeeffa",
       shapBgDark: "#252a50",
       desc: "#a8a9c5",
-      desc2: "#647c9e",
+      desc2: "#5b7394",
       desc3: "#2f3c5a",
       behance: "#131418",
       facebook: "#3b5999",
@@ -65,7 +65,7 @@ module.exports = {
     },
     extend: {
       boxShadow: {
-        "3xl": "0 0 3.125remrgba(0, 0, 0, 0.13)",
+        "3xl": "0 0 3.125rem rgba(0, 0, 0, 0.13)",
       },
     },
     scrollbar: ["rounded"],

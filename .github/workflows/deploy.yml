@@ -35,7 +35,6 @@ jobs:
         run: npm run build
         env:
           VITE_API_BASE_URL: https://backend.yampi.eu
-          VITE_GLOBAL_DELAY_CALLBACK: "1500"
           VITE_GIT_HUB_URL: https://github.com/cdryampi/
 
       - name: Add SPA fallback

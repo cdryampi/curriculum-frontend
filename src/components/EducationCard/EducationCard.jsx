@@ -35,7 +35,7 @@ const EducationCard = React.memo(({ education }) => {
             expand ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="text-desc1 text-[1rem] md:text-[1.125rem] font-NunitoSans p-2" dangerouslySetInnerHTML={{ __html: education?.description }} />
+          <div className="text-desc2 text-[1rem] md:text-[1.125rem] font-NunitoSans p-2" dangerouslySetInnerHTML={{ __html: education?.description }} />
           <TagsDisplay tags={education?.tags} />
         </div>
       </div>

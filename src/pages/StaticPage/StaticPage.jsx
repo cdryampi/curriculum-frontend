@@ -51,7 +51,7 @@ const StaticPage = () => {
             <div className="container mx-auto max-w-[73.125rem]">
               <div className="servDetailDesc flex flex-col gap-5 w-full">
                 <header className="servDetailTop gap-[1.875rem] lg:flex items-end relative w-full mb-[3.125rem] sm:mb-[4rem] md:mb-[5.3125rem]">
-                  <h1 className="text-accent2 text-center mt-10 font-Poppins font-bold text-[1.325rem] md:text-[1.625rem]">{data?.title}</h1>
+                  <h1 className="text-white text-center mt-10 font-Poppins font-bold text-[1.325rem] md:text-[1.625rem]">{data?.title}</h1>
                 </header>
                 <article className="servDetailContent flex flex-col gap-[1.875rem] relative w-full mb-[3.125rem] sm:mb-[4rem] md:mb-[5.3125rem]">
                   <div className="servDetailText text-desc2 font-NunitoSans font-normal text-[1rem] md:text-[1.125rem] leading-relaxed self-center">
@@ -69,7 +69,7 @@ const StaticPage = () => {
                   )}
                 </article>
                 <footer className="servDetailFooter flex flex-col lg:flex-row items-center justify-between gap-[1.875rem] relative w-full mb-[3.125rem] sm:mb-[4rem] md:mb-[5.3125rem]">
-                  <Link className="text-accent hover:text-accent2 font-Poppins text-[1rem] md:text-[1.0625rem] font-bold uppercase inline-flex gap-2 items-center underline underline-offset-7 mt-[1.875rem] md:mt-[2.8125rem]" to="/" title="Back to Home">
+                  <Link className="text-accent hover:text-accent2 font-Poppins text-[1rem] md:text-[1.0625rem] font-bold uppercase inline-flex gap-2 items-center underline underline-offset-8 mt-[1.875rem] md:mt-[2.8125rem]" to="/" title="Back to Home">
                     <FaHome /> Back to Home
                   </Link>
                 </footer>

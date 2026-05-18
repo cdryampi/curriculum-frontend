@@ -57,7 +57,9 @@ const useSkillListCategoryHook = (initialCategory) => {
   const loadNextPage = () => nextPageURL && fetchSkills(nextPageURL)
   const loadPrevPage = () => prevPageURL && fetchSkills(prevPageURL)
 
-  return { data, loading, error, loadNextPage, loadPrevPage, nextPageURL, prevPageURL, category, setCategory }
+  const refetch = () => fetchSkills()
+
+  return { data, loading, error, loadNextPage, loadPrevPage, nextPageURL, prevPageURL, category, setCategory, refetch }
 }
 
 export default useSkillListCategoryHook

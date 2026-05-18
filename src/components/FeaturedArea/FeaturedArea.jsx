@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import Shape1 from "../../assets/images/shape-1.png"
 import Shape2 from "../../assets/images/shape-2.png"
 import Shape3 from "../../assets/images/shape-3.png"
@@ -68,24 +67,26 @@ const FeaturedArea = ({ userData, loading }) => {
                   className="text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] lg:text-[1.25rem] xl:text-[1.375rem] text-desc md:leading-9 sm:leading-7 leading-6 w-full md:w-full lg:w-full xl:w-3/4 mt-6"
                   dangerouslySetInnerHTML={{ __html: userData?.resumen_habilidades }}
                 ></p>
-                <div className="flex items-center md:justify-start justify-center sm:gap-8 md:gap-10 lg:gap-15 xl:gap-20 gap-8 md:mt-[3.125rem] mt-[1.875rem]">
-                  <Link
+                <div className="flex items-center md:justify-start justify-center sm:gap-8 md:gap-10 lg:gap-14 xl:gap-20 gap-8 md:mt-[3.125rem] mt-[1.875rem]">
+                  <a
                     className="text-accent uppercase md:text-[1.125rem] text-[1rem] flex gap-5 items-center hover:text-white"
-                    to={`${getGitHub()}`}
+                    href={`${getGitHub()}`}
                     target="_blank"
-                    title="contáctame"
+                    rel="noopener noreferrer"
+                    title="Ver proyectos en GitHub"
                   >
                     <FiChevronRight className="bg-accent text-white rounded-[5px] md:rounded-[10px] w-9 h-[3.5rem] md:w-11 md:h-[4.375rem] p-2"></FiChevronRight>
                     <span className="font-bold font-Poppins underline underline-offset-8">Wañuchiyqa</span>
-                  </Link>
-                  <Link
-                    className="bg-white text-accent text-[1rem] font-Poppins font-bold uppercase rounded-[5px] md:rounded-[10px] md:px-6 lg:px-10 xl:px-11 px-7 md:py-[1.125rem] py-[14px] hover:bg-accent hover:text-white text-center inline-block"
-                    to={`${userData?.resume_file?.pdf_url}`}
+                  </a>
+                  <a
+                    className="text-white/60 uppercase md:text-[1rem] text-[0.9rem] font-Poppins font-medium flex gap-2 items-center hover:text-white"
+                    href={`${userData?.resume_file?.pdf_url || "#"}`}
                     target="_blank"
+                    rel="noopener noreferrer"
                     title="descargar CV"
                   >
                     Qillqay CV
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

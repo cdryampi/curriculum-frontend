@@ -13,7 +13,7 @@ const MyWorkExperience = () => {
 
   if (error) {
     return (
-      <section className="workExpWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem relative w-full">
+      <section className="workExpWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem] relative w-full">
         <div className="container mx-auto">
           <div className="flex flex-col items-center py-8">
             <p className="text-red-400 mb-3">Error al cargar la experiencia laboral.</p>
@@ -27,7 +27,7 @@ const MyWorkExperience = () => {
   if (loading) return <WorkExpSkeleton />
 
   return (
-    <section className="workExpWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem relative w-full" id="workExperience">
+    <section className="workExpWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem] relative w-full" id="workExperience">
       <span className="bg-accent absolute right-0 bottom-[-.75rem] h-6 w-1/2"></span>
       <div className="fixedBg bg-center bg-cover bg-no-repeat before:absolute before:z-[1] before:inset-0 before:opacity-90 before:bg-dark bg-dark gradBg1 bg-blend-color-dodge xl:rounded-tl-[20rem] lg:rounded-tl-[18rem] md:rounded-tl-[15rem] sm:rounded-tl-[10rem] rounded-tl-0 overflow-hidden" style={{ backgroundImage: `url(${SectionBg})` }}></div>
       <div className="container sm:container md:container lg:container xl:max-w-[86.875rem] mx-auto">
@@ -68,10 +68,10 @@ const MyWorkExperience = () => {
                         <i className="text-white before:bg-dark3 before:rotate-[45deg] before:rounded-[.9375rem] before:inset-0 before:absolute before:z-[-1] font-Poppins font-extrabold text-[1.875rem] md:text-[2.75rem] lg:text-[3.75rem] not-italic h-[3.125rem] w-[3.125rem] md:h-[5rem] md:w-[5rem] lg:h-[7.5rem] lg:w-[7.5rem] inline-flex justify-center items-center absolute left-0 top-5 z-[-1]">
                           {i + 1}
                         </i>
-                        <span className="font-Poppins font-light text-desc text-[1rem] md:text-[1.125rem]">{item?.fecha_inicio} - {item?.fecha_fin}</span>
+                        <span className="font-Poppins font-light text-white/60 text-[1rem] md:text-[1.125rem]">{item?.fecha_inicio} - {item?.fecha_fin}</span>
                         <h2 className="font-Poppins font-bold text-white text-[1.75rem] lg:text-[1.875rem] xl:text-[2.25rem] mt-[5px]">{item?.position}</h2>
-                        <h4 className="font-NunitoSans font-semibold text-accent text-[1.125rem] md:text-[1.25rem] lg:text-[1.375rem] mt-2">{item?.empresa}</h4>
-                        <div className="font-NunitoSans font-normal text-desc text-[1rem] md:text-[1.125rem] max-w-full md:max-w-[95%] mt-4">
+                        <h4 className="font-NunitoSans font-semibold text-white text-[1.125rem] md:text-[1.25rem] lg:text-[1.375rem] mt-2">{item?.empresa}</h4>
+                        <div className="font-NunitoSans font-normal text-white/70 text-[1rem] md:text-[1.125rem] max-w-full md:max-w-[95%] mt-4">
                           <div dangerouslySetInnerHTML={{ __html: item?.descripcion }}></div>
                         </div>
                         <TagsDisplay tags={item?.tags} />
