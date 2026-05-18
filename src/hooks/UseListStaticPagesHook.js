@@ -1,6 +1,6 @@
-import useApi from "./useApi";
-import { fetchStaticPages } from "../api";
+import useApiWithCache from "./useApiWithCache"
+import { fetchStaticPages } from "../api"
 
-const useStaticPages = () => useApi(fetchStaticPages);
+const useStaticPages = () => useApiWithCache("staticPages", fetchStaticPages)
 
-export default useStaticPages;
+export default useStaticPages

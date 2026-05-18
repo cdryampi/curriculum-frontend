@@ -1,6 +1,6 @@
-import useApi from "./useApi";
-import { fetchSocialLinks } from "../api";
+import useApiWithCache from "./useApiWithCache"
+import { fetchSocialLinks } from "../api"
 
-const useSocialLinks = () => useApi(fetchSocialLinks);
+const useSocialLinks = () => useApiWithCache("socialLinks", fetchSocialLinks)
 
-export default useSocialLinks;
+export default useSocialLinks

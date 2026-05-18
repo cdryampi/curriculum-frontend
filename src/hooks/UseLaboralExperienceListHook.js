@@ -1,6 +1,6 @@
-import useApi from "./useApi";
-import { fetchLaboralExperience } from "../api";
+import useApiWithCache from "./useApiWithCache"
+import { fetchLaboralExperience } from "../api"
 
-const useLaboralExperience = () => useApi(fetchLaboralExperience);
+const useLaboralExperience = () => useApiWithCache("workExperience", fetchLaboralExperience)
 
-export default useLaboralExperience;
+export default useLaboralExperience

@@ -1,35 +1,41 @@
-import { Link as RouterLink } from "react-router-dom";
-import { NAV_LINKS } from "../../data/menuItems";
+import { Link as RouterLink } from "react-router-dom"
+import { FiExternalLink } from "react-icons/fi"
+import { NAV_LINKS } from "../../data/menuItems"
 
 const MenuLinks = ({ pdf_link }) => {
-  const { title, file } = pdf_link || {};
+  const pdfUrl = pdf_link?.file
+  const pdfTitle = pdf_link?.title || "Descargar CV"
 
   return (
-    <nav className="relative hidden lg:block">
+    <nav className="relative hidden lg:block" aria-label="Navegación principal">
       <ul className="flex flex-col lg:flex-row gap-4 lg:gap-10">
         {NAV_LINKS.map((link) => (
-          <RouterLink
-            key={link.to}
-            to={link.to}
-            className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
-            title={link.title}
-          >
-            <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+          <li key={link.to}>
+            <RouterLink
+              to={link.to}
+              className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase text-white hover:text-accent transition-colors duration-300 block cursor-pointer"
+              title={link.title}
+            >
               {link.label}
-            </span>
-          </RouterLink>
+            </RouterLink>
+          </li>
         ))}
-        <a
-          className="bg-white text-accent text-[1rem] font-Poppins font-bold uppercase rounded-[5px] md:rounded-[10px] md:px-5 lg:px-5 xl:px-5 px-7 md:py-[.3rem] py-[04px] hover:bg-accent hover:text-white text-center inline-block cursor-pointer"
-          href={`${file}`}
-          target="_blank"
-          title={title}
-        >
-          Descargar CV
-        </a>
+        {pdfUrl && (
+          <li>
+            <a
+              className="bg-white text-accent text-[1rem] font-Poppins font-bold uppercase rounded-[5px] md:rounded-[10px] md:px-5 lg:px-5 xl:px-5 px-7 md:py-[4px] py-[4px] hover:bg-accent hover:text-white text-center inline-flex items-center gap-1.5 transition-colors duration-300 cursor-pointer"
+              href={pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={pdfTitle}
+            >
+              {pdfTitle} <FiExternalLink className="inline" size={14} />
+            </a>
+          </li>
+        )}
       </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default MenuLinks;
+export default MenuLinks

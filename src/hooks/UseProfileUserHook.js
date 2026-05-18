@@ -1,6 +1,6 @@
-import useApi from "./useApi";
-import { fetchUserProfile } from "../api";
+import useApiWithCache from "./useApiWithCache"
+import { fetchUserProfile } from "../api"
 
-const useUserProfile = () => useApi(fetchUserProfile);
+const useUserProfile = () => useApiWithCache("userProfile", fetchUserProfile)
 
-export default useUserProfile;
+export default useUserProfile

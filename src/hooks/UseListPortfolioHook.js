@@ -1,6 +1,6 @@
-import useApi from "./useApi";
-import { fetchPortfolioList } from "../api";
+import useApiWithCache from "./useApiWithCache"
+import { fetchPortfolioList } from "../api"
 
-const usePortfolioList = () => useApi(fetchPortfolioList);
+const usePortfolioList = () => useApiWithCache("portfolio", fetchPortfolioList)
 
-export default usePortfolioList;
+export default usePortfolioList

@@ -1,6 +1,7 @@
-import useApi from "./useApi";
-import { fetchStaticPage } from "../api";
+import useApiWithCache from "./useApiWithCache"
+import { fetchStaticPage } from "../api"
 
-const useFetchStaticPage = (slug) => useApi(() => fetchStaticPage(slug), [slug]);
+const useFetchStaticPage = (slug) =>
+  useApiWithCache(`staticPage:${slug}`, () => fetchStaticPage(slug), [slug])
 
-export default useFetchStaticPage;
+export default useFetchStaticPage

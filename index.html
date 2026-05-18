@@ -1,48 +1,53 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="title"
-      content="Currículum de Yampi | Desarrollador Web Full Stack con experiencia en Django y Vue"
-    />
-    <meta
-      name="description"
-      content="Descubre mi perfil profesional, experiencia y habilidades en desarrollo web. Consulta mi currículum online y contáctame para colaboraciones o propuestas laborales."
-    />
-    <link rel="stylesheet" href="./src/styles/global.css" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
+    <meta name="title" content="Currículum de Yampi | Desarrollador Web Full Stack" />
+    <meta name="description" content="Descubre mi perfil profesional, experiencia y habilidades en desarrollo web. Consulta mi currículum online y contáctame para colaboraciones o propuestas laborales." />
+    <meta name="keywords" content="currículum, Yampi, desarrollador web, full stack, Django, React, portfolio, programador" />
+    <meta name="author" content="Yampi" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Curriculum Yampi" />
+    <meta property="og:title" content="Currículum de Yampi | Desarrollador Web Full Stack" />
+    <meta property="og:description" content="Descubre mi perfil profesional, experiencia y habilidades en desarrollo web." />
+    <meta property="og:url" content="https://cdryampi.github.io/curriculum-frontend/" />
+    <meta property="og:image" content="https://cdryampi.github.io/curriculum-frontend/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Currículum de Yampi | Desarrollador Web Full Stack" />
+    <meta name="twitter:description" content="Descubre mi perfil profesional, experiencia y habilidades en desarrollo web." />
+    <link rel="canonical" href="https://cdryampi.github.io/curriculum-frontend/" />
     <link rel="manifest" href="/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://api.yampi.eu" />
+    <link rel="preconnect" href="https://api.yampi.eu" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Curriculum Yampi</title>
+    <!-- Google Fonts: preload critical + stylesheet -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Nunito+Sans:wght@300;400;600;700;800&family=Caveat:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Nunito+Sans:wght@300;400;600;700;800&family=Caveat:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Nunito+Sans:wght@300;400;600;700;800&family=Caveat:wght@400;500;600;700&display=swap" />
+    </noscript>
+
+    <link rel="stylesheet" href="./src/styles/global.css" />
+    <link rel="preload" as="image" href="/logo.png" />
+    <title>Currículum de Yampi | Desarrollador Web Full Stack</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="text-align:center;padding:2rem;font-family:sans-serif">
+        <h1>Currículum de Yampi</h1>
+        <p>Necesitas habilitar JavaScript para ver esta aplicación.</p>
+      </div>
+    </noscript>
     <div id="front_curri"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

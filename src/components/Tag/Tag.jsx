@@ -1,6 +1,7 @@
-import React from "react";
+import React from "react"
 
-const TagsDisplay = ({ tags }) => {
+const TagsDisplay = React.memo(({ tags }) => {
+  if (!tags?.length) return null
   return (
     <div className="flex flex-wrap gap-1">
       {tags.map((tag) => (
@@ -13,7 +14,7 @@ const TagsDisplay = ({ tags }) => {
         </span>
       ))}
     </div>
-  );
-};
+  )
+})
 
-export default TagsDisplay;
+export default TagsDisplay

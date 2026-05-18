@@ -1,6 +1,6 @@
-import useApi from "./useApi";
-import { fetchEducationList } from "../api";
+import useApiWithCache from "./useApiWithCache"
+import { fetchEducationList } from "../api"
 
-const useEducationList = () => useApi(fetchEducationList);
+const useEducationList = () => useApiWithCache("education", fetchEducationList)
 
-export default useEducationList;
+export default useEducationList

@@ -1,52 +1,63 @@
-import { useState, useEffect, useCallback } from 'react';
-import { API_BASE_URL } from '../config';
-import { fetchSkillFilter, fetchSkillFilterNextPrev} from '../api/index';
+import { useState, useEffect, useCallback } from 'react'
+import { API_BASE_URL } from '../config'
+import { fetchSkillFilterNextPrev } from '../api/index'
+import { cacheGet, cacheSet } from './cacheStore'
+
+const CATEGORY_CACHE_PREFIX = 'skills:'
 
 const useSkillListCategoryHook = (initialCategory) => {
-    const [category, setCategoryState] = useState(initialCategory);
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [nextPageURL, setNextPageURL] = useState(null);
-    const [prevPageURL, setPrevPageURL] = useState(null);
+  const [category, setCategoryState] = useState(initialCategory)
+  const [data, setData] = useState(() => cacheGet(CATEGORY_CACHE_PREFIX + initialCategory) || [])
+  const [loading, setLoading] = useState(!cacheGet(CATEGORY_CACHE_PREFIX + initialCategory))
+  const [error, setError] = useState(null)
+  const [nextPageURL, setNextPageURL] = useState(null)
+  const [prevPageURL, setPrevPageURL] = useState(null)
 
-    // Fetch data based on either the category change or pagination change
-    const fetchSkills = useCallback((url = `${API_BASE_URL}/education_and_skills/skill_list_category/${category}/`) => {
-        setLoading(true);
-        fetchSkillFilterNextPrev(url)
-        .then(response=>{
-
-            setData(response.data.results);
-            setNextPageURL(response.data.next);
-            setPrevPageURL(response.data.previous);
-            setLoading(false);
-
-        }).catch(err => {
-
-            setError(`Error fetching data: ${err.response ? err.response.data.message || err.message : err.message}`);
-            setLoading(false);
-
-        })
-    }, [category]);
-
-    // React to changes in category by resetting pagination and refetching data
-    useEffect(() => {
-        setNextPageURL(null);
-        setPrevPageURL(null);
-        fetchSkills();
-    }, [category, fetchSkills]);
-
-    const setCategory = (newCategory) => {
-        if (newCategory !== category) {
-            setCategoryState(newCategory);
+  const fetchSkills = useCallback((url = `${API_BASE_URL}/education_and_skills/skill_list_category/${category}/`) => {
+    const cached = !url.includes('page=') ? cacheGet(CATEGORY_CACHE_PREFIX + category) : null
+    if (cached) {
+      setData(cached.data)
+      setNextPageURL(cached.next)
+      setPrevPageURL(cached.prev)
+      setLoading(false)
+      return
+    }
+    setLoading(true)
+    fetchSkillFilterNextPrev(url)
+      .then(response => {
+        const results = response.data.results
+        const next = response.data.next
+        const previous = response.data.previous
+        if (!url.includes('page=')) {
+          cacheSet(CATEGORY_CACHE_PREFIX + category, { data: results, next, prev: previous })
         }
-    };
+        setData(results)
+        setNextPageURL(next)
+        setPrevPageURL(previous)
+        setLoading(false)
+      })
+      .catch(err => {
+        setError(`Error fetching data: ${err.response ? err.response.data.message || err.message : err.message}`)
+        setLoading(false)
+      })
+  }, [category])
 
-    // Pagination handlers that utilize updated URLs
-    const loadNextPage = () => nextPageURL && fetchSkills(nextPageURL);
-    const loadPrevPage = () => prevPageURL && fetchSkills(prevPageURL);
+  useEffect(() => {
+    setNextPageURL(null)
+    setPrevPageURL(null)
+    fetchSkills()
+  }, [category, fetchSkills])
 
-    return { data, loading, error, loadNextPage, loadPrevPage, nextPageURL, prevPageURL, category, setCategory };
-};
+  const setCategory = (newCategory) => {
+    if (newCategory !== category) {
+      setCategoryState(newCategory)
+    }
+  }
 
-export default useSkillListCategoryHook;
+  const loadNextPage = () => nextPageURL && fetchSkills(nextPageURL)
+  const loadPrevPage = () => prevPageURL && fetchSkills(prevPageURL)
+
+  return { data, loading, error, loadNextPage, loadPrevPage, nextPageURL, prevPageURL, category, setCategory }
+}
+
+export default useSkillListCategoryHook

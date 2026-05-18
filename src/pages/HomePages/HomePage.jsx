@@ -1,86 +1,90 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { Header } from "../../components/Header";
-import { FeaturedArea } from "../../components/FeaturedArea";
-import { AboutUs } from "../../components/AboutUs";
-import { BottomBar2 } from "../../components/BottomBar";
-import { EducationAndSkills } from "../../components/EducationAndSkills";
-import { MyWorkExperience } from "../../components/MyWorkExperience";
-import { Portfolio } from "../../components/Portfolio";
-import { Services } from "../../components/Services";
-import { ContactUs } from "../../components/ContactUs";
-import { ScrollToTopButton } from "../../components/BackToTopComponent";
-import { SyncLoader } from "react-spinners";
-import useUserProfile from "../../hooks/UseProfileUserHook";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
+import { Helmet } from "react-helmet-async"
+import { Header } from "../../components/Header"
+import { FeaturedArea } from "../../components/FeaturedArea"
+import { AboutUs } from "../../components/AboutUs"
+import { BottomBar2 } from "../../components/BottomBar"
+import { EducationAndSkills } from "../../components/EducationAndSkills"
+import { MyWorkExperience } from "../../components/MyWorkExperience"
+import { Portfolio } from "../../components/Portfolio"
+import { Services } from "../../components/Services"
+import { ContactUs } from "../../components/ContactUs"
+import { ScrollToTopButton } from "../../components/BackToTopComponent"
+import useUserProfile from "../../hooks/UseProfileUserHook"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import { HeaderSkeleton, BottomBarSkeleton } from "../../components/Skeleton"
 
 const HomePage = () => {
-  const { data: userData, loading, error, refetch } = useUserProfile();
-  const pdf_data = userData?.resume_file;
-  const location = useLocation();
-  useEffect(() => {
-    if (!loading && location.hash) {
-      const id = location.hash.replace("#", "");
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-        window.history.replaceState(
-          null,
-          "",
-          window.location.pathname + window.location.search
-        );
-      }
-    }
-  }, [location, loading]);
+  const { data: userData, loading, error, refetch } = useUserProfile()
+  const pdf_data = userData?.resume_file
+  const location = useLocation()
 
   useEffect(() => {
-    document.title = "Home - Curriculum Yampi";
-  }, []);
+    if (!loading && location.hash) {
+      const id = location.hash.replace("#", "")
+      const element = document.getElementById(id)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+        window.history.replaceState(null, "", window.location.pathname + window.location.search)
+      }
+    }
+  }, [location, loading])
+
+  const jsonLd = userData ? {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: `${userData.nombre} ${userData.apellido}`,
+    givenName: userData.nombre,
+    familyName: userData.apellido,
+    jobTitle: userData.profesion,
+    email: userData.correo_electronico,
+    telephone: userData.telefono,
+    address: { "@type": "PostalAddress", streetAddress: userData.direccion },
+    image: userData.foto?.file,
+    url: "https://cdryampi.github.io/curriculum-frontend/",
+    sameAs: userData.socials_media?.map(s => s.profile_link) || [],
+  } : null
 
   if (error) {
     return (
       <div className="pageLoader fixed flex-col justify-center items-center inset-0 flex bg-dark">
+        <Helmet><title>Error - Curriculum Yampi</title></Helmet>
         <p className="text-white text-lg mb-4">Error al cargar el perfil del usuario.</p>
-        <button
-          className="bg-accent text-white px-6 py-2 rounded-lg font-Poppins font-bold hover:bg-accent2"
-          onClick={refetch}
-        >
-          Reintentar
-        </button>
+        <button className="bg-accent text-white px-6 py-2 rounded-lg font-Poppins font-bold hover:bg-accent2" onClick={refetch}>Reintentar</button>
       </div>
-    );
+    )
   }
-  return (
-    <div id="home">
-      {loading ? (
-        <div className="pageLoader fixed justify-center items-center inset-0 flex">
-          <SyncLoader
-            color="#284be5"
-            cssOverride={{}}
-            loading
-            margin={10}
-            size={60}
-            speedMultiplier={1}
-          />
-        </div>
-      ) : (
-        <>
-          <Header pdf={pdf_data} />
-          <FeaturedArea userData={userData} />
-          <AboutUs userData={userData} />
-          <Services />
-          <Portfolio />
-          <MyWorkExperience />
-          <EducationAndSkills />
-          <ToastContainer />
-          <ContactUs />
-          <BottomBar2 />
-          <ScrollToTopButton />
-        </>
-      )}
-    </div>
-  );
-};
 
-export default HomePage;
+  return (
+    <main id="main-content"><div id="home">
+      <Helmet>
+        <title>Curriculum de Yampi | Desarrollador Web Full Stack</title>
+        <meta name="description" content={userData?.description ? userData.description.replace(/<[^>]*>/g, "").slice(0, 160) : "Descubre mi perfil profesional, experiencia y habilidades en desarrollo web."} />
+        <meta property="og:title" content={`${userData?.nombre || "Yampi"} ${userData?.apellido || "Dev"} - Curriculum`} />
+        <meta property="og:description" content="Desarrollador Web Full Stack con experiencia en Django y React." />
+        <meta property="og:type" content="profile" />
+        <meta property="og:url" content="https://cdryampi.github.io/curriculum-frontend/" />
+        <meta property="og:image" content={userData?.foto?.file || "/logo.png"} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://cdryampi.github.io/curriculum-frontend/" />
+        {jsonLd && <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
+      </Helmet>
+
+      {loading ? <HeaderSkeleton /> : <Header pdf={pdf_data} />}
+      <FeaturedArea userData={userData} loading={loading} />
+      <AboutUs userData={userData} loading={loading} />
+      <Services />
+      <Portfolio />
+      <MyWorkExperience />
+      <EducationAndSkills />
+      <ToastContainer />
+      <ContactUs />
+      {loading ? <BottomBarSkeleton /> : <BottomBar2 />}
+      <ScrollToTopButton />
+    </div></main>
+  )
+}
+
+export default HomePage

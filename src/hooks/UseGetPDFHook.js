@@ -1,6 +1,6 @@
-import useApi from "./useApi";
-import { fetchUserPDF } from "../api";
+import useApiWithCache from "./useApiWithCache"
+import { fetchUserPDF } from "../api"
 
-const usePDF = () => useApi(fetchUserPDF);
+const usePDF = () => useApiWithCache("userPDF", fetchUserPDF)
 
-export default usePDF;
+export default usePDF

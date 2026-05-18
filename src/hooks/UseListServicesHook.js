@@ -1,6 +1,6 @@
-import useApi from "./useApi";
-import { fetchServicesList } from "../api";
+import useApiWithCache from "./useApiWithCache"
+import { fetchServicesList } from "../api"
 
-const useServicesList = () => useApi(fetchServicesList);
+const useServicesList = () => useApiWithCache("services", fetchServicesList)
 
-export default useServicesList;
+export default useServicesList

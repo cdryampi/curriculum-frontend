@@ -1,58 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Shape1 from "../../assets/images/shape-1.png";
-import Shape2 from "../../assets/images/shape-2.png";
-import Shape3 from "../../assets/images/shape-3.png";
-import Shape4 from "../../assets/images/shape-4.png";
-import { FiChevronRight } from "react-icons/fi";
-import { GIT_HUB_URL } from "../../config";
+import React from "react"
+import { Link } from "react-router-dom"
+import Shape1 from "../../assets/images/shape-1.png"
+import Shape2 from "../../assets/images/shape-2.png"
+import Shape3 from "../../assets/images/shape-3.png"
+import Shape4 from "../../assets/images/shape-4.png"
+import { FiChevronRight } from "react-icons/fi"
+import { GIT_HUB_URL } from "../../config"
+import { FeaturedAreaSkeleton } from "../Skeleton"
 
-const FeaturedArea = ({ userData }) => {
+const FeaturedArea = ({ userData, loading }) => {
+  if (loading || !userData) return <FeaturedAreaSkeleton />
+
   const getGitHub = () => {
-    // Devuelve el enlace de GitHub o el por defecto
-    let github = userData?.socials_media.find(
+    let github = userData?.socials_media?.find(
       (social) => social.social_media.toLowerCase() === "github"
-    );
-    return github ? github.profile_link : GIT_HUB_URL;
-  };
+    )
+    return github ? github.profile_link : GIT_HUB_URL
+  }
 
-  return userData ? (
+  return (
     <section className="featuredAreaWrap md:text-left text-center bg-dark z-[1] flex items-center bgGrident1 bg-blend-hard-light relative min-h-screen xl:rounded-br-[20rem] lg:rounded-br-[18rem] md:rounded-br-[15rem] sm:rounded-br-[10rem] rounded-br-0 w-screen md:py-[6.25rem] py-20">
       <div className="shaps absolute inset-0">
-        <img
-          className="absolute floatAnim left-[10%] top-[10%] animDelay1"
-          src={Shape1}
-          alt="Shape"
-        ></img>
-        <img
-          className="absolute floatAnim right-[10%] bottom-[20%] animDelay2"
-          src={Shape2}
-          alt="Shape"
-        ></img>
-        <img
-          className="absolute floatAnim right-[50%] bottom-[50%] animDelay3"
-          src={Shape2}
-          alt="Shape"
-        ></img>
-        <img
-          className="absolute floatAnim right-[15%] bottom-[40%] animDelay4"
-          src={Shape3}
-          alt="Shape"
-        ></img>
-        <img
-          className="absolute floatAnim right-[10%] top-[10%] animDelay5"
-          src={Shape3}
-          alt="Shape"
-        ></img>
-        <img
-          className="absolute floatAnim right-[45%] top-[10%] animDelay6"
-          src={Shape4}
-          alt="Shape"
-        ></img>
-        {/* Shaps */}
+        <img className="absolute floatAnim left-[10%] top-[10%] animDelay1" src={Shape1} alt="Shape" />
+        <img className="absolute floatAnim right-[10%] bottom-[20%] animDelay2" src={Shape2} alt="Shape" />
+        <img className="absolute floatAnim right-[50%] bottom-[50%] animDelay3" src={Shape2} alt="Shape" />
+        <img className="absolute floatAnim right-[15%] bottom-[40%] animDelay4" src={Shape3} alt="Shape" />
+        <img className="absolute floatAnim right-[10%] top-[10%] animDelay5" src={Shape3} alt="Shape" />
+        <img className="absolute floatAnim right-[45%] top-[10%] animDelay6" src={Shape4} alt="Shape" />
       </div>
       <span className="bg-accent absolute left-0 bottom-[-.75rem] h-6 w-1/2"></span>
-      <div className="container sm:container md:container lg:container xl:container 2xl:container mx-auto">
+      <div className="container mx-auto">
         <div className="featuredAreaInner relative z-[1] w-full">
           <div className="grid gap-[1.875rem] md:grid-cols-2 grid-cols-1 items-center">
             <div className="md:order-1">
@@ -65,21 +42,16 @@ const FeaturedArea = ({ userData }) => {
                       className="rounded-full relative z-[1] max-w-full"
                       src={userData?.foto?.file}
                       alt={userData?.foto?.title}
+                      fetchpriority="high"
                     />
-                    {/* Featured Image */}
                   </div>
-                  {/* Featured Image Inner */}
                 </div>
-                {/* Featured Image Wrap */}
               </div>
             </div>
             <div>
               <div className="featuredCap relative w-full mt-10 md:mt-0">
                 <span className="bg-accent opacity-[.07] w-[6.25rem] h-[6.25rem] md:w-[12.5rem] md:h-[12.5rem] absolute rounded-full z-[-1] top-[-2.5rem] md:top-[-5rem]"></span>
-                <h3
-                  className="font-normal text-[1.5rem] sm:text-[1.5rem] md:text-[1.875rem] lg:text-[2rem] xl:text-[2.5rem] font-Caveat text-white uppercase leading-none"
-                  title="Hola, yo soy"
-                >
+                <h3 className="font-normal text-[1.5rem] sm:text-[1.5rem] md:text-[1.875rem] lg:text-[2rem] xl:text-[2.5rem] font-Caveat text-white uppercase leading-none">
                   Allillanchu, Ñuqaqa kani
                 </h3>
                 <h2 className="font-bold text-[2.3rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5rem] font-Poppins text-white uppercase">
@@ -94,9 +66,7 @@ const FeaturedArea = ({ userData }) => {
                 </h5>
                 <p
                   className="text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] lg:text-[1.25rem] xl:text-[1.375rem] text-desc md:leading-9 sm:leading-7 leading-6 w-full md:w-full lg:w-full xl:w-3/4 mt-6"
-                  dangerouslySetInnerHTML={{
-                    __html: userData?.resumen_habilidades,
-                  }}
+                  dangerouslySetInnerHTML={{ __html: userData?.resumen_habilidades }}
                 ></p>
                 <div className="flex items-center md:justify-start justify-center sm:gap-8 md:gap-10 lg:gap-15 xl:gap-20 gap-8 md:mt-[3.125rem] mt-[1.875rem]">
                   <Link
@@ -106,9 +76,7 @@ const FeaturedArea = ({ userData }) => {
                     title="contáctame"
                   >
                     <FiChevronRight className="bg-accent text-white rounded-[5px] md:rounded-[10px] w-9 h-[3.5rem] md:w-11 md:h-[4.375rem] p-2"></FiChevronRight>
-                    <span className="font-bold font-Poppins underline underline-offset-8">
-                      Wañuchiyqa
-                    </span>
+                    <span className="font-bold font-Poppins underline underline-offset-8">Wañuchiyqa</span>
                   </Link>
                   <Link
                     className="bg-white text-accent text-[1rem] font-Poppins font-bold uppercase rounded-[5px] md:rounded-[10px] md:px-6 lg:px-10 xl:px-11 px-7 md:py-[1.125rem] py-[14px] hover:bg-accent hover:text-white text-center inline-block"
@@ -119,19 +87,13 @@ const FeaturedArea = ({ userData }) => {
                     Qillqay CV
                   </Link>
                 </div>
-                {/* Featured Cap */}
               </div>
             </div>
           </div>
-          {/* Featured Area Inner */}
         </div>
       </div>
-      {/* Featured Area Wrap */}
     </section>
-  ) : (
-    // Si los datos aún no están disponibles, muestra un mensaje de carga
-    <div>Loading...</div>
-  );
-};
+  )
+}
 
-export default FeaturedArea;
+export default FeaturedArea
