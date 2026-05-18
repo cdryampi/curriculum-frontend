@@ -7,7 +7,7 @@ import { StaticPage } from "../pages/StaticPage";
 const RouterLinks = () => {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/404" element={<ErrorPage />} />

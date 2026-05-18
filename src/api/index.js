@@ -2,7 +2,6 @@
 import axios from "axios";
 
 import { API_BASE_URL } from "../config";
-import loginhook from "../hooks/loginHook";
 
 // Configura el cliente de Axios
 const apiClient = axios.create({
@@ -12,18 +11,6 @@ const apiClient = axios.create({
   },
 });
 
-apiClient.interceptors.request.use(
-  async (config) => {
-    const token = await loginhook();
-    if (token) {
-      config.headers.Authorization = `Token ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
 // Funciones para diferentes endpoints
 export const fetchStaticPages = () => apiClient.get(`/static_pages/private/`);
 export const fetchSocialLinks = () => apiClient.get("/social/private/");

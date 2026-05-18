@@ -9,8 +9,6 @@ Antes de desplegar, asegúrate de configurar las siguientes variables de entorno
 ```
 VITE_API_BASE_URL=https://tu-backend-api.com
 VITE_GLOBAL_DELAY_CALLBACK=1500
-VITE_LOGIN_USER=tu_usuario
-VITE_LOGIN_PASSWORD=tu_contraseña
 VITE_GIT_HUB_URL=https://github.com/tuusuario/
 ```
 
@@ -36,7 +34,7 @@ VITE_GIT_HUB_URL=https://github.com/tuusuario/
 
 1. Construye la imagen:
    ```bash
-   docker build -t curriculum-frontend --build-arg VITE_API_BASE_URL=https://tu-backend-api.com --build-arg VITE_GLOBAL_DELAY_CALLBACK=1500 --build-arg VITE_LOGIN_USER=tu_usuario --build-arg VITE_LOGIN_PASSWORD=tu_contraseña --build-arg VITE_GIT_HUB_URL=https://github.com/tuusuario/ .
+   docker build -t curriculum-frontend --build-arg VITE_API_BASE_URL=https://tu-backend-api.com --build-arg VITE_GLOBAL_DELAY_CALLBACK=1500 --build-arg VITE_GIT_HUB_URL=https://github.com/tuusuario/ .
    ```
 
 2. Ejecuta el contenedor:

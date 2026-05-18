@@ -17,8 +17,6 @@ COPY . .
 # Create .env file from environment variables at build time
 RUN echo "VITE_API_BASE_URL=$VITE_API_BASE_URL" > .env && \
     echo "VITE_GLOBAL_DELAY_CALLBACK=$VITE_GLOBAL_DELAY_CALLBACK" >> .env && \
-    echo "VITE_LOGIN_USER=$VITE_LOGIN_USER" >> .env && \
-    echo "VITE_LOGIN_PASSWORD=$VITE_LOGIN_PASSWORD" >> .env && \
     echo "VITE_GIT_HUB_URL=$VITE_GIT_HUB_URL" >> .env
 
 # Build the project

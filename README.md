@@ -77,8 +77,6 @@ src/
    ```
    VITE_API_BASE_URL=https://tu-backend-api.com
    VITE_GLOBAL_DELAY_CALLBACK=1500
-   VITE_LOGIN_USER=tu_usuario
-   VITE_LOGIN_PASSWORD=tu_contraseña
    VITE_GIT_HUB_URL=https://github.com/tuusuario/
    ```
 
