@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Plugins */
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
@@ -14,29 +13,8 @@
   }
 }
 
-@layer utilities {
-  @variants responsive {
-    .masonry {
-      column-count: 1;
-    }
-    .masonry-sm {
-      column-count: 2;
-    }
-    .masonry-md {
-      column-gap: 1.875rem;
-      column-count: 3;
-    }
-    .break-inside {
-      break-inside: avoid;
-    }
-  }
-}
-
-/*===== Global COLORS =====*/
-
 @config "../../tailwind.config.js";
 
-/*===== General Variables =====*/
 :root {
   --accentColor: #284be5;
   --accentColor2: #232a60;
@@ -76,7 +54,6 @@
   --transition: all 0.3s linear;
 }
 
-/*===== General Styling =====*/
 body,
 html {
   overflow-x: hidden;
@@ -98,7 +75,6 @@ button {
 }
 button,
 input[type="submit"],
-.fileContainer,
 input[type="file"] {
   cursor: pointer;
 }
@@ -110,16 +86,9 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-/* input:focus,
-textarea:focus, */
 select:focus,
 button:focus,
-a:focus,
-.form-wrp fieldset p a:focus,
-.page-link:focus,
-.btn.focus,
-.btn:focus,
-.bootstrap-select .dropdown-toggle:focus {
+a:focus {
   border-color: transparent;
   outline: none !important;
   -webkit-box-shadow: none !important;
@@ -128,11 +97,7 @@ a:focus,
 textarea {
   resize: none;
 }
-.slick-slide {
-  border: 0 !important;
-}
 
-/*=== Gradient Colors ===*/
 .bgGrident1,
 .gradBg1:before {
   background-image: var(--gradient);
@@ -145,7 +110,6 @@ textarea {
   background-image: var(--gradient2);
 }
 .gradBg1:before,
-.gradBg1:before,
 .gradBg3:before {
   content: "";
   position: absolute;
@@ -156,10 +120,8 @@ textarea {
   z-index: -1;
 }
 
-/*=== Parallax Background ===*/
 .fixedBg,
 .parallax-bg {
-  /* background-position: center; */
   width: 100%;
   margin: 0;
   position: absolute;
@@ -167,10 +129,6 @@ textarea {
   top: 0;
   bottom: 0;
   z-index: -2;
-}
-.fixed-bg {
-  background-attachment: scroll;
-  background-size: cover;
 }
 
 .serviceBg:before,
@@ -187,21 +145,18 @@ textarea {
   z-index: 1;
 }
 
-/*=== Iframe ===*/
 iframe {
   border: 0;
   display: block;
   width: 100%;
 }
 
-/*=== Image ===*/
 img {
   height: auto;
   max-width: 100%;
   vertical-align: middle;
 }
 
-/*=== Cross Browser Compatibility ===*/
 i,
 a,
 img,
@@ -222,42 +177,14 @@ nav ul li,
 
 nav ul ul,
 .menuWrap {
-  -webkit-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1); /* older webkit */
+  -webkit-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1);
   -webkit-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275); /* easeOutBack */
-  -webkit-transition-timing-function: cubic-bezier(
-    0.175,
-    0.885,
-    0.32,
-    1
-  ); /* older webkit */
+  transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
   -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition-timing-function: cubic-bezier(
-    0.175,
-    0.885,
-    0.32,
-    1.275
-  ); /* easeOutBack */
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/*===== Slick Style =====*/
-.slick-arrow {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  z-index: 1;
-}
-.slick-prev {
-  left: 0;
-}
-.slick-next {
-  right: 0;
-}
-/* .slick-arrow:before {display: none;} */
-
-/*===== Featured Area Style =====*/
 .featuredImg:before {
   border: 5px solid var(--accentColor);
   -webkit-border-radius: inherit;
@@ -268,21 +195,6 @@ nav ul ul,
   right: -2.1875rem;
   top: -2.1875rem;
   bottom: -2.1875rem;
-}
-
-/*===== Work Experience Style =====*/
-
-.imagen-fondo-empresa {
-  height: 500px; /* Altura fija */
-  overflow: hidden; /* Esconde cualquier parte de la imagen que exceda el div */
-  display: flex;
-  align-items: center; /* Centra la imagen verticalmente */
-  justify-content: center;
-}
-
-.imagen-fondo-empresa img {
-  height: 100%;
-  width: auto; /* Mantiene la proporción de aspecto */
 }
 
 .sliderWrap .swiper {
@@ -306,8 +218,7 @@ nav ul ul,
   max-height: 34.6875rem !important;
   height: initial !important;
 }
-.sliderWrap .swiper-slide-active .expBoxBg,
-.slick-center .expBoxBg {
+.sliderWrap .swiper-slide-active .expBoxBg {
   top: 5.625rem;
   bottom: 5.625rem;
 }
@@ -315,24 +226,19 @@ nav ul ul,
   top: 2.5rem !important;
   bottom: 2.5rem !important;
 }
-.swiper-slide-active .expImg,
-.slick-center .expImg {
+.swiper-slide-active .expImg {
   opacity: 1;
   max-height: 100%;
 }
-.swiper-slide-active .expCap > i,
-.slick-center .expCap > i {
+.swiper-slide-active .expCap > i {
   opacity: 0.4;
 }
-.swiper-slide-active .expCap > i:before,
-.slick-center .expCap > i:before {
+.swiper-slide-active .expCap > i:before {
   background-color: #fff;
   opacity: 0.3;
 }
 .swiper-slide-active .expCap > span,
-.swiper-slide-active .expCap > h4,
-.slick-center .expCap > span,
-.slick-center .expCap > h4 {
+.swiper-slide-active .expCap > h4 {
   color: #fff;
 }
 .sliderWrap .swiper-pagination {
@@ -353,7 +259,6 @@ nav ul ul,
   height: 1.875rem;
 }
 
-/*=== Work Experience Style 2 ===*/
 .swiperWrap2 .swiper {
   width: 100%;
   max-height: 47rem;
@@ -372,8 +277,7 @@ nav ul ul,
   min-height: 19.125rem;
   height: initial !important;
 }
-.swiperWrap2 .swiper-slide-active .expBoxBg,
-.slick-center .expBoxBg {
+.swiperWrap2 .swiper-slide-active .expBoxBg {
   top: 0;
   bottom: 0;
 }
@@ -393,7 +297,6 @@ nav ul ul,
   margin-top: 1.25rem;
 }
 
-/*=== Header ===*/
 .stickyHeader .menuWrap {
   opacity: 0;
   visibility: hidden;
@@ -415,14 +318,6 @@ nav ul ul,
   color: inherit;
 }
 
-/* .swiper-container {
-  height:auto; 
-}
-.swiper-slide {
-  height: auto;
-} */
-
-/*=== Mirror ===*/
 .mirror {
   -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
   transform: matrix(-1, 0, 0, 1, 0, 0);
@@ -441,7 +336,6 @@ nav ul ul,
   text-stroke-color: var(--accentColor);
 }
 
-/*===== Filter List Style =====*/
 .filterList > li.active {
   background-color: var(--accentColor);
   color: var(--white);
@@ -451,12 +345,6 @@ nav ul ul,
   opacity: 1;
 }
 
-.profBox {
-  -webkit-box-shadow: 0 0 3.125rem rgba(0, 0, 0, 0.08);
-  box-shadow: 0 0 3.125rem rgba(0, 0, 0, 0.08);
-}
-
-/*===== Animations =====*/
 .floatAnim {
   position: absolute;
   -webkit-animation: floatAnim 9s infinite;
@@ -515,7 +403,6 @@ nav ul ul,
   animation-delay: -1.25s;
 }
 
-/*===== Responsive Header =====*/
 @media (min-width: 1300px) and (max-width: 1610px) {
   .workExpWrap2,
   .skillsWrap {
@@ -525,7 +412,6 @@ nav ul ul,
 }
 
 @media (min-width: 1020px) {
-  /*=== Dropdown ===*/
   nav ul ul {
     background-color: #fff;
     position: absolute;
@@ -607,33 +493,6 @@ nav ul ul,
     right: -1.25rem;
     bottom: -1.25rem;
     top: -1.25rem;
-  }
-}
-
-@media (max-width: 770px) {
-  .testiList .slick-dots {
-    line-height: 1;
-    margin-top: 1.875rem;
-    display: flex !important;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-  .testiList .slick-dots li {
-    font-size: 0;
-  }
-  .testiList .slick-dots li button {
-    height: 10px;
-    width: 10px;
-    background-color: var(--white);
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    opacity: 0.4;
-  }
-  .testiList .slick-dots li.slick-active button,
-  .testiList .slick-dots li button:hover,
-  .testiList .slick-dots li button:focus {
-    opacity: 1;
   }
 }
 

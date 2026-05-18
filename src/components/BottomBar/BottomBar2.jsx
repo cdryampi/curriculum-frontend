@@ -1,11 +1,11 @@
 // BottomBar2.js
 import { Link } from "react-router-dom";
 import React from "react";
-import ListStaticPages from "../../hooks/UseListStaticPagesHook";
+import useStaticPages from "../../hooks/UseListStaticPagesHook";
 import { ClipLoader } from "react-spinners";
 
 const BottomBar2 = () => {
-  const { data: staticPageData, loading, error } = ListStaticPages();
+  const { data: staticPageData, loading, error } = useStaticPages();
 
   if (error) {
     return <div>Error al cargar las páginas estáticas.</div>;

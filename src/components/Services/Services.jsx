@@ -2,12 +2,17 @@ import { Link } from "react-scroll";
 import PatternImg2 from "../../assets/images/patternImg2.jpg";
 import { SectionTitle } from "../SectionTitles";
 import { ClipLoader } from "react-spinners";
-import useServicesHook from "../../hooks/UseListServicesHook";
+import useServicesList from "../../hooks/UseListServicesHook";
 
 const Services = () => {
-  const { data: services, loading, error } = useServicesHook();
+  const { data: services, loading, error, refetch } = useServicesList();
   if (error) {
-    return <div>Error al cargar.</div>;
+    return (
+      <div className="flex flex-col items-center py-8">
+        <p className="text-red-500 mb-3">Error al cargar los servicios.</p>
+        <button className="bg-accent text-white px-4 py-2 rounded font-bold hover:bg-accent2" onClick={refetch}>Reintentar</button>
+      </div>
+    );
   }
   return (
     <section

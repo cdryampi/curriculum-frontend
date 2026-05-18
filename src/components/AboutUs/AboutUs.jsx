@@ -39,6 +39,7 @@ const AboutUs = ({ userData }) => {
           title="Sobre"
           titleInner="mí"
           desc={userData?.description}
+          htmlDesc
         ></SectionTitle>
         <div className="aboutUs relative w-full p-[1.25rem] lg:p-[1.875rem] mt-[5.9375rem]">
           <div

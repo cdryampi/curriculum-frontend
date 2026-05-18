@@ -1,34 +1,26 @@
-import React, { Fragment } from "react";
+import { useEffect } from "react";
 import { FaHome } from "react-icons/fa";
 import { BottomBar2 } from "../../components/BottomBar";
 import { Header } from "../../components/Header";
 import { Link, useParams } from "react-router-dom";
 import useFetchStaticPage from "../../hooks/useFetchStaticPage";
-import { GLOBAL_DELAY_CALLBACK } from "../../config";
 import { SyncLoader } from "react-spinners";
-import useGetPDFHook from "../../hooks/UseGetPDFHook";
+import usePDF from "../../hooks/UseGetPDFHook";
 
 const StaticPage = () => {
   const { slug } = useParams();
-  const { data, loading, error } = useFetchStaticPage(
-    slug,
-    GLOBAL_DELAY_CALLBACK
-  );
-  const {
-    data: pdfData,
-    loading: PDFloading,
-    error: PDFerror,
-  } = useGetPDFHook();
+  const { data, loading, error } = useFetchStaticPage(slug);
+  const { data: pdfData, loading: PDFloading, error: PDFerror } = usePDF();
   const pdf_link = pdfData?.resume_file;
 
+  useEffect(() => {
+    document.title = data
+      ? `${data?.title} - Curriculum de Yampi`
+      : "Loading... - Curriculum de Yampi";
+  }, [data]);
+
   return (
-    <Fragment>
-      <title>
-        {data
-          ? `${data?.title} - Curriculum de Yampi`
-          : "Loading... - Curriculum de Yampi"}
-      </title>
-      {loading ? (
+    <>{loading ? (
         <div className="pageLoader fixed justify-center items-center inset-0 flex">
           <SyncLoader
             color="#284be5"
@@ -95,7 +87,7 @@ const StaticPage = () => {
           <BottomBar2 />
         </>
       )}
-    </Fragment>
+    </>
   );
 };
 

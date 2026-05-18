@@ -27,8 +27,6 @@
     "vite": "^6.2.1"
   },
   "devDependencies": {
-    "install": "^0.13.0",
-    "npm": "^11.2.0",
     "vite-plugin-svgr": "^4.3.0"
   }
 }

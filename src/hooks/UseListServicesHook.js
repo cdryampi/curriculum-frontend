@@ -1,25 +1,6 @@
-// src/hooks/UseListServicessHook.js
-import { useState, useEffect } from "react";
+import useApi from "./useApi";
 import { fetchServicesList } from "../api";
 
-const UseListServicesHook = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const useServicesList = () => useApi(fetchServicesList);
 
-  useEffect(() => {
-    fetchServicesList()
-      .then((response) => {
-        setData(response.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
-  }, []);
-
-  return { data, loading, error };
-};
-
-export default UseListServicesHook;
+export default useServicesList;

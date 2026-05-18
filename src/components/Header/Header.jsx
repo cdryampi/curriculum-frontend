@@ -1,18 +1,16 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { CgClose, CgMenuRight } from "react-icons/cg";
 import { SocialLinks } from "../SocialLinks";
 import MenuLinks from "./MenuLinks";
 import { ResponsiveHeader } from "../ResponsiveHeader";
+import { NAV_LINKS } from "../../data/menuItems";
 
 const Header = ({ pdf }) => {
   const refHeader = useRef();
   const [sideMenu, setSideMenu] = useState(false);
   const showSideMenu = () => setSideMenu(!sideMenu);
-  const toggleSideMenu = () => {
-    setSideMenu((prev) => !prev);
-  };
-  const pdf_link = pdf;
+  const toggleSideMenu = () => setSideMenu((prev) => !prev);
 
   useLayoutEffect(() => {
     const header = document.getElementById("header");
@@ -28,7 +26,7 @@ const Header = ({ pdf }) => {
   }, []);
 
   return (
-    <React.Fragment>
+    <>
       <header className="z-[9999] hidden lg:block" ref={refHeader} id="header">
         <div className="topbar fixed md:top-[1.875rem] lg:top-[4rem] xl:top-[5rem] top-[1.25rem] left-0 w-full z-[9999]">
           <div className="container mx-auto sm:container md:container lg:container xl:container 2xl:container">
@@ -43,12 +41,10 @@ const Header = ({ pdf }) => {
                 </RouterLink>
               </div>
               <div className="hidden menuWrapper">
-                <MenuLinks pdf_link={pdf_link}></MenuLinks>
+                <MenuLinks pdf_link={pdf}></MenuLinks>
               </div>
             </div>
-            {/* Topbar Inner */}
           </div>
-          {/* Topbar */}
         </div>
         <div className="menuWrap hidden lg:flex flex-col items-center justify-between fixed left-[3.4375rem] top-[5.625rem] bottom-[5.625rem] border-2 border-solid border-accent rounded-full z-[9999] w-[6.25rem] px-5 py-[3.125rem]">
           <span className="mirror" onClick={showSideMenu}>
@@ -71,7 +67,6 @@ const Header = ({ pdf }) => {
               Follow Me
             </h5>
           </div>
-          {/* Menu Wrap */}
         </div>
         <div
           className="sideMenu bg-[#000] fixed transition-all ease-in-out duration-300 z-[9999] top-0 h-screen w-screen flex justify-center items-center px-8 py-16 overflow-y-scroll"
@@ -90,65 +85,24 @@ const Header = ({ pdf }) => {
             ></CgClose>
           </span>
           <ul className="flex flex-col gap-4 w-80">
-            <RouterLink
-              to="/#about"
-              className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
-              title="Sobre mí"
-              onClick={toggleSideMenu}
-            >
-              <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
-                Sobre mí
-              </span>
-            </RouterLink>
-            <RouterLink
-              className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
-              to="/#workExperience"
-              title="Experiencia laboral"
-              onClick={toggleSideMenu}
-            >
-              <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
-                Experiencia laboral
-              </span>
-            </RouterLink>
-            <RouterLink
-              className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
-              to="/#portfolio"
-              duration={500}
-              offset={-100}
-              title="portfolio"
-              onClick={toggleSideMenu}
-            >
-              <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
-                Portfolio
-              </span>
-            </RouterLink>
-            <RouterLink
-              className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
-              to="/#services"
-              title="Servicios"
-              onClick={toggleSideMenu}
-            >
-              <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
-                Servicios
-              </span>
-            </RouterLink>
-
-            <RouterLink
-              className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
-              to="/#contact"
-              title="Contacto"
-              onClick={toggleSideMenu}
-            >
-              <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
-                Contacto
-              </span>
-            </RouterLink>
+            {NAV_LINKS.map((link) => (
+              <RouterLink
+                key={link.to}
+                to={link.to}
+                className="menuItemHasChildren relative group text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase"
+                title={link.title}
+                onClick={toggleSideMenu}
+              >
+                <span className="group-hover:text-accent text-white pr-5 relative block cursor-pointer">
+                  {link.label}
+                </span>
+              </RouterLink>
+            ))}
           </ul>
         </div>
-        {/* Header */}
       </header>
       <ResponsiveHeader></ResponsiveHeader>
-    </React.Fragment>
+    </>
   );
 };
 

@@ -1,13 +1,16 @@
-import React from "react";
+import { useEffect } from "react";
 import { FaHome } from "react-icons/fa";
 import { BottomBar2 } from "../../components/BottomBar";
 import { Header } from "../../components/Header";
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
+  useEffect(() => {
+    document.title = "Error Page - Curriculum de Yampi";
+  }, []);
+
   return (
-    <React.Fragment>
-      <title>Error Page - Curriculum de Yampi</title>
+    <>
 
       <Header></Header>
       <section className="featuredAreaWrap md:text-left text-center bg-dark z-[1] flex items-center bgGrident1 bg-blend-hard-light relative min-h-screen xl:rounded-br-[20rem] lg:rounded-br-[18rem] md:rounded-br-[15rem] sm:rounded-br-[10rem] rounded-br-0 w-screen md:py-[6.25rem] py-20">
@@ -34,7 +37,7 @@ const ErrorPage = () => {
         {/* Page Wrap */}
       </section>
       <BottomBar2></BottomBar2>
-    </React.Fragment>
+    </>
   );
 };
 

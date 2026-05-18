@@ -3,15 +3,20 @@ import { Navigation, Pagination } from "swiper/modules";
 import { ClipLoader } from "react-spinners";
 import { SectionTitleLight } from "../SectionTitles";
 import SectionBg from "../../assets/images/secBg2Aux.jpg";
-import UseLaboralExperienceList from "../../hooks/UseLaboralExperienceListHook";
+import useLaboralExperience from "../../hooks/UseLaboralExperienceListHook";
 import { TagsDisplay } from "../Tag";
 import "swiper/css";
 import "swiper/css/pagination";
 
 const MyWorkExperience = () => {
-  const { data: workExp, loading, error } = UseLaboralExperienceList();
+  const { data: workExp, loading, error, refetch } = useLaboralExperience();
   if (error) {
-    return <div>Error al cargar.</div>;
+    return (
+      <div className="flex flex-col items-center py-8">
+        <p className="text-red-500 mb-3">Error al cargar la experiencia laboral.</p>
+        <button className="bg-accent text-white px-4 py-2 rounded font-bold hover:bg-accent2" onClick={refetch}>Reintentar</button>
+      </div>
+    );
   }
   return (
     <section
