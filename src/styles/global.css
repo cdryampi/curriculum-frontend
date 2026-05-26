@@ -505,3 +505,19 @@ nav ul ul,
     padding: 1.875rem;
   }
 }
+
+/* Scroll-driven animations progress bar (Modern Web Guidance) */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    @keyframes grow-progress {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    .scroll-progress-bar {
+      transform-origin: 0 50%;
+      animation: grow-progress auto linear;
+      animation-timeline: scroll();
+    }
+  }
+}
