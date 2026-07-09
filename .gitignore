@@ -26,3 +26,7 @@ yarn-error.log*
 config.js
 .vercel
 .env
+
+# Tooling artifacts
+.playwright-mcp
+.vite
