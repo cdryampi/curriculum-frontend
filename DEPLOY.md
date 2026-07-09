@@ -1,101 +1,58 @@
-# Instrucciones de Despliegue
+# Deployment
 
-Este documento contiene instrucciones para desplegar la aplicación Curriculum Frontend en diferentes entornos.
+The frontend is a static SPA built with Vite. It is primarily deployed to **GitHub Pages** by `.github/workflows/deploy.yml`. Docker and Vercel are documented as alternative hosts.
 
-## Variables de Entorno Requeridas
+## Common environment variables
 
-Antes de desplegar, asegúrate de configurar las siguientes variables de entorno:
-
-```
+```bash
 VITE_API_BASE_URL=https://backend.yampi.eu
 VITE_GIT_HUB_URL=https://github.com/cdryampi/
 ```
 
-## Métodos de Despliegue
+These values must be present **at build time** because Vite inlines them into the bundle. Pass them as `--build-arg` (Docker), repository secrets (GitHub Actions), or project env vars (Vercel).
 
-### 1. Despliegue con Docker
+## 1. GitHub Pages (primary)
 
-#### Requisitos
-- Docker
-- Docker Compose (opcional)
+- Triggered on push to `master` and via `workflow_dispatch` by `.github/workflows/deploy.yml`.
+- `vite.config.mjs` hardcodes `base: "/curriculum-frontend/"` so assets resolve under the project subpath on Pages.
+- The workflow copies `dist/index.html` to `dist/404.html` as an SPA fallback.
 
-#### Instrucciones
+PR checks run separately in `.github/workflows/ci.yml` (`npm ci` + `npm run build`).
 
-**Usando Docker Compose (recomendado):**
+## 2. Docker
 
-1. Configura las variables de entorno en un archivo `.env` en la raíz del proyecto o expórtalas en tu sistema.
-2. Ejecuta:
-   ```bash
-   docker-compose up -d
-   ```
+The `Dockerfile` is a multi-stage build that:
 
-**Usando Docker directamente:**
+1. Installs dependencies with `npm ci`.
+2. Builds with `npm run build`, passing `VITE_API_BASE_URL` and `VITE_GIT_HUB_URL` as build args.
+3. Serves `dist/` through `nginx:alpine` using the provided `nginx.conf`.
 
-1. Construye la imagen:
-   ```bash
-docker build -t curriculum-frontend --build-arg VITE_API_BASE_URL=https://backend.yampi.eu --build-arg VITE_GIT_HUB_URL=https://github.com/cdryampi/ .
-   ```
+`docker-compose.yml` exposes the app on `http://localhost:80` and forwards the build args from the host environment (with safe defaults).
 
-2. Ejecuta el contenedor:
-   ```bash
-   docker run -d -p 80:80 curriculum-frontend
-   ```
-
-### 2. Despliegue en Vercel
-
-Este proyecto está preconfigurado para Vercel con el archivo `vercel.json`.
-
-1. Instala la CLI de Vercel:
-   ```bash
-   npm install -g vercel
-   ```
-
-2. Despliega:
-   ```bash
-   vercel
-   ```
-
-3. Para producción:
-   ```bash
-   vercel --prod
-   ```
-
-4. Configura las variables de entorno en el dashboard de Vercel.
-
-### 3. Despliegue Manual
-
-1. Construye el proyecto:
-   ```bash
-   npm install
-   npm run build
-   ```
-
-2. Despliega el contenido de la carpeta `dist` en cualquier servidor web estático (Nginx, Apache, etc.).
-
-## Cron Jobs
-
-Este proyecto incluye una configuración para un cron job que mantiene activo el backend:
-
-```json
-{
-  "crons": [
-    {
-      "path": "/api/ping-render",
-      "schedule": "0 5 * * *"
-    }
-  ]
-}
+```bash
+VITE_API_BASE_URL=https://backend.yampi.eu \
+VITE_GIT_HUB_URL=https://github.com/cdryampi/ \
+docker compose up -d --build
 ```
 
-Este cron job está configurado para ejecutarse todos los días a las 5:00 AM (UTC) y hacer ping al backend para evitar que se duerma (útil para servicios gratuitos como Render).
+## 3. Vercel
 
-## Solución de Problemas
+`vercel.json` is kept for convenience. The `crons` entry used to ping `/api/ping-render` to keep the backend warm; it requires a Vercel serverless function that is not part of this repository. Remove or replace the `crons` block if the function is not deployed.
 
-### CORS
-Si experimentas problemas de CORS, asegúrate de que tu backend esté configurado para aceptar solicitudes del dominio donde está alojado tu frontend.
+```bash
+npm install -g vercel
+vercel
+vercel --prod
+```
 
-### Variables de Entorno
-Verifica que todas las variables de entorno estén correctamente configuradas en el entorno de despliegue.
+Set `VITE_API_BASE_URL` and `VITE_GIT_HUB_URL` in the Vercel project settings before deploying.
 
-### Cache del Navegador
-Si los cambios no se reflejan después de un despliegue, intenta borrar la caché del navegador o usar modo incógnito.
+## CORS
+
+The backend must allow the deployed origin in `CORS_ALLOWED_ORIGINS` (or `CORS_ALLOW_ALL_ORIGINS=True` in development). See `cdryampi/curriculum-backend/.env.example`.
+
+## Troubleshooting
+
+- **404 on deep links under GitHub Pages**: confirm the `base` in `vite.config.mjs` matches the project subpath and that the workflow copies `dist/index.html` to `dist/404.html`.
+- **API calls go to the wrong host**: rebuild with the correct `VITE_API_BASE_URL`. Vite embeds the value at build time.
+- **Cache after deploy**: hard-refresh or open an incognito window.
