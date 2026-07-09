@@ -4,9 +4,9 @@ const WorkExpSkeleton = () => (
   <section className="workExpWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem] relative w-full">
     <div className="container mx-auto">
       <div className="flex justify-center mb-8">
-        <div className="text-center">
-          <Skeleton width="240px" height="2.5rem" className="mx-auto text-white" />
-          <Skeleton width="280px" height="1rem" className="mx-auto mt-2" />
+        <div className="text-center space-y-2">
+          <Skeleton width="240px" height="2.5rem" className="mx-auto" />
+          <Skeleton width="280px" height="1rem" className="mx-auto" />
         </div>
       </div>
       <div className="grid gap-6">
