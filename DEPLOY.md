@@ -7,9 +7,8 @@ Este documento contiene instrucciones para desplegar la aplicación Curriculum F
 Antes de desplegar, asegúrate de configurar las siguientes variables de entorno:
 
 ```
-VITE_API_BASE_URL=https://tu-backend-api.com
-VITE_GLOBAL_DELAY_CALLBACK=1500
-VITE_GIT_HUB_URL=https://github.com/tuusuario/
+VITE_API_BASE_URL=https://backend.yampi.eu
+VITE_GIT_HUB_URL=https://github.com/cdryampi/
 ```
 
 ## Métodos de Despliegue
@@ -34,7 +33,7 @@ VITE_GIT_HUB_URL=https://github.com/tuusuario/
 
 1. Construye la imagen:
    ```bash
-   docker build -t curriculum-frontend --build-arg VITE_API_BASE_URL=https://tu-backend-api.com --build-arg VITE_GLOBAL_DELAY_CALLBACK=1500 --build-arg VITE_GIT_HUB_URL=https://github.com/tuusuario/ .
+docker build -t curriculum-frontend --build-arg VITE_API_BASE_URL=https://backend.yampi.eu --build-arg VITE_GIT_HUB_URL=https://github.com/cdryampi/ .
    ```
 
 2. Ejecuta el contenedor:
