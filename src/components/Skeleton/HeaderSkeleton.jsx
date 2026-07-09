@@ -1,7 +1,7 @@
 import Skeleton from "./Skeleton"
 
 const HeaderSkeleton = () => (
-  <header className="z-[9999] hidden lg:block">
+  <header className="z-[9999] hidden lg:block" aria-hidden="true">
     <div className="topbar fixed md:top-[1.875rem] lg:top-[4rem] xl:top-[5rem] top-[1.25rem] left-0 w-full z-[9999]">
       <div className="container mx-auto">
         <div className="flex items-center justify-between w-full topbarInner">

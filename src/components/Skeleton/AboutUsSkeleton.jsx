@@ -4,9 +4,9 @@ const AboutUsSkeleton = () => (
   <section className="aboutUsWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem] relative w-full">
     <div className="container mx-auto">
       <div className="flex justify-center mb-12">
-        <div className="text-center">
+        <div className="text-center space-y-2">
           <Skeleton width="220px" height="2.5rem" className="mx-auto" />
-          <Skeleton width="300px" height="1.25rem" className="mx-auto mt-2" />
+          <Skeleton width="300px" height="1.25rem" className="mx-auto" />
         </div>
       </div>
       <div className="grid gap-[1.875rem] lg:grid-cols-2 grid-cols-1">

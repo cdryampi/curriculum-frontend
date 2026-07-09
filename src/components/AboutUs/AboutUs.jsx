@@ -6,6 +6,7 @@ import { SectionTitle } from "../SectionTitles"
 import Signature from "../../lib/icons/Signature.svg?react"
 import { GoDotFill } from "react-icons/go"
 import { AboutUsSkeleton } from "../Skeleton"
+import SafeImage from "../SafeImage/SafeImage"
 
 const AboutUs = ({ userData, loading }) => {
   if (loading || !userData) return <AboutUsSkeleton />
@@ -33,7 +34,7 @@ const AboutUs = ({ userData, loading }) => {
       <div className="fixedBg bg-left-top bg-no-repeat opacity-20" style={{ backgroundImage: `url(${PatternImg})` }}></div>
       <div className="container mx-auto">
         <SectionTitle title="Sobre" titleInner="mí" desc={userData?.description} htmlDesc></SectionTitle>
-        <div className="aboutUs relative w-full p-[1.25rem] lg:p-[1.875rem] mt-[5.9375rem]">
+        <div className="aboutUs relative w-full p-[1.25rem] lg:p-[1.875rem] mt-[5.9375rem] section-fade-in">
           <div
             className="aboutUsBg before:absolute before:inset-0 before:bg-gray before:rounded-[10px] before:sm:rounded-[1.25rem] before:md:rounded-[3.125rem] before:opacity-70 before:z-[1] bg-gray bg-blend-multiply absolute rounded-[10px] sm:rounded-[1.25rem] md:rounded-[3.125rem] inset-0 left-0 lg:left-[10.9375rem] bg-no-repeat bg-center bg-cover"
             style={{ backgroundImage: `url(${AboutUsBg})` }}
@@ -41,11 +42,12 @@ const AboutUs = ({ userData, loading }) => {
           <div className="grid gap-[1.875rem] lg:grid-cols-2 grid-cols-1">
             <div>
               <div className="aboutImg relative mt-[-5.625rem] ml-0 lg:ml-[-1.875rem]">
-                <img
+                <SafeImage
                   className="rounded-[10px] sm:rounded-[1.25rem] md:rounded-[3.125rem] relative z-[1] w-full"
                   src={userData?.foto?.file}
                   alt={userData?.foto?.title}
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -69,19 +71,19 @@ const AboutUs = ({ userData, loading }) => {
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-1">{userData?.edad}</span>
                     </li>
                     <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
-                      <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">Teléfono:</strong>
+                      <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">Tel\u00e9fono:</strong>
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-1">
-                        <a className="text-desc2 font-semibold font-NunitoSans hover:text-accent" href={`tel:+34 ${userData?.telefono}`} title="teléfono">+34 {userData?.telefono}</a>
+                        <a className="text-desc2 font-semibold font-NunitoSans hover:text-accent" href={`tel:+34 ${userData?.telefono}`} title="tel\u00e9fono">+34 {userData?.telefono}</a>
                       </span>
                     </li>
                     <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
                       <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">Email:</strong>
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-1">
-                        <a className="text-desc2 font-semibold font-NunitoSans hover:text-accent" href={`mailto:${userData?.correo_electronico}`} title="Enviar correo electrónico">{userData?.correo_electronico}</a>
+                        <a className="text-desc2 font-semibold font-NunitoSans hover:text-accent" href={`mailto:${userData?.correo_electronico}`} title="Enviar correo electr\u00f3nico">{userData?.correo_electronico}</a>
                       </span>
                     </li>
                     <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
-                      <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">Dirección:</strong>
+                      <strong className="text-desc3 uppercase font-bold font-Poppins col-span-1">Direcci\u00f3n:</strong>
                       <span className="text-desc2 font-semibold font-NunitoSans col-span-1">{userData?.direccion}</span>
                     </li>
                     <li className="grid grid-cols-2 gap-4 text-[1rem] md:text-[1.125rem]">
@@ -101,3 +103,4 @@ const AboutUs = ({ userData, loading }) => {
 }
 
 export default AboutUs
+

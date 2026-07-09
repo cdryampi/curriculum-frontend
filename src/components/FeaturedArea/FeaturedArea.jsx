@@ -6,6 +6,7 @@ import Shape4 from "../../assets/images/shape-4.png"
 import { FiChevronRight } from "react-icons/fi"
 import { GIT_HUB_URL } from "../../config"
 import { FeaturedAreaSkeleton } from "../Skeleton"
+import SafeImage from "../SafeImage/SafeImage"
 
 const FeaturedArea = ({ userData, loading }) => {
   if (loading || !userData) return <FeaturedAreaSkeleton />
@@ -20,16 +21,16 @@ const FeaturedArea = ({ userData, loading }) => {
   return (
     <section className="featuredAreaWrap md:text-left text-center bg-dark z-[1] flex items-center bgGrident1 bg-blend-hard-light relative min-h-screen xl:rounded-br-[20rem] lg:rounded-br-[18rem] md:rounded-br-[15rem] sm:rounded-br-[10rem] rounded-br-0 w-screen md:py-[6.25rem] py-20">
       <div className="shaps absolute inset-0">
-        <img className="absolute floatAnim left-[10%] top-[10%] animDelay1" src={Shape1} alt="Shape" />
-        <img className="absolute floatAnim right-[10%] bottom-[20%] animDelay2" src={Shape2} alt="Shape" />
-        <img className="absolute floatAnim right-[50%] bottom-[50%] animDelay3" src={Shape2} alt="Shape" />
-        <img className="absolute floatAnim right-[15%] bottom-[40%] animDelay4" src={Shape3} alt="Shape" />
-        <img className="absolute floatAnim right-[10%] top-[10%] animDelay5" src={Shape3} alt="Shape" />
-        <img className="absolute floatAnim right-[45%] top-[10%] animDelay6" src={Shape4} alt="Shape" />
+        <SafeImage className="absolute floatAnim left-[10%] top-[10%] animDelay1" src={Shape1} alt="Shape" loading="lazy" decoding="async" />
+        <SafeImage className="absolute floatAnim right-[10%] bottom-[20%] animDelay2" src={Shape2} alt="Shape" loading="lazy" decoding="async" />
+        <SafeImage className="absolute floatAnim right-[50%] bottom-[50%] animDelay3" src={Shape2} alt="Shape" loading="lazy" decoding="async" />
+        <SafeImage className="absolute floatAnim right-[15%] bottom-[40%] animDelay4" src={Shape3} alt="Shape" loading="lazy" decoding="async" />
+        <SafeImage className="absolute floatAnim right-[10%] top-[10%] animDelay5" src={Shape3} alt="Shape" loading="lazy" decoding="async" />
+        <SafeImage className="absolute floatAnim right-[45%] top-[10%] animDelay6" src={Shape4} alt="Shape" loading="lazy" decoding="async" />
       </div>
       <span className="bg-accent absolute left-0 bottom-[-.75rem] h-6 w-1/2"></span>
       <div className="container mx-auto">
-        <div className="featuredAreaInner relative z-[1] w-full">
+        <div className="featuredAreaInner relative z-[1] w-full section-fade-in">
           <div className="grid gap-[1.875rem] md:grid-cols-2 grid-cols-1 items-center">
             <div className="md:order-1">
               <div className="featuredImgWrap text-center w-full">
@@ -37,11 +38,12 @@ const FeaturedArea = ({ userData, loading }) => {
                   <span className="h-[8rem] w-[8rem] sm:h-[14rem] sm:w-[14rem] md:h-[10rem] md:w-[10rem] lg:h-[14rem] lg:w-[14rem] xl:h-[18.75rem] xl:w-[18.75rem] absolute bg-white rounded-full right-[-2.5rem] top-[-2.5rem] md:right-[-3.5rem] md:top-[-3.5rem] lg:right-[-4rem] lg:top-[-4rem] xl:right-[-6.25rem] xl:top-[-6.25rem] z-[1]"></span>
                   <span className="h-[8rem] w-[8rem] sm:h-[14rem] sm:w-[14rem] md:h-[10rem] md:w-[10rem] lg:h-[14rem] lg:w-[14rem] xl:h-[18.75rem] xl:w-[18.75rem] absolute bg-dark2 rounded-full left-[-2.5rem] bottom-[-2.5rem] md:right-[-3.5rem] md:bottom-[-3.5rem] lg:left-[-4rem] lg:bottom-[-4rem] xl:left-[-6.25rem] xl:bottom-[-6.25rem] z-[1]"></span>
                   <div className="featuredImg relative rounded-full">
-                    <img
+                    <SafeImage
                       className="rounded-full relative z-[1] max-w-full"
                       src={userData?.foto?.file}
                       alt={userData?.foto?.title}
                       fetchpriority="high"
+                      decoding="async"
                     />
                   </div>
                 </div>
@@ -98,3 +100,4 @@ const FeaturedArea = ({ userData, loading }) => {
 }
 
 export default FeaturedArea
+

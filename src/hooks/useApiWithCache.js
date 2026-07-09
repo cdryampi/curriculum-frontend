@@ -1,52 +1,56 @@
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { cacheGet, cacheSet } from "./cacheStore"
 
 const useApiWithCache = (cacheKey, fetchFn, deps = []) => {
   const [data, setData] = useState(() => cacheGet(cacheKey))
   const [loading, setLoading] = useState(!data)
   const [error, setError] = useState(null)
+  const cancelledRef = useRef(false)
 
   const execute = useCallback(async () => {
     setLoading(true)
     setError(null)
     try {
       const response = await fetchFn()
-      const result = response.data
+      if (cancelledRef.current) return
+      const result = response?.data
       cacheSet(cacheKey, result)
       setData(result)
     } catch (err) {
-      setError(err)
+      if (!cancelledRef.current) setError(err)
     } finally {
-      setLoading(false)
+      if (!cancelledRef.current) setLoading(false)
     }
   }, deps)
 
   useEffect(() => {
+    cancelledRef.current = false
     const cached = cacheGet(cacheKey)
-    if (cached) {
+    if (cached !== null && cached !== undefined) {
       setData(cached)
       setLoading(false)
+      setError(null)
       return
     }
-    let cancelled = false
     const call = async () => {
       setLoading(true)
       setError(null)
       try {
         const response = await fetchFn()
-        if (!cancelled) {
-          const result = response.data
-          cacheSet(cacheKey, result)
-          setData(result)
-        }
+        if (cancelledRef.current) return
+        const result = response?.data
+        cacheSet(cacheKey, result)
+        setData(result)
       } catch (err) {
-        if (!cancelled) setError(err)
+        if (!cancelledRef.current) setError(err)
       } finally {
-        if (!cancelled) setLoading(false)
+        if (!cancelledRef.current) setLoading(false)
       }
     }
     call()
-    return () => { cancelled = true }
+    return () => {
+      cancelledRef.current = true
+    }
   }, deps)
 
   return { data, loading, error, refetch: execute }

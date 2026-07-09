@@ -521,3 +521,45 @@ nav ul ul,
     }
   }
 }
+
+/* Skeleton shimmer animation (used by src/components/Skeleton/Skeleton.jsx) */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: skeleton-shimmer 1.6s linear infinite;
+}
+
+.skeleton-pulse {
+  will-change: opacity, background-position;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shimmer {
+    animation: none;
+    background-position: 0 0;
+    opacity: 0.6;
+  }
+}
+
+/* Smooth fade-in for sections once data has loaded */
+@keyframes section-fade-in {
+  from { opacity: 0; transform: translateY(0.5rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-fade-in {
+  animation: section-fade-in 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-fade-in {
+    animation: none;
+  }
+}

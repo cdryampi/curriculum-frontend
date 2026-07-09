@@ -30,3 +30,4 @@ config.js
 # Tooling artifacts
 .playwright-mcp
 .vite
+qa-*.png
