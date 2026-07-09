@@ -1,38 +1,26 @@
 FROM node:20-alpine AS base
 
-# Install dependencies only when needed
 FROM base AS deps
 WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
 
-# Copy package.json and install dependencies
-COPY package.json ./
-RUN npm install
-
-# Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Create .env file from environment variables at build time
+ARG VITE_API_BASE_URL=https://backend.yampi.eu
+ARG VITE_GIT_HUB_URL=https://github.com/cdryampi/
+ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
+ENV VITE_GIT_HUB_URL=$VITE_GIT_HUB_URL
 RUN echo "VITE_API_BASE_URL=$VITE_API_BASE_URL" > .env && \
     echo "VITE_GIT_HUB_URL=$VITE_GIT_HUB_URL" >> .env
-
-# Build the project
 RUN npm run build
 
-# Production image, copy all the files and run the app
 FROM nginx:alpine AS runner
 WORKDIR /usr/share/nginx/html
-
-# Copy the built assets from the builder stage
 COPY --from=builder /app/dist .
-
-# Copy custom nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port 80
 EXPOSE 80
-
-# Start nginx server
 CMD ["nginx", "-g", "daemon off;"]

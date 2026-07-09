@@ -1,13 +1,11 @@
-version: '3'
-
 services:
   curriculum-frontend:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-https://backend.yampi.eu}
+        VITE_GIT_HUB_URL: ${VITE_GIT_HUB_URL:-https://github.com/cdryampi/}
     ports:
       - "80:80"
-    environment:
-      - VITE_API_BASE_URL=${VITE_API_BASE_URL}
-      - VITE_GIT_HUB_URL=${VITE_GIT_HUB_URL}
     restart: unless-stopped
