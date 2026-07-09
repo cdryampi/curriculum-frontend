@@ -12,8 +12,8 @@ const Education = () => {
   if (error) {
     return (
       <div className="educationWrap relative w-full">
-        <SectionTitleIcon title="Formaci\u00f3n" />
-        <ErrorState message="Error al cargar la formaci\u00f3n." onRetry={refetch} />
+        <SectionTitleIcon title="Formación" />
+        <ErrorState message="Error al cargar la formación." onRetry={refetch} />
       </div>
     )
   }
@@ -22,11 +22,11 @@ const Education = () => {
 
   return (
     <div className="educationWrap relative w-full">
-      <SectionTitleIcon title="Formaci\u00f3n" />
+      <SectionTitleIcon title="Formación" />
       {(!educationList || educationList.length === 0) ? (
         <EmptyState
-          title="A\u00fan no hay formaci\u00f3n registrada"
-          description="Pronto compartir\u00e9 los detalles de mi formaci\u00f3n acad\u00e9mica."
+          title="Aún no hay formación registrada"
+          description="Pronto compartiré los detalles de mi formación académica."
         />
       ) : (
         <div className="educationList grid grid-cols-1 md:grid-cols-1 gap-2 p-3 section-fade-in">
@@ -40,4 +40,3 @@ const Education = () => {
 }
 
 export default Education
-
