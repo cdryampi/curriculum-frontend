@@ -25,7 +25,7 @@ const BottomBar2 = () => {
     <div className="bottomBarWrap relative w-full py-8">
       <div className="container mx-auto">
         <div className="bottomBar gap-4 flex flex-col md:flex-row justify-center md:justify-between items-center">
-          <p className="text-desc2 text-[1rem] md:text-[1.0625rem] font-NunitoSans font-semibold">&copy; {new Date().getFullYear()} All Right Reserved.</p>
+          <p className="text-desc2 text-[1rem] md:text-[1.0625rem] font-NunitoSans font-semibold">&copy; {new Date().getFullYear()} Yampi. All Right Reserved.</p>
           <ul className="flex relative divide-x divide-solid -mr-6">
             {staticPageData && staticPageData.map((item) => (
               <li className="text-desc2 text-[1rem] md:text-[1.0625rem] font-NunitoSans font-semibold px-6 leading-none" key={item?.slug}>
