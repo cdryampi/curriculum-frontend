@@ -1,4 +1,4 @@
-import Skeleton from "./Skeleton"
+import Skeleton, { ImageSkeleton } from "./Skeleton"
 
 const PortfolioSkeleton = () => (
   <section className="portWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem] relative w-full">
@@ -11,7 +11,15 @@ const PortfolioSkeleton = () => (
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {[...Array(4)].map((_, i) => (
-          <Skeleton key={i} width="100%" height="400px" className="rounded-[3.125rem]" />
+          <div key={i} className="overflow-hidden rounded-lg sm:rounded-xl lg:rounded-2xl xl:rounded-3xl bg-dark2/40 p-3">
+            <ImageSkeleton className="aspect-[4/3] w-full rounded-lg sm:rounded-xl lg:rounded-2xl xl:rounded-3xl">
+              <div className="absolute left-6 right-6 bottom-6 space-y-3">
+                <Skeleton width="55%" height="1.5rem" variant="light" />
+                <Skeleton width="76%" height="1rem" variant="light" />
+              </div>
+              <div className="absolute right-6 top-6 h-12 w-12 rounded-xl border border-white/20 bg-white/10" />
+            </ImageSkeleton>
+          </div>
         ))}
       </div>
     </div>

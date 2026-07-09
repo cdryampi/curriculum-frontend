@@ -1,4 +1,4 @@
-import Skeleton from "./Skeleton"
+import Skeleton, { ImageSkeleton } from "./Skeleton"
 
 const AboutUsSkeleton = () => (
   <section className="aboutUsWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem] relative w-full">
@@ -9,9 +9,15 @@ const AboutUsSkeleton = () => (
           <Skeleton width="300px" height="1.25rem" className="mx-auto" />
         </div>
       </div>
-      <div className="grid gap-[1.875rem] lg:grid-cols-2 grid-cols-1">
-        <Skeleton width="100%" height="400px" className="rounded-[3.125rem]" />
-        <div className="space-y-4">
+      <div className="aboutUs relative w-full p-[1.25rem] lg:p-[1.875rem] mt-[5.9375rem]">
+        <div className="aboutUsBg absolute inset-0 left-0 lg:left-[10.9375rem] rounded-[10px] sm:rounded-[1.25rem] md:rounded-[3.125rem] bg-gray/70"></div>
+        <div className="grid gap-[1.875rem] lg:grid-cols-2 grid-cols-1 relative">
+          <div className="aboutImg relative mt-[-5.625rem] ml-0 lg:ml-[-1.875rem]">
+            <ImageSkeleton className="relative z-[1] aspect-[4/5] min-h-[22rem] w-full rounded-[10px] sm:rounded-[1.25rem] md:rounded-[3.125rem]">
+              <div className="absolute bottom-8 left-8 h-20 w-2/3 rounded-2xl bg-white/10" />
+            </ImageSkeleton>
+          </div>
+        <div className="space-y-4 rounded-[10px] sm:rounded-[1.25rem] md:rounded-[3.125rem] bg-white/85 p-5 md:p-10 lg:px-[3.5rem] xl:px-20 lg:py-12 xl:pt-[4.6875rem] xl:pb-[4.375rem]">
           <Skeleton width="120px" height="2rem" />
           <Skeleton width="200px" height="1.5rem" />
           <div className="space-y-3 mt-6">
@@ -22,7 +28,8 @@ const AboutUsSkeleton = () => (
               </div>
             ))}
           </div>
-          <Skeleton width="175px" height="235px" className="mt-[-115px]" />
+          <Skeleton width="175px" height="120px" className="mt-[-45px] opacity-40" variant="accent" />
+        </div>
         </div>
       </div>
     </div>
