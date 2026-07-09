@@ -52,7 +52,7 @@ src/
 
 ### Prerrequisitos
 
-- Node.js (v16+)
+- Node.js 18 o superior
 - npm o yarn
 
 ### Instalación
@@ -60,7 +60,7 @@ src/
 1. Clona el repositorio:
 
    ```bash
-   git clone https://github.com/tuusuario/curriculum-frontend.git
+   git clone https://github.com/cdryampi/curriculum-frontend.git
    cd curriculum-frontend
    ```
 
@@ -75,9 +75,8 @@ src/
 3. Crea un archivo `.env` en el directorio raíz con las siguientes variables:
 
    ```
-   VITE_API_BASE_URL=https://tu-backend-api.com
-   VITE_GLOBAL_DELAY_CALLBACK=1500
-   VITE_GIT_HUB_URL=https://github.com/tuusuario/
+   VITE_API_BASE_URL=https://backend.yampi.eu
+   VITE_GIT_HUB_URL=https://github.com/cdryampi/
    ```
 
 4. Inicia el servidor de desarrollo:
@@ -101,6 +100,20 @@ yarn build
 ```
 
 La build se generará en el directorio `dist/`.
+
+## ✅ Verificación local
+
+Antes de abrir un Pull Request, ejecuta al menos:
+
+```bash
+npm run build
+```
+
+Para revisar el resultado en navegador:
+
+```bash
+npm run dev
+```
 
 ## 🌐 Despliegue
 
