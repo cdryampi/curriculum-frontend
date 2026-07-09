@@ -7,6 +7,8 @@ import { Link, useParams } from "react-router-dom"
 import useFetchStaticPage from "../../hooks/useFetchStaticPage"
 import usePDF from "../../hooks/UseGetPDFHook"
 import { StaticPageSkeleton, BottomBarSkeleton } from "../../components/Skeleton"
+import { ErrorState } from "../../components/ErrorState"
+import SafeImage from "../../components/SafeImage/SafeImage"
 
 const StaticPage = () => {
   const { slug } = useParams()
@@ -25,10 +27,7 @@ const StaticPage = () => {
         <Header />
         <section className="featuredAreaWrap md:text-left text-center bg-dark z-[1] flex items-center bgGrident1 bg-blend-hard-light relative min-h-screen w-screen md:py-[6.25rem] py-20">
           <div className="container mx-auto">
-            <div className="flex flex-col items-center">
-              <p className="text-red-400 mb-3">Error al cargar la página.</p>
-              <button className="bg-accent text-white px-4 py-2 rounded font-bold hover:bg-accent2" onClick={refetch}>Reintentar</button>
-            </div>
+            <ErrorState message="Error al cargar la p\u00e1gina." onRetry={refetch} />
           </div>
         </section>
         <BottomBar2 />
@@ -49,7 +48,7 @@ const StaticPage = () => {
           <Header pdf={pdf_link} />
           <section className="featuredAreaWrap md:text-left text-center bg-dark z-[1] flex items-center bgGrident1 bg-blend-hard-light relative min-h-screen xl:rounded-br-[20rem] lg:rounded-br-[18rem] md:rounded-br-[15rem] sm:rounded-br-[10rem] rounded-br-0 w-screen md:py-[6.25rem] py-20">
             <div className="container mx-auto max-w-[73.125rem]">
-              <div className="servDetailDesc flex flex-col gap-5 w-full">
+              <div className="servDetailDesc flex flex-col gap-5 w-full section-fade-in">
                 <header className="servDetailTop gap-[1.875rem] lg:flex items-end relative w-full mb-[3.125rem] sm:mb-[4rem] md:mb-[5.3125rem]">
                   <h1 className="text-white text-center mt-10 font-Poppins font-bold text-[1.325rem] md:text-[1.625rem]">{data?.title}</h1>
                 </header>
@@ -63,7 +62,7 @@ const StaticPage = () => {
                         <source media="(max-width: 640px)" srcSet={data?.image?.image_for_mobile_url} />
                         <source media="(max-width: 1024px)" srcSet={data?.image?.image_for_tablet_url} />
                         <source media="(min-width: 1025px)" srcSet={data?.image?.image_for_pc_url} />
-                        <img className="inline-block mb-5 w-full" src={data?.image.image_for_pc_url} alt={data?.title} loading="lazy" />
+                        <SafeImage className="inline-block mb-5 w-full" src={data?.image.image_for_pc_url} alt={data?.title} loading="lazy" decoding="async" />
                       </picture>
                     </div>
                   )}
@@ -84,3 +83,4 @@ const StaticPage = () => {
 }
 
 export default StaticPage
+

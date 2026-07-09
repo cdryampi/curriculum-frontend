@@ -15,6 +15,7 @@ import useUserProfile from "../../hooks/UseProfileUserHook"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { HeaderSkeleton, BottomBarSkeleton } from "../../components/Skeleton"
+import { ErrorState } from "../../components/ErrorState"
 
 const HomePage = () => {
   const { data: userData, loading, error, refetch } = useUserProfile()
@@ -51,8 +52,11 @@ const HomePage = () => {
     return (
       <div className="pageLoader fixed flex-col justify-center items-center inset-0 flex bg-dark">
         <Helmet><title>Error - Curriculum Yampi</title></Helmet>
-        <p className="text-white text-lg mb-4">Error al cargar el perfil del usuario.</p>
-        <button className="bg-accent text-white px-6 py-2 rounded-lg font-Poppins font-bold hover:bg-accent2" onClick={refetch}>Reintentar</button>
+        <ErrorState
+          message="Error al cargar el perfil del usuario."
+          onRetry={refetch}
+          retryLabel="Reintentar"
+        />
       </div>
     )
   }
@@ -88,3 +92,4 @@ const HomePage = () => {
 }
 
 export default HomePage
+
