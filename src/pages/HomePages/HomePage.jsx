@@ -51,7 +51,7 @@ const HomePage = () => {
   if (error) {
     return (
       <div className="pageLoader fixed flex-col justify-center items-center inset-0 flex bg-dark">
-        <Helmet><title>Error - Curriculum Yampi</title></Helmet>
+        <Helmet><title>Error - Currículum Yampi</title></Helmet>
         <ErrorState
           message="Error al cargar el perfil del usuario."
           onRetry={refetch}
@@ -64,9 +64,9 @@ const HomePage = () => {
   return (
     <main id="main-content"><div id="home">
       <Helmet>
-        <title>Curriculum de Yampi | Desarrollador Web Full Stack</title>
+        <title>Currículum de Yampi | Desarrollador Web Full Stack</title>
         <meta name="description" content={userData?.description ? userData.description.replace(/<[^>]*>/g, "").slice(0, 160) : "Descubre mi perfil profesional, experiencia y habilidades en desarrollo web."} />
-        <meta property="og:title" content={`${userData?.nombre || "Yampi"} ${userData?.apellido || "Dev"} - Curriculum`} />
+        <meta property="og:title" content={`${userData?.nombre || "Yampi"} ${userData?.apellido || "Dev"} - Currículum`} />
         <meta property="og:description" content="Desarrollador Web Full Stack con experiencia en Django y React." />
         <meta property="og:type" content="profile" />
         <meta property="og:url" content="https://cdryampi.github.io/curriculum-frontend/" />
@@ -92,4 +92,3 @@ const HomePage = () => {
 }
 
 export default HomePage
-

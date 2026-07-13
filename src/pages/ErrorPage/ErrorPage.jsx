@@ -7,13 +7,13 @@ import { Link } from "react-router-dom"
 
 const ErrorPage = () => {
   useEffect(() => {
-    document.title = "Error Page - Curriculum de Yampi"
+    document.title = "Error Page - Currículum de Yampi"
   }, [])
 
   return (
     <>
       <Helmet>
-        <title>404 - Página no encontrada | Curriculum Yampi</title>
+        <title>404 - Página no encontrada | Currículum Yampi</title>
         <meta name="description" content="La página que buscas no existe." />
         <meta name="robots" content="noindex" />
       </Helmet>

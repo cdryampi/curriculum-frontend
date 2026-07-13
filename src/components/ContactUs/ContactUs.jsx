@@ -14,8 +14,8 @@ const ContactUs = () => {
       ></div>
       <div className="container sm:container md:container lg:container xl:container 2xl:container mx-auto">
         <SectionTitleLight2
-          title="Contactame"
-          titleInner=", te responderé lo antes posible."
+          title="Contáctame,"
+          titleInner="te responderé lo antes posible."
           desc="Si tienes alguna pregunta o deseas contactarme, puedes hacerlo a través del siguiente formulario."
         ></SectionTitleLight2>
         <div className="contactUs grid gap-[1.875rem] lg:grid-cols-1 md:grid-cols-1 grid-cols-1 relative w-full">

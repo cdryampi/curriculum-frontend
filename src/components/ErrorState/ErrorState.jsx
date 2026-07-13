@@ -1,6 +1,6 @@
 import { FaExclamationTriangle } from "react-icons/fa"
 
-const ErrorState = ({ message = "Algo sali\u00f3 mal al cargar los datos.", onRetry, retryLabel = "Reintentar", className = "" }) => {
+const ErrorState = ({ message = "Algo salió mal al cargar los datos.", onRetry, retryLabel = "Reintentar", className = "" }) => {
   return (
     <div
       role="alert"

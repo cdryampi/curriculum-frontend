@@ -68,7 +68,7 @@ const ContactForm = () => {
   return (
     <div className="contactFormWrap relative w-full">
       <form className="grid gap-[1.875rem] md:grid-cols-2 grid-cols-1" onSubmit={handleSubmit} noValidate>
-        <div className="fieldBox w-full col-span-2">
+        <div className="fieldBox w-full md:col-span-2">
           <label htmlFor="contact-message" className="text-white font-medium mb-[10px] block">
             Escribe tu mensaje
           </label>
@@ -107,7 +107,7 @@ const ContactForm = () => {
         </div>
         <div className="fieldBox w-full">
           <label htmlFor="contact-email" className="text-white font-medium mb-[10px] block">
-            Tu Email
+            Tu email
           </label>
           <input
             id="contact-email"
@@ -122,7 +122,7 @@ const ContactForm = () => {
           />
           {errors.email && touched.email && <span className="text-red-400 text-sm mt-1 block">{errors.email}</span>}
         </div>
-        <div className="fieldbtn mt-[1.875rem] w-full col-span-2">
+        <div className="fieldbtn mt-[1.875rem] w-full md:col-span-2">
           <button
             className="bg-white text-accent font-bold uppercase rounded-[10px] px-7 py-[14px] hover:bg-accent2 hover:text-white transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             type="submit"

@@ -25,11 +25,11 @@ const Services = () => {
   return (
     <section className="servicesWrap pb-[4.5rem] md:pb-[5.5rem] lg:pb-[6.5rem] xl:pb-[7.5rem] relative w-full" id="services">
       <div className="container sm:container md:container lg:container xl:max-w-[98.125rem] mx-auto">
-        <SectionTitle title="Mis servicios" titleInner="profesionales" subTitle="Que ofrezco" desc="Aquí puedes ver algunos de los servicios que ofrezco."></SectionTitle>
+        <SectionTitle title="Mis servicios" titleInner="profesionales" subTitle="Qué ofrezco" desc="Aquí puedes ver algunos de los servicios que ofrezco."></SectionTitle>
         {(!services || services.length === 0) ? (
           <EmptyState
-            title="A\u00fan no hay servicios publicados"
-            description="Estoy preparando nuevos servicios profesionales. Vuelve pronto o cont\u00e1ctame para una propuesta personalizada."
+            title="Aún no hay servicios publicados"
+            description="Estoy preparando nuevos servicios profesionales. Vuelve pronto o contáctame para una propuesta personalizada."
           />
         ) : (
           <div className="servicesBoxes relative w-full section-fade-in">
@@ -54,7 +54,7 @@ const Services = () => {
         )}
         <div className="viewAll text-center w-full mt-10 md:mt-[3.125rem] lg:mt-[4.0625rem]">
           <p className="text-desc2 font-NunitoSans text-[1rem] md:text-[1.125rem]">
-            Quieres ver todos mis servicos? .{" "}
+            ¿Quieres ver todos mis servicios?{" "}
             <Link className="text-accent font-Poppins font-medium hover:text-accent2 underline underline-offset-8" to="contact" duration={500} offset={-100} title="Haz clic para contactarme">Contáctame</Link>
           </p>
         </div>
@@ -64,4 +64,3 @@ const Services = () => {
 }
 
 export default Services
-
