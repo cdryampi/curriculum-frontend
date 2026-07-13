@@ -30,8 +30,8 @@ const Portfolio = () => {
         <SectionTitle title="Mis proyectos" titleInner="personales" desc="Aquí puedes ver algunos de los proyectos en los que he trabajado. Si quieres ver más, puedes visitar mi perfil de GitHub."></SectionTitle>
         {(!portfolio || portfolio.length === 0) ? (
           <EmptyState
-            title="A\u00fan no hay proyectos publicados"
-            description="Estoy actualizando mi portfolio. Mientras tanto, puedes visitar mi GitHub para ver mi trabajo m\u00e1s reciente."
+            title="Aún no hay proyectos publicados"
+            description="Estoy actualizando mi portfolio. Mientras tanto, puedes visitar mi GitHub para ver mi trabajo más reciente."
           />
         ) : (
           <div className="portList flex flex-wrap relative mx-[-.9375rem] mb-[-1.875rem] section-fade-in">
@@ -72,4 +72,3 @@ const Portfolio = () => {
 }
 
 export default Portfolio
-

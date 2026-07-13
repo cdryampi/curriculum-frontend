@@ -18,7 +18,7 @@ const EducationAndSkills = () => {
         <SectionTitle3
           title="Formación y"
           titleInner="habilidades"
-          desc="aqui puedes ver mi formación académica y las habilidades que he adquirido"
+          desc="Aquí puedes ver mi formación académica y las habilidades que he adquirido"
         ></SectionTitle3>
         <div className="eduAndWorkInner relative w-full">
           <div className="grid lg:gap-[1.875rem] gap-[3.125rem] md:grid-cols-1 lg:grid-cols-2 grid-cols-1">

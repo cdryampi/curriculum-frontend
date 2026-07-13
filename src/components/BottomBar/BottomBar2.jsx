@@ -11,7 +11,7 @@ const BottomBar2 = () => {
     return (
       <div className="bottomBarWrap relative w-full py-8">
         <div className="container mx-auto">
-          <ErrorState message="Error al cargar las p\u00e1ginas est\u00e1ticas." onRetry={refetch} />
+          <ErrorState message="Error al cargar las páginas estáticas." onRetry={refetch} />
         </div>
       </div>
     )
@@ -40,4 +40,3 @@ const BottomBar2 = () => {
 }
 
 export default BottomBar2
-

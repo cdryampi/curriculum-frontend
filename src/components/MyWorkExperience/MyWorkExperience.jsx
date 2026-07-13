@@ -34,7 +34,7 @@ const MyWorkExperience = () => {
         <SectionTitleLight title="Mi experiencia" titleInner="laboral" desc="Estos son algunos de los trabajos que he realizado a lo largo de mi carrera profesional."></SectionTitleLight>
         {(!workExp || workExp.length === 0) ? (
           <EmptyState
-            title="A\u00fan no hay experiencia registrada"
+            title="Aún no hay experiencia registrada"
             description="Pronto compartiremos los detalles de mi trayectoria profesional."
             className="text-white"
           />
@@ -97,4 +97,3 @@ const MyWorkExperience = () => {
 }
 
 export default MyWorkExperience
-

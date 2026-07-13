@@ -17,17 +17,17 @@ const StaticPage = () => {
   const pdf_link = pdfData?.resume_file
 
   useEffect(() => {
-    document.title = data ? `${data?.title} - Curriculum de Yampi` : "Cargando... - Curriculum de Yampi"
+    document.title = data ? `${data?.title} - Currículum de Yampi` : "Cargando... - Currículum de Yampi"
   }, [data])
 
   if (error) {
     return (
       <>
-        <Helmet><title>Error - Curriculum Yampi</title></Helmet>
+        <Helmet><title>Error - Currículum Yampi</title></Helmet>
         <Header />
         <section className="featuredAreaWrap md:text-left text-center bg-dark z-[1] flex items-center bgGrident1 bg-blend-hard-light relative min-h-screen w-screen md:py-[6.25rem] py-20">
           <div className="container mx-auto">
-            <ErrorState message="Error al cargar la p\u00e1gina." onRetry={refetch} />
+            <ErrorState message="Error al cargar la página." onRetry={refetch} />
           </div>
         </section>
         <BottomBar2 />
@@ -38,7 +38,7 @@ const StaticPage = () => {
   return (
     <>
       <Helmet>
-        <title>{data ? `${data?.title} - Curriculum de Yampi` : "Cargando... - Curriculum de Yampi"}</title>
+        <title>{data ? `${data?.title} - Currículum de Yampi` : "Cargando... - Currículum de Yampi"}</title>
         <meta name="description" content={data?.description || "Página estática del currículum de Yampi"} />
         <link rel="canonical" href={`https://cdryampi.github.io/curriculum-frontend/static-page/${slug}/`} />
       </Helmet>
@@ -83,4 +83,3 @@ const StaticPage = () => {
 }
 
 export default StaticPage
-

@@ -109,7 +109,7 @@ const Skills = () => {
           >
             <FiArrowLeft className="mr-2" /> Anterior
           </button>
-          <span className="text-white font-Poppins text-sm" aria-live="polite">P\u00e1gina {pageIndex + 1}</span>
+          <span className="text-white font-Poppins text-sm" aria-live="polite">Página {pageIndex + 1}</span>
           <button
             type="button"
             onClick={handleNext}
@@ -130,4 +130,3 @@ const Skills = () => {
 }
 
 export default Skills
-
