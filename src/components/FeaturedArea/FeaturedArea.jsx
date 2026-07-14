@@ -1,4 +1,5 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import Shape1 from "../../assets/images/shape-1.png"
 import Shape2 from "../../assets/images/shape-2.png"
 import Shape3 from "../../assets/images/shape-3.png"
@@ -9,6 +10,7 @@ import { FeaturedAreaSkeleton } from "../Skeleton"
 import SafeImage from "../SafeImage/SafeImage"
 
 const FeaturedArea = ({ userData, loading }) => {
+  const { t } = useTranslation()
   if (loading || !userData) return <FeaturedAreaSkeleton />
 
   const getGitHub = () => {
@@ -53,7 +55,7 @@ const FeaturedArea = ({ userData, loading }) => {
               <div className="featuredCap relative w-full mt-10 md:mt-0">
                 <span className="bg-accent opacity-[.07] w-[6.25rem] h-[6.25rem] md:w-[12.5rem] md:h-[12.5rem] absolute rounded-full z-[-1] top-[-2.5rem] md:top-[-5rem]"></span>
                 <h3 className="font-normal text-[1.5rem] sm:text-[1.5rem] md:text-[1.875rem] lg:text-[2rem] xl:text-[2.5rem] font-Caveat text-white uppercase leading-none">
-                  Allillanchu, Ñuqaqa kani
+                  {t("hero.greeting")}
                 </h3>
                 <h2 className="font-bold text-[2.3rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5rem] font-Poppins text-white uppercase">
                   {userData?.nombre}
@@ -75,19 +77,19 @@ const FeaturedArea = ({ userData, loading }) => {
                     href={`${getGitHub()}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    title="Ver proyectos en GitHub"
+                    title={t("hero.githubTitle")}
                   >
-                    <FiChevronRight className="bg-accent text-white rounded-[5px] md:rounded-[10px] w-9 h-[3.5rem] md:w-11 md:h-[4.375rem] p-2"></FiChevronRight>
-                    <span className="font-bold font-Poppins underline underline-offset-8">Wañuchiyqa</span>
+                  <FiChevronRight className="bg-accent text-white rounded-[5px] md:rounded-[10px] w-9 h-[3.5rem] md:w-11 md:h-[4.375rem] p-2"></FiChevronRight>
+                    <span className="font-bold font-Poppins underline underline-offset-8">{t("hero.githubCta")}</span>
                   </a>
                   <a
                     className="text-white/60 uppercase md:text-[1rem] text-[0.9rem] font-Poppins font-medium flex gap-2 items-center hover:text-white"
                     href={`${userData?.resume_file?.pdf_url || "#"}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    title="descargar CV"
+                    title={t("nav.downloadCv")}
                   >
-                    Qillqay CV
+                    {t("hero.downloadCv")}
                   </a>
                 </div>
               </div>
@@ -100,4 +102,3 @@ const FeaturedArea = ({ userData, loading }) => {
 }
 
 export default FeaturedArea
-

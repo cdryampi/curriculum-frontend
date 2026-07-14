@@ -1,4 +1,5 @@
 import PatternImg from "../../assets/images/patternImg.jpg"
+import { useTranslation } from "react-i18next"
 import RightDownIcon from "../../lib/icons/RightDown.svg?react"
 import usePortfolioList from "../../hooks/UseListPortfolioHook"
 import { SectionTitle } from "../SectionTitles"
@@ -9,13 +10,14 @@ import SafeImage from "../SafeImage/SafeImage"
 import { GIT_HUB_URL } from "../../config"
 
 const Portfolio = () => {
+  const { t } = useTranslation()
   const { data: portfolio, loading, error, refetch } = usePortfolioList()
 
   if (error) {
     return (
       <section className="portWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem] relative w-full">
         <div className="container mx-auto">
-          <ErrorState message="Error al cargar los proyectos." onRetry={refetch} />
+          <ErrorState message={t("portfolio.error")} onRetry={refetch} />
         </div>
       </section>
     )
@@ -27,11 +29,11 @@ const Portfolio = () => {
     <section className="portWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem] relative w-full" id="portfolio">
       <div className="fixedBg bg-left-top bg-no-repeat opacity-20" style={{ backgroundImage: `url(${PatternImg})` }}></div>
       <div className="container mx-auto">
-        <SectionTitle title="Mis proyectos" titleInner="personales" desc="Aquí puedes ver algunos de los proyectos en los que he trabajado. Si quieres ver más, puedes visitar mi perfil de GitHub."></SectionTitle>
+        <SectionTitle title={t("portfolio.title")} titleInner={t("portfolio.titleInner")} desc={t("portfolio.desc")}></SectionTitle>
         {(!portfolio || portfolio.length === 0) ? (
           <EmptyState
-            title="Aún no hay proyectos publicados"
-            description="Estoy actualizando mi portfolio. Mientras tanto, puedes visitar mi GitHub para ver mi trabajo más reciente."
+            title={t("portfolio.emptyTitle")}
+            description={t("portfolio.emptyDesc")}
           />
         ) : (
           <div className="portList flex flex-wrap relative mx-[-.9375rem] mb-[-1.875rem] section-fade-in">
@@ -62,8 +64,8 @@ const Portfolio = () => {
         )}
         <div className="viewAll text-center w-full mt-10 md:mt-[3.125rem] lg:mt-[4.0625rem]">
           <p className="text-desc2 font-NunitoSans text-[1rem] md:text-[1.125rem]">
-            Si quieres ver más sobre mis proyectos.{" "}
-            <a className="text-accent font-Poppins font-medium hover:text-accent2 underline underline-offset-8" href={GIT_HUB_URL} title="Haz click aquí para ver más" target="_blank" rel="noopener noreferrer">Haz click aquí para ver más.</a>
+            {t("portfolio.more")}{" "}
+            <a className="text-accent font-Poppins font-medium hover:text-accent2 underline underline-offset-8" href={GIT_HUB_URL} title={t("portfolio.moreTitle")} target="_blank" rel="noopener noreferrer">{t("portfolio.moreLink")}</a>
           </p>
         </div>
       </div>

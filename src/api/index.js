@@ -2,6 +2,7 @@
 import axios from "axios";
 
 import { API_BASE_URL } from "../config";
+import { getStoredLanguage } from "../i18n/languages";
 
 // Configura el cliente de Axios
 const apiClient = axios.create({
@@ -9,6 +10,11 @@ const apiClient = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+});
+
+apiClient.interceptors.request.use((config) => {
+  config.headers["Accept-Language"] = getStoredLanguage();
+  return config;
 });
 
 // Funciones para diferentes endpoints

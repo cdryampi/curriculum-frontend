@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useTranslation } from "react-i18next"
 import useSkillListCategoryHook from "../../hooks/UseSkillListCategoryHook"
 import { SkillCard } from "../SkillCard"
 import { SectionTitleIcon } from "../SectionTitles"
@@ -10,6 +11,7 @@ import { ErrorState } from "../ErrorState"
 import { ClipLoader } from "react-spinners"
 
 const Skills = () => {
+  const { t } = useTranslation()
   const {
     data: skills,
     loading,
@@ -45,8 +47,8 @@ const Skills = () => {
   if (error) {
     return (
       <div className="skillsWrap relative w-full">
-        <SectionTitleIcon title="Habilidades" />
-        <ErrorState message="No hemos podido recuperar los datos." onRetry={refetch} />
+        <SectionTitleIcon title={t("skills.title")} />
+        <ErrorState message={t("skills.error")} onRetry={refetch} />
       </div>
     )
   }
@@ -55,8 +57,8 @@ const Skills = () => {
 
   return (
     <div className="skillsWrap relative w-full" aria-live="polite">
-      <SectionTitleIcon title="Habilidades" />
-      <div className="flex flex-wrap gap-2 mb-4" role="tablist" aria-label="Categorías de habilidades">
+      <SectionTitleIcon title={t("skills.title")} />
+      <div className="flex flex-wrap gap-2 mb-4" role="tablist" aria-label={t("skills.categories")}>
         {Object.entries(CATEGORIES_LIST).map(([key, value]) => {
           const isActive = category === value
           return (
@@ -70,7 +72,7 @@ const Skills = () => {
                 isActive ? "bg-accent text-white" : "bg-dark3 text-white hover:bg-accent2"
               }`}
             >
-              {value}
+              {t(`skills.categoryLabels.${value}`)}
             </button>
           )
         })}
@@ -83,8 +85,8 @@ const Skills = () => {
         )}
         {(!skills || skills.length === 0) ? (
           <EmptyState
-            title="Sin habilidades en esta categoría"
-            description="No hay habilidades registradas todavía. Prueba con otra categoría o vuelve más tarde."
+            title={t("skills.emptyTitle")}
+            description={t("skills.emptyDesc")}
           />
         ) : (
           <div className={`skillsList grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 transition-opacity duration-200 ${loading ? "opacity-50" : "opacity-100"} section-fade-in`}>
@@ -100,28 +102,28 @@ const Skills = () => {
             type="button"
             onClick={handlePrev}
             disabled={!prevPageURL}
-            aria-label="Página anterior"
+            aria-label={t("skills.previousPage")}
             className={`flex items-center justify-center py-2 px-4 rounded shadow transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
               prevPageURL
                 ? "bg-accent2 hover:bg-accent2_dark text-white cursor-pointer"
                 : "bg-gray/30 text-gray-500 cursor-not-allowed"
             }`}
           >
-            <FiArrowLeft className="mr-2" /> Anterior
+            <FiArrowLeft className="mr-2" /> {t("skills.previous")}
           </button>
-          <span className="text-white font-Poppins text-sm" aria-live="polite">Página {pageIndex + 1}</span>
+          <span className="text-white font-Poppins text-sm" aria-live="polite">{t("skills.page", { page: pageIndex + 1 })}</span>
           <button
             type="button"
             onClick={handleNext}
             disabled={!nextPageURL}
-            aria-label="Página siguiente"
+            aria-label={t("skills.nextPage")}
             className={`flex items-center justify-center py-2 px-4 rounded shadow transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
               nextPageURL
                 ? "bg-accent2 hover:bg-accent2_dark text-white cursor-pointer"
                 : "bg-gray/30 text-gray-500 cursor-not-allowed"
             }`}
           >
-            Siguiente <FiArrowRight className="ml-2" />
+            {t("skills.next")} <FiArrowRight className="ml-2" />
           </button>
         </div>
       )}

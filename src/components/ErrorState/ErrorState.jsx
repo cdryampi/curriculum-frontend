@@ -1,6 +1,8 @@
 import { FaExclamationTriangle } from "react-icons/fa"
+import { useTranslation } from "react-i18next"
 
-const ErrorState = ({ message = "Algo salió mal al cargar los datos.", onRetry, retryLabel = "Reintentar", className = "" }) => {
+const ErrorState = ({ message, onRetry, retryLabel, className = "" }) => {
+  const { t } = useTranslation()
   return (
     <div
       role="alert"
@@ -10,7 +12,7 @@ const ErrorState = ({ message = "Algo salió mal al cargar los datos.", onRetry,
         <FaExclamationTriangle />
       </div>
       <p className="text-red-400 mb-4 font-NunitoSans text-[0.95rem] md:text-base max-w-md">
-        {message}
+        {message || t("common.errorData")}
       </p>
       {onRetry && (
         <button
@@ -18,7 +20,7 @@ const ErrorState = ({ message = "Algo salió mal al cargar los datos.", onRetry,
           onClick={onRetry}
           className="bg-accent text-white px-5 py-2 rounded font-bold hover:bg-accent2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
-          {retryLabel}
+          {retryLabel || t("common.retry")}
         </button>
       )}
     </div>

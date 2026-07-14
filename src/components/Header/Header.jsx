@@ -1,12 +1,17 @@
 import { useLayoutEffect, useRef, useState, useEffect, useCallback } from "react"
 import { Link as RouterLink } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import { CgClose, CgMenuRight } from "react-icons/cg"
 import { SocialLinks } from "../SocialLinks"
 import MenuLinks from "./MenuLinks"
 import { ResponsiveHeader } from "../ResponsiveHeader"
 import { NAV_LINKS } from "../../data/menuItems"
+import { LanguageSwitcher } from "../LanguageSwitcher"
+import useCurrentLanguage from "../../hooks/useCurrentLanguage"
 
 const Header = ({ pdf }) => {
+  const { t } = useTranslation()
+  const lang = useCurrentLanguage()
   const refHeader = useRef()
   const [sideMenu, setSideMenu] = useState(false)
   const sideMenuRef = useRef(null)
@@ -61,12 +66,13 @@ const Header = ({ pdf }) => {
           <div className="container mx-auto">
             <div className="flex items-center justify-between w-full topbarInner">
               <div className="logo inline-block max-w-[50%]">
-                <RouterLink to="/" title="ir a la página de inicio" className="flex items-center text-white font-Poppins font-bold text-[1.5rem]">
+                <RouterLink to={`/${lang}`} title={t("nav.homeTitle")} className="flex items-center text-white font-Poppins font-bold text-[1.5rem]">
                   YAMPI <span className="text-accent ml-3">DEV</span>
                 </RouterLink>
               </div>
-              <div className="hidden menuWrapper">
+              <div className="hidden menuWrapper items-center gap-4">
                 <MenuLinks pdf_link={pdf} />
+                <LanguageSwitcher />
               </div>
             </div>
           </div>
@@ -75,7 +81,7 @@ const Header = ({ pdf }) => {
           <button
             className="mirror cursor-pointer"
             onClick={toggleSideMenu}
-            aria-label="Abrir menú lateral"
+            aria-label={t("nav.openSideMenu")}
             aria-expanded={sideMenu}
           >
             <CgMenuRight className="text-white hover:text-accent" size={32} />
@@ -84,7 +90,7 @@ const Header = ({ pdf }) => {
             <SocialLinks />
             <span className="h-[2.5rem] sm:h-[3rem] md:h-[5.625rem] bg-accent w-[1px]"></span>
             <h5 className="uppercase text-white font-Poppins font-bold text-[1rem]" style={{ textOrientation: "mixed", writingMode: "vertical-rl", transform: "matrix(-1, 0, 0, -1, 0, 0)" }}>
-              Follow Me
+              {t("nav.follow")}
             </h5>
           </div>
         </div>
@@ -99,7 +105,7 @@ const Header = ({ pdf }) => {
           ref={sideMenuRef}
           role="dialog"
           aria-modal="true"
-          aria-label="Menú de navegación"
+          aria-label={t("nav.sideMenu")}
           className={`sideMenu bg-[#000] fixed transition-all ease-in-out duration-300 z-[9999] top-0 h-screen w-screen flex justify-center items-center px-8 py-16 overflow-y-scroll ${
             sideMenu ? "opacity-100 visible" : "opacity-0 invisible"
           }`}
@@ -107,23 +113,24 @@ const Header = ({ pdf }) => {
           <button
             className="absolute right-10 top-4 cursor-pointer"
             onClick={() => setSideMenu(false)}
-            aria-label="Cerrar menú"
+            aria-label={t("nav.closeMenu")}
           >
             <CgClose className="text-white hover:text-accent" size={40} />
           </button>
           <ul className="flex flex-col gap-4 w-80">
             {NAV_LINKS.map((link) => (
-              <li key={link.to}>
+              <li key={link.hash}>
                 <RouterLink
-                  to={link.to}
+                  to={`/${lang}#${link.hash}`}
                   className="text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase text-white hover:text-accent block cursor-pointer"
-                  title={link.title}
+                  title={t(`nav.${link.key}`)}
                   onClick={() => setSideMenu(false)}
                 >
-                  {link.label}
+                  {t(`nav.${link.key}`)}
                 </RouterLink>
               </li>
             ))}
+            <li><LanguageSwitcher /></li>
           </ul>
         </div>
       </header>

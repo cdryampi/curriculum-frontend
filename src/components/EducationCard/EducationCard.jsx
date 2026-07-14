@@ -1,8 +1,10 @@
 import React, { useState } from "react"
+import { useTranslation } from "react-i18next"
 import { BsPlus, BsDash } from "react-icons/bs"
 import { TagsDisplay } from "../Tag"
 
 const EducationCard = React.memo(({ education }) => {
+  const { t } = useTranslation()
   const [expand, setExpand] = useState(false)
   const toggleExpand = () => setExpand(!expand)
   const descId = `edu-desc-${education?.id}`
@@ -15,7 +17,7 @@ const EducationCard = React.memo(({ education }) => {
           className="bg-gray rounded-[10px] h-[3.125rem] w-[3.125rem] inline-flex items-center justify-center cursor-pointer hover:bg-gray/80 transition-colors duration-200"
           aria-expanded={expand}
           aria-controls={descId}
-          aria-label={expand ? "Colapsar descripción" : "Expandir descripción"}
+          aria-label={expand ? t("education.collapse") : t("education.expand")}
         >
           {expand ? <BsDash className="fill-accent" size="2.3rem" /> : <BsPlus className="fill-accent" size="2.3rem" />}
         </button>

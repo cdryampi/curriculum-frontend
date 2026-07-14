@@ -33,6 +33,7 @@ const useApiWithCache = (cacheKey, fetchFn, deps = []) => {
       return
     }
     const call = async () => {
+      setData(null)
       setLoading(true)
       setError(null)
       try {

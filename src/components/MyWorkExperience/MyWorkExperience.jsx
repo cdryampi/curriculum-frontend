@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react"
+import { useTranslation } from "react-i18next"
 import { Pagination } from "swiper/modules"
 import { SectionTitleLight } from "../SectionTitles"
 import SectionBg from "../../assets/images/secBg2Aux.jpg"
@@ -12,13 +13,14 @@ import "swiper/css"
 import "swiper/css/pagination"
 
 const MyWorkExperience = () => {
+  const { t } = useTranslation()
   const { data: workExp, loading, error, refetch } = useLaboralExperience()
 
   if (error) {
     return (
       <section className="workExpWrap py-[4.5rem] md:py-[5.5rem] lg:py-[6.5rem] xl:py-[7.5rem] relative w-full">
         <div className="container mx-auto">
-          <ErrorState message="Error al cargar la experiencia laboral." onRetry={refetch} />
+          <ErrorState message={t("work.error")} onRetry={refetch} />
         </div>
       </section>
     )
@@ -31,11 +33,11 @@ const MyWorkExperience = () => {
       <span className="bg-accent absolute right-0 bottom-[-.75rem] h-6 w-1/2"></span>
       <div className="fixedBg bg-center bg-cover bg-no-repeat before:absolute before:z-[1] before:inset-0 before:opacity-90 before:bg-dark bg-dark gradBg1 bg-blend-color-dodge xl:rounded-tl-[20rem] lg:rounded-tl-[18rem] md:rounded-tl-[15rem] sm:rounded-tl-[10rem] rounded-tl-0 overflow-hidden" style={{ backgroundImage: `url(${SectionBg})` }}></div>
       <div className="container sm:container md:container lg:container xl:max-w-[86.875rem] mx-auto">
-        <SectionTitleLight title="Mi experiencia" titleInner="laboral" desc="Estos son algunos de los trabajos que he realizado a lo largo de mi carrera profesional."></SectionTitleLight>
+        <SectionTitleLight title={t("work.title")} titleInner={t("work.titleInner")} desc={t("work.desc")}></SectionTitleLight>
         {(!workExp || workExp.length === 0) ? (
           <EmptyState
-            title="Aún no hay experiencia registrada"
-            description="Pronto compartiremos los detalles de mi trayectoria profesional."
+            title={t("work.emptyTitle")}
+            description={t("work.emptyDesc")}
             className="text-white"
           />
         ) : (
