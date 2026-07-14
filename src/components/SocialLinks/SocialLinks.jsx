@@ -1,21 +1,23 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import useSocialLinks from "../../hooks/UseListSocialLinksHook"
 import { iconMappings } from "../../data/social/icons"
 import { SocialLinksSkeleton } from "../Skeleton"
 
 const SocialLinks = () => {
+  const { t } = useTranslation()
   const { data: socialLinks, loading, error, refetch } = useSocialLinks()
 
   if (error) {
     return (
       <div className="socialLinks flex flex-col items-center justify-center gap-5" role="alert">
-        <p className="text-red-400 text-xs">Error al cargar enlaces.</p>
+        <p className="text-red-400 text-xs">{t("social.error")}</p>
         <button
           type="button"
           onClick={refetch}
           className="bg-accent text-white px-2 py-1 rounded text-xs font-bold hover:bg-accent2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
-          Reintentar
+          {t("common.retry")}
         </button>
       </div>
     )
@@ -28,7 +30,7 @@ const SocialLinks = () => {
   return (
     <div className="socialLinks flex flex-col items-center justify-center gap-5 section-fade-in">
       {list.length === 0 ? (
-        <p className="text-white/40 text-xs">Sin enlaces sociales</p>
+        <p className="text-white/40 text-xs">{t("social.empty")}</p>
       ) : (
         list.map((item, index) => (
           <a
@@ -49,4 +51,3 @@ const SocialLinks = () => {
 }
 
 export default SocialLinks
-

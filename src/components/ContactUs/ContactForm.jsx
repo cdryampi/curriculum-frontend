@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useTranslation } from "react-i18next"
 import useSendEmail from "../../hooks/UseEmailSenderHook"
 import { toast } from "react-toastify"
 
@@ -6,6 +7,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const MAX_MESSAGE = 500
 
 const ContactForm = () => {
+  const { t } = useTranslation()
   const { sendEmailHandler, loading, error, success } = useSendEmail()
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
   const [errors, setErrors] = useState({})
@@ -14,11 +16,11 @@ const ContactForm = () => {
   const validate = (name, value) => {
     switch (name) {
       case "name":
-        return value.trim().length < 2 ? "El nombre debe tener al menos 2 caracteres" : ""
+        return value.trim().length < 2 ? t("contact.nameError") : ""
       case "email":
-        return !EMAIL_PATTERN.test(value) ? "Ingresa un email válido" : ""
+        return !EMAIL_PATTERN.test(value) ? t("contact.emailError") : ""
       case "message":
-        return value.trim().length < 10 ? "El mensaje debe tener al menos 10 caracteres" : ""
+        return value.trim().length < 10 ? t("contact.messageError") : ""
       default:
         return ""
     }
@@ -70,7 +72,7 @@ const ContactForm = () => {
       <form className="grid gap-[1.875rem] md:grid-cols-2 grid-cols-1" onSubmit={handleSubmit} noValidate>
         <div className="fieldBox w-full md:col-span-2">
           <label htmlFor="contact-message" className="text-white font-medium mb-[10px] block">
-            Escribe tu mensaje
+            {t("contact.message")}
           </label>
           <textarea
             id="contact-message"
@@ -91,7 +93,7 @@ const ContactForm = () => {
         </div>
         <div className="fieldBox w-full">
           <label htmlFor="contact-name" className="text-white font-medium mb-[10px] block">
-            Tu nombre
+            {t("contact.name")}
           </label>
           <input
             id="contact-name"
@@ -107,7 +109,7 @@ const ContactForm = () => {
         </div>
         <div className="fieldBox w-full">
           <label htmlFor="contact-email" className="text-white font-medium mb-[10px] block">
-            Tu email
+            {t("contact.email")}
           </label>
           <input
             id="contact-email"
@@ -128,7 +130,7 @@ const ContactForm = () => {
             type="submit"
             disabled={loading}
           >
-            {loading ? "Enviando..." : "Contáctame"}
+            {loading ? t("contact.sending") : t("contact.send")}
           </button>
         </div>
       </form>

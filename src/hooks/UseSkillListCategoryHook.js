@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import { API_BASE_URL } from '../config'
 import { fetchSkillFilterNextPrev } from '../api/index'
 import { cacheGet, cacheSet } from './cacheStore'
@@ -6,15 +7,18 @@ import { cacheGet, cacheSet } from './cacheStore'
 const CATEGORY_CACHE_PREFIX = 'skills:'
 
 const useSkillListCategoryHook = (initialCategory) => {
+  const { i18n } = useTranslation()
+  const lang = i18n.resolvedLanguage || i18n.language
   const [category, setCategoryState] = useState(initialCategory)
-  const [data, setData] = useState(() => cacheGet(CATEGORY_CACHE_PREFIX + initialCategory) || [])
-  const [loading, setLoading] = useState(!cacheGet(CATEGORY_CACHE_PREFIX + initialCategory))
+  const cacheKey = `${CATEGORY_CACHE_PREFIX}${lang}:${category}`
+  const [data, setData] = useState(() => cacheGet(`${CATEGORY_CACHE_PREFIX}${lang}:${initialCategory}`) || [])
+  const [loading, setLoading] = useState(!cacheGet(`${CATEGORY_CACHE_PREFIX}${lang}:${initialCategory}`))
   const [error, setError] = useState(null)
   const [nextPageURL, setNextPageURL] = useState(null)
   const [prevPageURL, setPrevPageURL] = useState(null)
 
   const fetchSkills = useCallback((url = `${API_BASE_URL}/education_and_skills/skill_list_category/${category}/`) => {
-    const cached = !url.includes('page=') ? cacheGet(CATEGORY_CACHE_PREFIX + category) : null
+    const cached = !url.includes('page=') ? cacheGet(cacheKey) : null
     if (cached) {
       setData(cached.data)
       setNextPageURL(cached.next)
@@ -29,7 +33,7 @@ const useSkillListCategoryHook = (initialCategory) => {
         const next = response.data.next
         const previous = response.data.previous
         if (!url.includes('page=')) {
-          cacheSet(CATEGORY_CACHE_PREFIX + category, { data: results, next, prev: previous })
+          cacheSet(cacheKey, { data: results, next, prev: previous })
         }
         setData(results)
         setNextPageURL(next)
@@ -40,7 +44,7 @@ const useSkillListCategoryHook = (initialCategory) => {
         setError(`Error fetching data: ${err.response ? err.response.data.message || err.message : err.message}`)
         setLoading(false)
       })
-  }, [category])
+  }, [cacheKey, category])
 
   useEffect(() => {
     setNextPageURL(null)

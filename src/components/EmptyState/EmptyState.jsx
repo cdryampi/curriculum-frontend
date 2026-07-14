@@ -1,6 +1,8 @@
 import { FaInfoCircle } from "react-icons/fa"
+import { useTranslation } from "react-i18next"
 
-const EmptyState = ({ title = "Sin datos por ahora", description, icon, className = "" }) => {
+const EmptyState = ({ title, description, icon, className = "" }) => {
+  const { t } = useTranslation()
   return (
     <div
       role="status"
@@ -11,7 +13,7 @@ const EmptyState = ({ title = "Sin datos por ahora", description, icon, classNam
         {icon || <FaInfoCircle />}
       </div>
       <h3 className="text-white font-Poppins font-semibold text-[1.1rem] md:text-[1.25rem] mb-2">
-        {title}
+        {title || t("common.emptyData")}
       </h3>
       {description && (
         <p className="text-desc2 font-NunitoSans text-[0.95rem] md:text-base max-w-md">

@@ -1,9 +1,11 @@
 import { SectionTitle3 } from "../SectionTitles";
+import { useTranslation } from "react-i18next";
 import SectionBg from "../../assets/images/educationBG.jpg";
 import { Skills } from "../Skills";
 import { Education } from "../Education";
 
 const EducationAndSkills = () => {
+  const { t } = useTranslation();
   return (
     <section
       className="eduAndWorkWrap py-[5rem] sm:py-[6rem] md:py-[7.5rem] relative w-full"
@@ -16,9 +18,9 @@ const EducationAndSkills = () => {
       ></div>
       <div className="container sm:container md:container lg:container xl:container mx-auto">
         <SectionTitle3
-          title="Formación y"
-          titleInner="habilidades"
-          desc="Aquí puedes ver mi formación académica y las habilidades que he adquirido"
+          title={t("education.sectionTitle")}
+          titleInner={t("education.sectionTitleInner")}
+          desc={t("education.sectionDesc")}
         ></SectionTitle3>
         <div className="eduAndWorkInner relative w-full">
           <div className="grid lg:gap-[1.875rem] gap-[3.125rem] md:grid-cols-1 lg:grid-cols-2 grid-cols-1">

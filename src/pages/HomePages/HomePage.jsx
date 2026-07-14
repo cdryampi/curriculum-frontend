@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import { Helmet } from "react-helmet-async"
 import { Header } from "../../components/Header"
 import { FeaturedArea } from "../../components/FeaturedArea"
@@ -16,8 +17,11 @@ import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { HeaderSkeleton, BottomBarSkeleton } from "../../components/Skeleton"
 import { ErrorState } from "../../components/ErrorState"
+import useCurrentLanguage from "../../hooks/useCurrentLanguage"
 
 const HomePage = () => {
+  const { t } = useTranslation()
+  const lang = useCurrentLanguage()
   const { data: userData, loading, error, refetch } = useUserProfile()
   const pdf_data = userData?.resume_file
   const location = useLocation()
@@ -53,9 +57,9 @@ const HomePage = () => {
       <div className="pageLoader fixed flex-col justify-center items-center inset-0 flex bg-dark">
         <Helmet><title>Error - Currículum Yampi</title></Helmet>
         <ErrorState
-          message="Error al cargar el perfil del usuario."
+          message={t("common.errorData")}
           onRetry={refetch}
-          retryLabel="Reintentar"
+          retryLabel={t("common.retry")}
         />
       </div>
     )
@@ -64,15 +68,19 @@ const HomePage = () => {
   return (
     <main id="main-content"><div id="home">
       <Helmet>
-        <title>Currículum de Yampi | Desarrollador Web Full Stack</title>
-        <meta name="description" content={userData?.description ? userData.description.replace(/<[^>]*>/g, "").slice(0, 160) : "Descubre mi perfil profesional, experiencia y habilidades en desarrollo web."} />
+        <html lang={lang} />
+        <title>{t("seo.homeTitle")}</title>
+        <meta name="description" content={userData?.description ? userData.description.replace(/<[^>]*>/g, "").slice(0, 160) : t("seo.defaultDescription")} />
         <meta property="og:title" content={`${userData?.nombre || "Yampi"} ${userData?.apellido || "Dev"} - Currículum`} />
-        <meta property="og:description" content="Desarrollador Web Full Stack con experiencia en Django y React." />
+        <meta property="og:description" content={t("seo.ogDescription")} />
         <meta property="og:type" content="profile" />
-        <meta property="og:url" content="https://cdryampi.github.io/curriculum-frontend/" />
+        <meta property="og:url" content={`https://cdryampi.github.io/curriculum-frontend/${lang}`} />
         <meta property="og:image" content={userData?.foto?.file || "/logo.png"} />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://cdryampi.github.io/curriculum-frontend/" />
+        <link rel="canonical" href={`https://cdryampi.github.io/curriculum-frontend/${lang}`} />
+        <link rel="alternate" hrefLang="es" href="https://cdryampi.github.io/curriculum-frontend/es" />
+        <link rel="alternate" hrefLang="en" href="https://cdryampi.github.io/curriculum-frontend/en" />
+        <link rel="alternate" hrefLang="qu" href="https://cdryampi.github.io/curriculum-frontend/qu" />
         {jsonLd && <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
       </Helmet>
 
