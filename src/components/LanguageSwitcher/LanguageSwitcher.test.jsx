@@ -41,10 +41,9 @@ describe("LanguageSwitcher", () => {
     await user.click(screen.getByRole("button", { name: "common.language" }))
 
     expect(screen.getByRole("listbox")).toBeInTheDocument()
-    expect(screen.getAllByRole("option")).toHaveLength(3)
+    expect(screen.getAllByRole("option")).toHaveLength(2)
     expect(screen.getByRole("option", { name: /Español/i })).toBeInTheDocument()
     expect(screen.getByRole("option", { name: /English/i })).toBeInTheDocument()
-    expect(screen.getByRole("option", { name: /Runasimi/i })).toBeInTheDocument()
   })
 
   it("changes language and closes the menu when an option is selected", async () => {

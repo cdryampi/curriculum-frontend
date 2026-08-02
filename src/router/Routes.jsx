@@ -5,19 +5,15 @@ import SmoothScroll from "../components/SmoothScroll/SmoothScroll"
 import { HeaderSkeleton, BottomBarSkeleton } from "../components/Skeleton"
 import { detectInitialLanguage, getSupportedLanguage, SUPPORTED_LANGUAGES } from "../i18n/languages"
 import i18n from "../i18n"
+import HomePage from "../pages/HomePages/HomePage"
 
-const HomePage = lazy(() => import("../pages/HomePages/HomePage"))
 const ErrorPage = lazy(() => import("../pages/ErrorPage/ErrorPage"))
 const StaticPage = lazy(() => import("../pages/StaticPage/StaticPage"))
 
 const PageFallback = () => (
-  <div className="bg-dark min-h-screen">
-    <HeaderSkeleton />
-    <div className="flex justify-center items-center h-64">
-      <div className="animate-pulse text-white/50 text-lg">{i18n.t("common.loading")}</div>
-    </div>
-    <BottomBarSkeleton />
-  </div>
+  <main id="main-content" className="min-h-screen bg-[#f6f4ef] grid place-items-center p-8 text-center">
+    <div><p className="text-[#2457e6] text-xs font-bold tracking-[.15em] uppercase">YS·DEV</p><p className="mt-3 text-slate-600">{i18n.t("common.loading")}</p></div>
+  </main>
 )
 
 const SkipLink = () => {
@@ -49,10 +45,6 @@ const LanguageLayout = () => {
 
   if (!isSupported) {
     return <Navigate to={`/${detectInitialLanguage()}${location.pathname}${location.search}${location.hash}`} replace />
-  }
-
-  if (i18n.resolvedLanguage !== language) {
-    return <PageFallback />
   }
 
   return <Outlet />

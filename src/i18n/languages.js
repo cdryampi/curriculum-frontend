@@ -3,7 +3,6 @@ export const DEFAULT_LANGUAGE = "es"
 export const SUPPORTED_LANGUAGES = [
   { code: "es", label: "ES", name: "Español" },
   { code: "en", label: "EN", name: "English" },
-  { code: "qu", label: "QU", name: "Runasimi" },
 ]
 
 const SUPPORTED_CODES = SUPPORTED_LANGUAGES.map((language) => language.code)
