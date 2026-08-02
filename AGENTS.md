@@ -20,9 +20,23 @@ npm install
 npm run dev
 npm run build
 npm run preview
+npm run test        # Vitest (tests en src/**/*.test.{js,jsx})
+npm run test:watch  # Vitest watch
 ```
 
-`npm run test` existe en `package.json`, pero requiere que Jest este configurado en el entorno.
+## Estructura
+
+```
+src/
+├── api/index.js           # Axios client (timeout 15s + interceptors) + endpoints
+├── components/            # UI (incluye LanguageSwitcher, EmptyState, ErrorState, SafeImage)
+├── hooks/                 # Data fetching + cacheStore (TTL 5 min) + i18n
+├── pages/                 # HomePage, ErrorPage, StaticPage
+├── router/Routes.jsx      # BrowserRouter + lazy
+├── i18n.js                # i18next + traducciones es/en/qu
+├── styles/global.css      # Tailwind CSS 4
+└── config.js              # Variables de entorno
+```
 
 ## Variables de entorno
 
@@ -33,8 +47,17 @@ VITE_API_BASE_URL=https://backend.yampi.eu
 VITE_GIT_HUB_URL=https://github.com/cdryampi/
 ```
 
+## Notas
+
+- Multilingüe: i18next (es/en/qu) con `useCurrentLanguage()`; el idioma se envía
+  al backend vía cabecera `Accept-Language`.
+- El `package.json` separa `dependencies` (runtime) y `devDependencies` (build).
+- Vite usa `manualChunks` (react-vendor, router, axios, icons, swiper) para cacheo
+  de vendor y un `index` más pequeño.
+
 ## Verificacion recomendada
 
 - Para cambios de contenido o estilos: ejecutar `npm run build`.
+- Para cambios en hooks/API: ejecutar `npm run test`.
 - Para cambios visuales: revisar la app con `npm run dev` y una comprobacion en navegador desktop/mobile.
 - Para cambios en llamadas API: verificar que `VITE_API_BASE_URL` apunta a un backend accesible.

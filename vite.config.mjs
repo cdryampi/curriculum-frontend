@@ -7,6 +7,23 @@ export default defineConfig({
   base: "/curriculum-frontend/",
   plugins: [tailwindcss(), react(), svgr()],
   publicDir: "public",
+  build: {
+    target: "es2020",
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return
+          if (id.includes("/react/") || id.includes("/react-dom/") || id.includes("/scheduler/")) {
+            return "react-vendor"
+          }
+          if (id.includes("react-router")) return "router"
+          if (id.includes("/axios/")) return "axios"
+          if (id.includes("react-icons")) return "icons"
+          if (id.includes("/swiper/")) return "swiper"
+        },
+      },
+    },
+  },
   test: {
     environment: "node",
     include: ["src/**/*.test.{js,jsx}"],

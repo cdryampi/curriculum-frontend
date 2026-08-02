@@ -29,6 +29,8 @@ Un sitio web moderno y responsive para mostrar tu currículum vitae y portfolio 
 - **React Icons**: Biblioteca de iconos populares
 - **React Toastify**: Para notificaciones toast
 - **React Spinners**: Animaciones de carga
+- **i18next**: Internacionalización (es/en/qu)
+- **Vitest**: Tests unitarios
 
 ## 🏗️ Estructura del proyecto
 
@@ -107,6 +109,7 @@ Antes de abrir un Pull Request, ejecuta al menos:
 
 ```bash
 npm run build
+npm run test
 ```
 
 Para revisar el resultado en navegador:

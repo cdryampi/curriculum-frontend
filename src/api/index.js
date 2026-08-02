@@ -7,6 +7,7 @@ import { getStoredLanguage } from "../i18n/languages";
 // Configura el cliente de Axios
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
+  timeout: 15000,
   headers: {
     "Content-Type": "application/json",
   },
@@ -16,6 +17,21 @@ apiClient.interceptors.request.use((config) => {
   config.headers["Accept-Language"] = getStoredLanguage();
   return config;
 });
+
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // Timeout de red: mensaje claro en lugar del error técnico de Axios.
+    if (error.code === "ECONNABORTED" || error.message === "Network Error") {
+      const timeoutError = new Error(
+        "No se pudo conectar con el servidor. Comprueba tu conexión e inténtalo de nuevo."
+      );
+      timeoutError.name = "NetworkError";
+      return Promise.reject(timeoutError);
+    }
+    return Promise.reject(error);
+  }
+);
 
 // Funciones para diferentes endpoints
 export const fetchStaticPages = () => apiClient.get(`/static_pages/private/`);
@@ -37,5 +53,5 @@ export const fetchSkillFilterNextPrev = (url) => apiClient.get(url);
 export const fetchPortfolioList = () => apiClient.get("/portfolio/private/");
 export const fetchServicesList = () => apiClient.get("/services/private/");
 export const sendEmailService = (name, email, message) =>
-  apiClient.post("/email_service/enviar-correo/", { name, email, message }); // no hace falta el CSRF token porque utilizamos el token de autenticación del django rest framework.
+  apiClient.post("/email_service/enviar-correo/", { name, email, message }); // endpoint público con throttle; no requiere CSRF ni token.
 export const fetchUserPDF = () => apiClient.get("/base/userprofile/pdf/");
