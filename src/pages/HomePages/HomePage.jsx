@@ -5,6 +5,8 @@ import useCurrentLanguage from "../../hooks/useCurrentLanguage"
 import usePDF from "../../hooks/UseGetPDFHook"
 import { sendEmailService } from "../../api"
 import "../../styles/project-media.css"
+import "../../styles/profile-media.css"
+import profilePhoto from "../../assets/profile/yanpiere-github.png"
 
 const copy = {
   es: {
@@ -16,6 +18,8 @@ const copy = {
     proof: ["Python · Django", "React · Vue · TypeScript", "APIs · CMS · Automatización", "Docker · CI/CD"],
     profileTitle: "Tecnología útil. Arquitectura clara. Entrega real.",
     profile: "Más de diez años entre informática, sistemas y desarrollo web. Mi foco actual: transformar necesidades operativas en productos digitales claros, sólidos y fáciles de mantener.",
+    profilePoints: ["Producto y backoffice", "APIs e integraciones", "Interfaces cuidadas"],
+    profileCaption: "Construyo sistemas que hacen más sencillo el trabajo de las personas.", portraitAlt: "Retrato de Yanpiere Sánchez",
     projectsTitle: "Proyectos que prueban el trabajo", projectsIntro: "Selección de producto público y verificable. Cada caso muestra una combinación concreta de arquitectura, interfaz y entrega.",
     filters: { all: "Todos", product: "Producto", architecture: "Arquitectura", ai: "IA aplicada", ecommerce: "Ecommerce" },
     experienceTitle: "Experiencia y desarrollo continuo", servicesTitle: "Cómo puedo aportar", educationTitle: "Base técnica", contactTitle: "¿Construimos algo útil?",
@@ -33,6 +37,8 @@ const copy = {
     proof: ["Python · Django", "React · Vue · TypeScript", "APIs · CMS · Automation", "Docker · CI/CD"],
     profileTitle: "Useful technology. Clear architecture. Real delivery.",
     profile: "Over ten years across IT, systems and web development. My current focus: turning operational needs into clear, robust and maintainable digital products.",
+    profilePoints: ["Product and back office", "APIs and integrations", "Considered interfaces"],
+    profileCaption: "I build systems that make people’s work simpler.", portraitAlt: "Portrait of Yanpiere Sánchez",
     projectsTitle: "Projects that prove the work", projectsIntro: "A selection of public, verifiable work. Each case shows a specific mix of architecture, interface and delivery.",
     filters: { all: "All", product: "Product", architecture: "Architecture", ai: "Applied AI", ecommerce: "Ecommerce" },
     experienceTitle: "Experience and continuous development", servicesTitle: "How I can help", educationTitle: "Technical foundation", contactTitle: "Let’s build something useful.",
@@ -114,7 +120,6 @@ const HomePage = () => {
       <meta property="og:description" content={t.intro} />
       <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "ProfilePage", mainEntity: { "@type": "Person", name: "Yanpiere Rafael Sánchez Gastelu", jobTitle: "Full-stack developer", url: "https://yampi.eu", sameAs: ["https://github.com/cdryampi", "https://www.linkedin.com/in/yanpiere-sanchez-gastelu/"] } })}</script>
     </Helmet>
-    <a className="skip-link" href="#main-content">{language === "es" ? "Saltar al contenido principal" : "Skip to main content"}</a>
     <header className="site-header">
       <a className="wordmark" href={homeHref}>YS<span>·</span>DEV</a>
       <nav aria-label={language === "es" ? "Navegación principal" : "Primary navigation"} className="desktop-nav">{targets.map((target, index) => <a key={target} href={`#${target}`}>{t.nav[index]}</a>)}</nav>
@@ -127,10 +132,10 @@ const HomePage = () => {
     </header>
     <section id="main-content" className="hero section-grid" aria-labelledby="intro-title">
       <div className="hero-copy"><p className="eyebrow">{t.eyebrow}</p><h1 id="intro-title">{t.title}</h1><p className="hero-intro">{t.intro}</p><div className="hero-actions"><a className="button button-primary" href="#proyectos">{t.primary}<FiArrowDownRight /></a><a className="button button-secondary" href="#contacto">{t.secondary}<FiArrowUpRight /></a></div></div>
-      <aside className="hero-card" aria-label={t.profileAria}><span className="availability"><FiCheck /> {t.available}</span><div className="monogram" aria-hidden="true">YS</div><p>Python / Django<br />React / Vue<br />Systems / Product</p><div className="hero-card-footer"><span>Barcelona</span><span>2026</span></div></aside>
+      <aside className="hero-card" aria-label={t.profileAria}><span className="availability"><FiCheck /> {t.available}</span><div className="hero-portrait"><span className="monogram" aria-hidden="true">YS</span><img src={profilePhoto} alt={t.portraitAlt} /></div><p>Python / Django<br />React / Vue<br />Systems / Product</p><div className="hero-card-footer"><span>Barcelona</span><span>2026</span></div></aside>
     </section>
     <section className="proof-strip" aria-label={t.skillsAria}>{t.proof.map((item) => <span key={item}>{item}</span>)}</section>
-    <section id="perfil" className="section-grid section profile-section"><p className="section-index">{t.indices[0]}</p><div><h2>{t.profileTitle}</h2><p className="large-copy">{t.profile}</p></div></section>
+    <section id="perfil" className="section profile-section"><div className="profile-content"><p className="section-index">{t.indices[0]}</p><h2>{t.profileTitle}</h2><p className="large-copy">{t.profile}</p><ul className="profile-points">{t.profilePoints.map((point, index) => <li key={point}><span>0{index + 1}</span>{point}</li>)}</ul></div><aside className="profile-media" aria-label={t.profileAria}><div className="profile-media-art"><img src={profilePhoto} alt={t.portraitAlt} /><span aria-hidden="true">YS</span></div><p>{t.profileCaption}</p></aside></section>
     <section id="proyectos" className="section projects-section"><div className="section-heading"><div><p className="section-index">{t.indices[1]}</p><h2>{t.projectsTitle}</h2></div><p>{t.projectsIntro}</p></div><div className="filter-row" aria-label={t.filtersAria}>{categories.map((category) => <button key={category} className={filter === category ? "active" : ""} aria-pressed={filter === category} onClick={() => setFilter(category)}>{t.filters[category]}</button>)}</div><div className="project-grid">{visibleProjects.map((project) => <a className="project-card" href={project.href} target="_blank" rel="noreferrer" key={project.title}><span className="project-number">0{projects.findIndex(({ title }) => title === project.title) + 1}</span><FiArrowUpRight className="project-arrow" /><p className="project-category">{t.filters[project.category]}</p><h3>{project.title}</h3><p>{project[language]}</p><div className="tag-row">{project.stack.map((tag) => <span key={tag}>{tag}</span>)}</div></a>)}</div><a className="github-link" href="https://github.com/cdryampi" target="_blank" rel="noreferrer"><FiGithub /> GitHub / cdryampi <FiArrowUpRight /></a></section>
     <section id="experiencia" className="section experience-section"><div className="section-heading"><div><p className="section-index">{t.indices[2]}</p><h2>{t.experienceTitle}</h2></div></div><ol className="timeline">{experience[language].map(([date, title, description]) => <li key={title}><span>{date}</span><div><h3>{title}</h3><p>{description}</p></div></li>)}</ol></section>
     <section id="servicios" className="section services-section"><div className="section-heading"><div><p className="section-index">{t.indices[3]}</p><h2>{t.servicesTitle}</h2></div></div><div className="service-grid">{services[language].map(([number, title, description]) => <article key={title}><span>{number}</span><h3>{title}</h3><p>{description}</p></article>)}</div></section>
