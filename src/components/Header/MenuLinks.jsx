@@ -8,7 +8,9 @@ const MenuLinks = ({ pdf_link }) => {
   const { t } = useTranslation()
   const lang = useCurrentLanguage()
   const pdfUrl = pdf_link?.file
-  const pdfTitle = pdf_link?.title || t("nav.downloadCv")
+  // El title del backend es un slug interno (p.ej. "yampi_profile_pdf");
+  // siempre mostramos la etiqueta traducida.
+  const pdfLabel = t("nav.downloadCv")
 
   return (
     <nav className="relative hidden lg:block" aria-label={t("nav.main")}>
@@ -31,9 +33,9 @@ const MenuLinks = ({ pdf_link }) => {
               href={pdfUrl}
               target="_blank"
               rel="noopener noreferrer"
-              title={pdfTitle}
+              title={pdfLabel}
             >
-              {pdfTitle} <FiExternalLink className="inline" size={14} />
+              {pdfLabel} <FiExternalLink className="inline" size={14} />
             </a>
           </li>
         )}

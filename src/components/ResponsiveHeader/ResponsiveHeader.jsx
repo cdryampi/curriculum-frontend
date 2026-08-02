@@ -1,15 +1,18 @@
 import { useState, useEffect, useRef, useCallback } from "react"
 import { useTranslation } from "react-i18next"
 import { CgClose } from "react-icons/cg"
-import { FiMenu } from "react-icons/fi"
+import { FiMenu, FiExternalLink } from "react-icons/fi"
 import { Link as RouterLink } from "react-router-dom"
 import { NAV_LINKS } from "../../data/menuItems"
 import { LanguageSwitcher } from "../LanguageSwitcher"
 import useCurrentLanguage from "../../hooks/useCurrentLanguage"
+import usePDF from "../../hooks/UseGetPDFHook"
 
 const ResponsiveHeader = () => {
   const { t } = useTranslation()
   const lang = useCurrentLanguage()
+  const { data: pdfData } = usePDF()
+  const pdfUrl = pdfData?.resume_file?.file
   const [responsiveMenu, setResponsiveMenu] = useState(false)
   const menuRef = useRef(null)
   const toggleRef = useRef(null)
@@ -103,6 +106,20 @@ const ResponsiveHeader = () => {
               </RouterLink>
             </li>
           ))}
+          {pdfUrl && (
+            <li>
+              <a
+                className="text-accent hover:text-white text-[1rem] lg:text-[1.125rem] font-Poppins font-semibold uppercase inline-flex items-center gap-1.5 cursor-pointer"
+                href={pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={t("nav.downloadCv")}
+                onClick={closeMenu}
+              >
+                {t("nav.downloadCv")} <FiExternalLink className="inline" size={14} />
+              </a>
+            </li>
+          )}
         </ul>
       </div>
     </div>
