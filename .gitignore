@@ -31,3 +31,5 @@ config.js
 .playwright-mcp
 .vite
 qa-*.png
+/output/
+/tmp/
