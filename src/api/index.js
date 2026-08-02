@@ -5,7 +5,7 @@ import { API_BASE_URL } from "../config";
 import { getStoredLanguage } from "../i18n/languages";
 
 // Configura el cliente de Axios
-const apiClient = axios.create({
+export const apiClient = axios.create({
   baseURL: API_BASE_URL,
   timeout: 15000,
   headers: {

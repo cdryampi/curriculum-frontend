@@ -23,19 +23,21 @@ const ErrorPage = () => {
         <meta name="robots" content="noindex" />
       </Helmet>
       <Header />
-      <section className="featuredAreaWrap md:text-left text-center bg-dark z-[1] flex items-center bgGrident1 bg-blend-hard-light relative min-h-screen xl:rounded-br-[20rem] lg:rounded-br-[18rem] md:rounded-br-[15rem] sm:rounded-br-[10rem] rounded-br-0 w-screen md:py-[6.25rem] py-20">
-        <div className="container mx-auto">
-          <div className="errorPage text-center w-full">
-            <div className="errorPageInner">
-              <h2 className="text-[10rem] md:text-[15rem] font-Poppins font-bold text-accent leading-none">404</h2>
-              <h3 className="text-desc text-2xl font-Poppins mb-8">{t("errorPage.title")}</h3>
-              <Link className="text-accent hover:text-white font-Poppins text-lg font-bold inline-flex gap-2 items-center underline underline-offset-8" to={`/${lang}`} title={t("common.backHome")}>
-                <FaHome /> {t("common.backHome")}
-              </Link>
+      <main id="main-content">
+        <section className="featuredAreaWrap md:text-left text-center bg-dark z-[1] flex items-center bgGrident1 bg-blend-hard-light relative min-h-screen xl:rounded-br-[20rem] lg:rounded-br-[18rem] md:rounded-br-[15rem] sm:rounded-br-[10rem] rounded-br-0 w-screen md:py-[6.25rem] py-20">
+          <div className="container mx-auto">
+            <div className="errorPage text-center w-full">
+              <div className="errorPageInner">
+                <h2 className="text-[10rem] md:text-[15rem] font-Poppins font-bold text-accent leading-none">404</h2>
+                <h3 className="text-desc text-2xl font-Poppins mb-8">{t("errorPage.title")}</h3>
+                <Link className="text-accent hover:text-white font-Poppins text-lg font-bold inline-flex gap-2 items-center underline underline-offset-8" to={`/${lang}`} title={t("common.backHome")}>
+                  <FaHome /> {t("common.backHome")}
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
       <BottomBar2 />
     </>
   )

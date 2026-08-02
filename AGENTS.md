@@ -54,6 +54,8 @@ VITE_GIT_HUB_URL=https://github.com/cdryampi/
 - El `package.json` separa `dependencies` (runtime) y `devDependencies` (build).
 - Vite usa `manualChunks` (react-vendor, router, axios, icons, swiper) para cacheo
   de vendor y un `index` más pequeño.
+- Tests: Vitest + Testing Library + jsdom (`npm run test`). Los tests viven en
+  `src/**/*.test.{js,jsx}` y cubren cliente API, hooks y `ContactForm`.
 
 ## Verificacion recomendada
 

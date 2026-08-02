@@ -13,6 +13,31 @@
 
 @config "../../tailwind.config.js";
 
+@layer base {
+  /* Outline visible para navegación por teclado (a11y) */
+  :focus-visible {
+    outline: 2px solid var(--accentColor);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--accentColor);
+    color: #fff;
+  }
+}
+
+/* Reduce el movimiento para usuarios con prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 :root {
   --accentColor: #284be5;
   --accentColor2: #232a60;

@@ -34,6 +34,9 @@ jobs:
           VITE_API_BASE_URL: https://backend.yampi.eu
           VITE_GIT_HUB_URL: https://github.com/cdryampi/
 
+      - name: Run tests
+        run: npm run test
+
       - name: Upload build artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@v4
