@@ -4,7 +4,7 @@ import svgr from "vite-plugin-svgr"
 import tailwindcss from "@tailwindcss/vite"
 
 export default defineConfig({
-  base: "/curriculum-frontend/",
+  base: "/",
   plugins: [tailwindcss(), react(), svgr()],
   publicDir: "public",
   build: {
