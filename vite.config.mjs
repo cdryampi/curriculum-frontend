@@ -4,7 +4,9 @@ import svgr from "vite-plugin-svgr"
 import tailwindcss from "@tailwindcss/vite"
 
 export default defineConfig({
-  base: "/",
+  // GitHub Pages is temporarily served from the repository path. Switch to
+  // "/" only with the yampi.eu DNS cutover and public/CNAME in the same release.
+  base: "/curriculum-frontend/",
   plugins: [tailwindcss(), react(), svgr()],
   publicDir: "public",
   build: {
